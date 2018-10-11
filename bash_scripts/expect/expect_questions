@@ -1,0 +1,15 @@
+#! /bin/bash
+#Date: 28 Sept 18
+#Desc: This script is spawned by expect_script.bash, and its answered by that same script. 
+#Author(s): Thomas S
+
+echo "What is your name?";
+read $REPLY;
+
+echo "What day is it?";
+read $REPLY; 
+
+echo "Do you have any more requests?";
+read $REPLY;
+
+exit 0; 

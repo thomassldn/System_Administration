@@ -1,0 +1,95 @@
+Author(s):Thomas S
+Date: 3 June 2018
+Desc: The following shows how to install Nextcloud on CENTSOS7 using the docker engine and docker compose. 
+
+INSTALL DOCKER CE FOR CENTSOS
+=========================================================
+https://docs.docker.com/install/linux/docker-ce/centos/
+
+1) Install required packages
+#yum -y install yum-utils device-mapper-persistent-data lvm2
+
+Docker CE epository
+#yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+3)Optional: Enable edge and test
+#yum-config-manager --enable docker-ce-edge
+#yum-config-manager --enable docker-ce-test
+
+4)Install Docker CE
+#yum -y install docker-ce
+
+5)Start Docker
+#systemctl start docker
+
+6)Enable Docker
+#systemctl enable docker
+
+7) Test Docker, run and download the hello world image
+#docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+d1725b59e92d: Pull complete
+Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+.....
+.....
+
+INSTALL DOCKER COMPOSE
+=========================================================
+https://docs.docker.com/compose/install/
+
+Download the Docker Compose binary (GO TO THE WEBSITE AND USE THE LATEST VERSION)
+#curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+2) Apply correct permissions to the binary
+#chmod +x /usr/local/bin/docker-compose
+
+4) Test the installation
+#docker-compose --version
+docker-compose version 1.22.0, build f46880fe
+
+
+
+INSTALL NEXT CLOUD on DOCKER W MariaDB
+===========================================================
+1) Make a directory to host your project
+#mkdir nextcloud_server
+2) Create  docker-compose.yml, and insert the following
+version: '2'
+
+volumes:
+  nextcloud:
+  db:
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    image: nextcloud
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+    restart: always
+3) make sure to add a password for
+       – MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+ In the above docker compose yml file
+4) Start up next cloud on docker
+#docker-compose up –d (inside your projects directory)

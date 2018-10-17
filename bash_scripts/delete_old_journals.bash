@@ -11,3 +11,7 @@ for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done
 #Before running the next command, enter if condition to verify with the user if the obove journals listed are the ones to be deleted.
 #delete journals
 for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; yes | rm $i; done
+
+
+
+

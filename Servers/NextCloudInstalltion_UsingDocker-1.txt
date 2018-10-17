@@ -1,6 +1,6 @@
 Author(s):Thomas S
 Date: 4 May 2018
-Desc: The following shows how to install Nextcloud on CENTSOS7 using the docker engine and docker compose. 
+Desc: The following notes show how to install Nextcloud on CENTSOS7 using the docker engine and docker compose. 
 
 INSTALL DOCKER CE FOR CENTSOS
 =========================================================

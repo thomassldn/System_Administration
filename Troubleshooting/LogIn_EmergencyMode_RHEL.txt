@@ -1,4 +1,4 @@
-[] Turn VM on HyperVisor (KVM, Hyper-V, VMWare, etc
+[] Turn VM on HyperVisor (KVM, Hyper-V, VMWare, etc)
 []
 []
 []

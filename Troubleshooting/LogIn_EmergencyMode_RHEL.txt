@@ -1,1 +1,16 @@
-fsddfsfdf
+[] Turn VM on HyperVisor (KVM, Hyper-V, VMWare, etc
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]
+[]

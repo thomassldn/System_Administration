@@ -1,0 +1,11 @@
+Networking
+====================================
+WINDOWS:
+
+
+LINUX:
+
+
+MAC:
+#route get default                         (Get default GW)
+

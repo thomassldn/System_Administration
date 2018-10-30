@@ -7,8 +7,11 @@ LINUX:
 #ifconfig                                  (show network interface configuration)
 
 MAC:
-#route get default                         (Get default GW)
+#route get default                         (get default GW)
 #ifconfig                                  (show network interface configuration)
+
+AIX:
+#ifconfig -a                               (show network interface configuration)
 
 Volume Group Management
 ========================================================================
@@ -20,6 +23,8 @@ LINUX:
 
 MAC:
 
+AIX:
+#lsvg | lsvg -li                           (display what volume groups are in a filesystem)
 
 ========================================================================
 WINDOWS:

@@ -2,8 +2,8 @@
 #This script runs oslevel, ccontrol list, and uptime on all servers
 #Add hostnames of IP's of servers you wish to scan
 
-#add hosts you wish to scan here
-hosts="127.0.0.1 "
+#add hosts you wish to scan to this array
+hosts="127.0.0.1, "
 
 #loop throgh all the host
 for i in $hosts

@@ -77,21 +77,8 @@ printf "\n%s\n" "======================================="
 cd /
 qpdf -version
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-SET IOO settings
-====================
+#SET IOO settings
+#====================
 
 ioo -p -o j2_minPageReadAhead=0
 ioo -p -o j2_maxPageReadAhead=1
@@ -108,8 +95,8 @@ ioo -p -o j2_dynamicBufferPreallocation=256
 ioo -p -o sync_release_ilock=1
 
 
-SET Network Options
-=========================
+#SET Network Options
+#=========================
 no -p -o tcp_nodelayack=1
 no -p -o tcp_keepcnt=8
 no -p -o tcp_keepidle=120

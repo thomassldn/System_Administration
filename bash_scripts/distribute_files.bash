@@ -40,9 +40,3 @@ cp /qmd/cpr/sw/release_files/novus* /qmd/cpr/sw/rel/novus/builds
 chown root:system /qmd/cpr/sw/rel/novus/builds/*
 chmod 755 /qmd/cpr/sw/rel/novus/builds/*
 
-
-
-tab ae
-
-HLM,
-WHH, EP

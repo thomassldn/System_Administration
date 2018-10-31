@@ -28,13 +28,6 @@ printf "\n\n%s\n"   "=============================" >> servers
 
 done
 
-
-
-
-
-
-
-
 #csession INSTANCE
 username/pass
 zn "CPR"

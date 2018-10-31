@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #Author: Thomas S, ATS
 #Date: 13 Sept 18
-#Description:This script pushes all the files in the .zip folder to their appropriate
+#Description:This script moves all the files in a .zip folder to their appropriate
 #            locations, and untars/unzips any files that need to be unzipped
 
 #unzip release_files.zip, which contains all the files from the build request

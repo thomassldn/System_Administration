@@ -1,6 +1,6 @@
 Author: Thomas S
 Date: 1 Nov 18
-Desc: These notes show how to install the Xfce4 Desktop environment on CentOS7. Xfce is lightweight Desktop environment.
+Desc: Notes on how to install Xfce4 Desktop environment on CentOS7. Xfce is a lightweight Desktop environment.
 
 [1] Install EPEL release
 #yum -y install epel-release

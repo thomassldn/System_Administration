@@ -1,0 +1,8 @@
+Cache CSESSION Commands
+=================
+CPR>zn "<NAMESPACE>"              (Change Namespace with in a csession)
+%SYS>do ^SECURITY                  (View/Edit User setups/roles/services/resources/application/domain/ssl setups, etc)
+%SYS>do ^MIRROR                    (List Mirror databases, Remove one or more mirrored databases, Enable Mirror Services)
+CPR>w $p($p(^%z,$c(255),21),$c(1),1)_"."_$p($p(^%z,$c(255),21),$c(1),3)_" Build "_$p($p(^%z,$c(255),21),$c(1),2)      (View Current Version of CPR using a Csession)
+CPR>d $SYSTEM.OBJ.Export("%z.GBL","/qmd/cpr/sw")
+CPR>d $SYSTEM.OBJ.Load("/qmd/cpr/sw/%z.stream")

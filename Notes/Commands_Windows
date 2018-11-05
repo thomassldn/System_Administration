@@ -1,1 +1,14 @@
 
+Networking
+==================================================================================================
+>ipconfig                        (show network interface configuration)
+>ipconfig /all                   (show network interface configuration-detailed)
+>Restart-Computer                (Restart computer) 
+
+Volume Group Management
+=================================================================================================
+
+
+
+AIX:
+#lsvg | lsvg -li                           (display what volume groups are in a filesystem)

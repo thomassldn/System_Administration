@@ -1,15 +1,15 @@
+Journaling 
+==================================================================================================
+#for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done                 (list all journals between this date)
+#for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; yes | rm $i; done    (remove all journals between this date)
 
 Networking
 ==================================================================================================
-#ifconfig -a                               (show network interface configuration)
-
-
+#ifconfig -a                                                                 (show network interface configuration)
+#prtconf                                                                     (partition Info)
+#cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
 
 Volume Group Management
 =================================================================================================
-
-
-
-AIX:
 #lsvg | lsvg -li                           (display what volume groups are in a filesystem)
 

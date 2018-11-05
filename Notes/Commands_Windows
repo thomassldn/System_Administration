@@ -8,7 +8,3 @@ Networking
 Volume Group Management
 =================================================================================================
 
-
-
-AIX:
-#lsvg | lsvg -li                           (display what volume groups are in a filesystem)

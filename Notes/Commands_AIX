@@ -12,4 +12,12 @@ Networking
 Volume Group Management
 =================================================================================================
 #lsvg | lsvg -li                           (display what the filesystems in each volume group)
-
+#backup                                    (backsup a filesytem - full or incrementally)  
+#chfs -a size=2G                           (modify the size of a filesystem) 
+#df -g                                     (display filesystem space in GB)
+#snapshot                                  (use to create a snap shot of JFS2 file system)
+#fsck                                      (repair and check filesystems) 
+#mkfs                                      (creates a filesytem of a specific size on a LV) 
+#mount                                     (mount a filesystem) 
+#restore                                   (used to restore files from a backup) 
+#unmount                                   (unmount a filesystem) 

@@ -1,1 +1,59 @@
 
+QCPR Commands
+============
+}dserv              (Show open ports/listening services)
+}gui/off            (Remove gui buttons)
+}cli <Unix command> (command line interpreter)
+}sys                (System Navigator Gui)
+}rev                (Shows SYSTEM, Build O/S, CACHE, & QCPR versions)
+}?                  (Job Monitor)
+} %zhalt            (Halt QCPR)
+}domain             (Used to View the Domain Utility, App groups status, domain information)
+} asm^aid           (View what interfaces are running)
+}qd                 (Completed Background Jobs/background job display)
+}ctrl + shift + 5   (back out)
+} %zerl             (QCPR Error Log)
+}apsview            (Printing Queue)
+}con/ex             (View QCPR version/IPL Level/CurrentJournalSegment)
+}%zbg               (Background job processor, may impact printing if not running, start it in the domain utility)
+
+
+
+QCPR Tables
+===========
+}tab ae             (Employee/Provider Table)
+}tab aeft           (Free-Text Employee Table)
+}tab afa            (Area Table)
+}tab ad             (Device Table)
+}tab app            (Applications Public Profile Table)
+}tab at("pd")       (Telphone Directory Table)
+}tab at("pdt")      (Telephone Directory Screen Text Table)
+}tab nt("ref")      (Reference Range Table)
+}tab prxp           (Prescription Price Update File Table)
+}tab rt("ib")       (Interface Bed Table)
+}tab ygenafa        (Bogus Bed Pool Table)
+}tab ygencum        (GEN:Cum Trend Setup Table)
+}tab ygenradrp      (GEN Radiology Data Element Mapping Table)
+}tab ati            (Interface Table)
+}tab apsp           (Print Spooler Printer Table)
+}tab %zbgd          (Site Specific Job Description Table)
+}tab %zbgj          (Site-Specific Autostart Job Table)
+}tab %zbgdj         (Daily Jobs Table)
+}tab %z-	    (Shows all tables)
+}tab %zfp           (Domain/Group Table - use this change domain name)
+}tab %zfs           (Network Table)
+}menu               (Search for Menu Function
+}d l^ml()           (med code load function)
+}tab ptdkv          (ISDID service)
+
+}tab %zbg  	    (Printing Table)(Background job processor, may impact printing if not running, start it in the domain utility)
+}tab %zhds 	    (HDS Employee Table Used to modify User passwords, etc)
+
+Multimedia Manager Server QCPR Tables
+=====================================
+}^mmt("s")	   (Multimedia Server Table used to define MM Server IP)
+}^mmt("st")	   (Multimedia Server Type table)
+}^mmt("oc")        (Multimedia Object Catalogue Table)
+}^mmt("oc")        (Multimedia Rubber Stamp Table)
+
+

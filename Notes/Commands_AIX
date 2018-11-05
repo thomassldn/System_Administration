@@ -11,5 +11,5 @@ Networking
 
 Volume Group Management
 =================================================================================================
-#lsvg | lsvg -li                           (display what volume groups are in a filesystem)
+#lsvg | lsvg -li                           (display what the filesystems in each volume group)
 

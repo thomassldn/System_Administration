@@ -1,1 +1,15 @@
 
+Networking
+==================================================================================================
+#ifconfig -a                               (show network interface configuration)
+
+
+
+Volume Group Management
+=================================================================================================
+
+
+
+AIX:
+#lsvg | lsvg -li                           (display what volume groups are in a filesystem)
+

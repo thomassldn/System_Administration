@@ -1,2 +1,4 @@
 AWS Storage Service 
 AWS Key Management Service (AWS KMS)                           (Used to encrypt data written to a virtual tape that is stored in Amazon S3)
+Amazon WorkSpaces                                              (Desktop as a Service) 
+AWS Simple AD                                                  (Active Directory Service) 

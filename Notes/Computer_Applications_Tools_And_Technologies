@@ -1,0 +1,237 @@
+Anti-Malware
+=======================
+Avast (free) (Windows)
+McAfee Antivirus
+Malwarebytes
+Bit-defender
+
+ARP Table Attaker (Man In the Middle Attack)
+=======================
+Ettercap
+
+Cleaning Tools
+=======================
+CCleaner
+Clean Master
+BC Wipe
+Eraser(This application delete OS, Cache, slack, and browsing history files, along with unallocated space and registry files)
+OmniDisk Sweeper (MACOS)
+
+Computer Forensics
+=======================
+Disk Digger (Windows File recovery software)
+WinUndelete (Windows File recovery software)
+FreeUndelete (Windows File recovery software)
+MacKeeper ( MAC OS data recovery software)
+Encase (Imager)
+Forensic Toolkit
+Scalpel (File Carving)
+OSForensics (cheapest but not as good as Encase and FTK)
+P2 Commander
+FTK Imager (Forensic Toolkit by AccessData - popular among law enforcement; Allows you to take an entire image and
+    try to identify all of the documents in the file system, including the unallocated space)
+    http://accessdata.com/product-download/digital-forensics; can crack file passwords
+WinAudit (Audits an entire Windows System)
+Fred (File analyzer)
+DevManView (Drives, and device analyzer)
+BrowsingHistoryView (displays all browsing history)
+FavoritesView
+Helix (Gathers system information, incident reponse, create images, portable) http://e-fense.com/products.php
+IECacheView (reads and displays Internet Explorer Cache folder)
+IECookiesView (displays all IE cookies)
+MyLastSearch (displays searched items)
+ProcessExplorer (displays information about currently process, checks for spyware, malware, executables)
+Favorites View (summarizes booksmarks and favorites views)
+AnaDisk Disk Analysis Tool (scans for anomalies that identify odd formats, extra tracks, and extra sectors, can be
+    used to uncover sophisticated data hiding techniques Pg74) http://www.retrocomputing.org/cgi-bin/sitewise.pl?a...
+CopyQM (disk duplicator)
+Sleuth Kit (used to find old deleted files, open source, txt based; gui available) http://www.sleuthkit.org/autopsy/download.php
+Disk Investigator (presents you with a cluster by cluster view of your HD in hex form, free, for windows OS)
+MagnetRamCapture (Free ram/memory capturer)
+Dumpit (Free ram/memory capturer)
+FastBlock (connect a hard drive to a device to prevent writing to it)
+Tableau (connect a hard drive to a device to prevent writing to it)
+Paraben's Email Examiner (Exclusively for email forensics)
+auditpol.exe (can turn loggin on and off on Windows Computers)
+
+Cryptography
+=======================
+Truecrypt
+Veracrypt
+Bitlocker
+FileVault (Apple)
+
+
+Data Recovery
+=======================
+Mac Undelete (MAC OS - recover deleted files)
+Free Undelete (MAC OS - recover deleted files)
+MacKeeper (MAC OS - recover deleted files)
+
+Development Tools
+=======================
+Android Studio
+Xcode
+Netbeans
+Cloud 9 (Web Application)
+Atom
+Eclipse
+Git
+Jenkins
+ITerm
+
+Exploitation Tools
+==================
+Burp Suit Pro
+ZAP Proxy Pro
+NoSQLMap
+SQLMap
+SQLNinja
+SQLNinja
+BeEF Exploitation Framework
+Responder
+Printer Exploits
+Veil
+WIFIPhisher
+Wifite
+SET
+
+Intrusion Detection
+=======================
+Snort (network intrusion detection system; analyzes packets for malicious payloads)
+
+Live System Analysis
+=======================
+PsList (Used to view all running process and thread statistics on a system - Windows/Free, 179)
+    http://technet.microsoft.com/en-us/sysinternals/bb896682.aspx
+PsInfo (Tells you system uptime, OS details, and other system information - Windows)
+ListDLLs (lets you view currently loaded dynamic link liberies DDLS for a process- Windows, 180 )
+    http://technet.microsoft.com/en-us/sysinternals/bb896656.asp
+PsLoggedOn (lets you see who has logged on locally or remotely - Windows)
+Fport (shows open TCP and UDP ports and maps them to a process - WIndows, 182) http://www.mcafee.com/us/downloads/free-tools/fport.aspx
+
+
+Mobile Forensics
+======================
+Oxygen Forensics—A full forensic tool capable of imaging and examining iPhones and Android phones. It provides a number of user-friendly tools for extracting specific data such as contacts, social media data, and the like.
+Cellabrite—The most widely known phone forensics tool. Used heavily by federal law enforcement. It is a very robust and effective tool. Downside: the high cost. It is the most expensive phone forensics tool on the market.
+MobileEdit—There are several variations of this product. MobileEdit Lite is the most forensically advanced version of MobileEdit. This is a very easy-to-use tool that can aid a forensic examiner in extracting data from cell phones.
+Data Doctor—Recovers all Inbox and Outbox data and all contact data, and has an easy-to-use interface. It has a free trial version, but there is a cost for the full version. Data Doctor retrieves Inbox and sent message data as well as contact data.
+Device Seizure—Available from Paraben Software. There is a license fee associated with this product. Paraben makes a number of forensic products.
+Forensic SIM Cloner—This tool is used to clone SIM cards, allowing you to perform forensic analysis of the SIM card.
+Pwnage (iOS)
+Recover My iPod (iOS)
+
+
+
+Password Crackers
+=======================
+Medusa (Linux)
+Ophcrack: http://Ophcrack.sourceforge.net (Windows)
+John the Ripper
+Hashcat
+
+Password Managers
+=======================
+Enpass
+Keepass
+Dashlane
+
+
+Post Exploitation Tools
+=======================
+WCE
+Mimikatz
+PowerSploit
+HP2 - Custom Scripts
+SMBexec
+Veil
+Nishang
+The Backdoor Factory
+DSHashes
+Net-Creds
+
+
+Hacking
+=======================
+Kali Linux (Contains Many tools)
+Low Orbit Ion Cannon (DoS)
+Tribe Flood Network (TFN)
+WinZapper (allows you to selectively delete individual records in Windows Logs)
+List Alternate Data Streams (Used to identify whether files are attached via alternate data streams)
+
+
+Steganalys (These tools allow users to hide information or detect steganography)
+=======================
+StegSecret
+StegSpy
+Invisible Secrets (Very Cool)
+MP3Stego
+S-Tools (discovers possible steganography activity in images)
+
+Spyware
+=======================
+Teen Safe: http://www.teensafe.com
+Web Watcher: https://www.webwatcher.com
+ICU: http://www.softpedia.com/get/Security/Security-Related/ICU-Child-Monitoring-Software.shtml
+WorkTime: http://www.nestersoft.com/worktime/corporate/employee_monitoring.shtml
+(pg40 Computer forensic books)
+
+Radio Wave analyzer
+=======================
+Software Defined Radio $26 bucks on Amazon
+
+Recon/Scanning Tools
+=======================
+Discover
+EyeWitness
+HTTPScreenShot
+Password Lists
+WPScan
+SPARTA
+Recon-ng
+CMSmap
+Gitrob
+Masscan
+SpiderFoot
+WMAP
+
+
+SQL Injection Tools
+=======================
+http://www.databasesecurity.com/sqlinjection-tools.htm
+Sqlmap: http://sqlmap.org
+SQL Ninja: http://sqlninja.sourceforge.net
+
+steganography
+========================
+Camouflage
+
+Systems Administration
+=======================
+
+System Change Monitoring
+========================
+Tripwire (monitoring tool that monitor unwanted changes in desktops, routers, switches and other devices)
+  http://www.tripwire.com
+CimTrak (monitoring tool that monitor unwanted changes in desktops, routers, switches and other devices)
+  https://www.cimcor.com/cimtrak
+
+Trojan Programs
+=========================
+Back Orifice
+NetBus
+SubSeven
+Dark Comet
+Poison Ivy
+
+VPN Providers
+=========================
+PIA Private Internet Access
+
+=======================
+=======================
+=======================
+=======================
+=======================
+=======================

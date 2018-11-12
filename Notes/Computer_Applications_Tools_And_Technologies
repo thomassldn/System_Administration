@@ -203,12 +203,36 @@ http://www.databasesecurity.com/sqlinjection-tools.htm
 Sqlmap: http://sqlmap.org
 SQL Ninja: http://sqlninja.sourceforge.net
 
-steganography
+Steganography
 ========================
 Camouflage
 
-Systems Administration
-=======================
+Systems Administration Tools & Servers
+======================================
+Jenkins
+MS Exchange 
+Chef
+Ansible 
+CIS Benchmarks
+SANS Benchmarks
+Admin LTE and Laravel 
+Windows SCCM 16 (Used to deploy packages) 
+LAMP
+Windows AD 
+Salt Stack 
+LXC Container 
+Metasploit 
+Splunk
+Bacula
+Puppet
+Chocalate 
+Smart Deploy 
+Fog
+Clonezilla
+Spiceworks    (Open source IT management system) 
+   -help desk app 
+   -Inventory App 
+   
 
 System Change Monitoring
 ========================

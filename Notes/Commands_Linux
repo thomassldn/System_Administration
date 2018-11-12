@@ -7,3 +7,5 @@ Networking
 
 Volume Group Management
 =================================================================================================
+#pvcreate /dev/sda3
+#vgdisplay 

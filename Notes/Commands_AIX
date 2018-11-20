@@ -25,6 +25,12 @@ Networking
 #prtconf                                                                     (partition Info)
 #cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
 
+Veritas Cluster Manager 
+=================================================================================================
+#/var/VRTSvcs:# which hastatus
+ /opt/VRTSvcs/bin/hastatus
+# hagrp -freeze qcpr_LIVE -persistent
+
 Volume Group Management
 =================================================================================================
 #lsvg | lsvg -li                           (display what the filesystems in each volume group)

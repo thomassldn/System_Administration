@@ -16,6 +16,11 @@ DevOps
 #iostat -xz 1
 #ulimit -a
 
+Files and Directories 
+=================================================================================================
+#find ./ -type f -mtime -3 -exec mv {} <dest_directory> \;               (move files created in the last 3 days to destination directory)
+
+
 Journaling 
 ==================================================================================================
 #for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done                 (list all journals between this date)

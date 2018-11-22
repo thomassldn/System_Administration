@@ -1,9 +1,11 @@
 
 Networking
 ==================================================================================================
->ipconfig                        (show network interface configuration)
->ipconfig /all                   (show network interface configuration-detailed)
->Restart-Computer                (Restart computer) 
+>ipconfig                                             (show network interface configuration)
+>ipconfig /all                                        (show network interface configuration-detailed)
+>Restart-Computer                                     (Restart computer) 
+>ip address 10.10.20.101 255.255.255.0                (configure an IP address)
+>gateway 10.10.20.1                                   (configure gateway)
 
 Volume Group Management
 =================================================================================================

@@ -2,7 +2,8 @@
 
 Systems Administration - General 
 =================================================================================================
-#ps -ef | grep <service>                   (view service running) 
+#ps -ef | grep <service>                                        (view service running)
+#for i in *.JPG;do echo $i;mv -- "$i" "${i%.JPG}.jpg";done      (rename file extension from JPG to jpg) 
 
 DevOps
 =================================================================================================

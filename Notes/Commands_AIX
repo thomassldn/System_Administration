@@ -16,6 +16,8 @@ DevOps
 #pidstat 1
 #iostat -xz 1
 #ulimit -a
+#/usr/sbin/lsattr -E -l sys0 | grep maxuproc                    (Used to determine the current number of processes per user) 
+#/usr/sbin/chdev -l sys0 -a maxuproc=1000                       (set the total number of userprocess to 1000-should be done on large systems)
 
 Files and Directories 
 =================================================================================================

@@ -7,6 +7,8 @@ Networking
 
 Volume Group Management
 =================================================================================================
+#vgconvert                                 (convert a volume group from LVM1 to LVM2 -see man page) 
+
 #pvcreate /dev/sda3
 #vgdisplay 
 

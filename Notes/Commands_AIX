@@ -5,6 +5,10 @@ Systems Administration - General Commands
 #ps -ef | grep <service>                                        (view service running)
 #for i in *.JPG;do echo $i;mv -- "$i" "${i%.JPG}.jpg";done      (rename file extension from JPG to jpg) 
 
+Certificates
+=================================================================================================
+#openssl x509 -in <cert_name>.pem -text -noout                  (view certificate in txt format) 
+
 DevOps
 =================================================================================================
 #topas

@@ -8,7 +8,7 @@ Systems Administration - General Commands
 Certificates
 =================================================================================================
 #openssl x509 -in <cert_name>.pem -text -noout                  (view certificate in txt format) 
-#openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/KGHPRODkey.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:443
+#openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/<key>.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:443
                                                                 Should see " Verify return code: 0 (ok)"
 
 DevOps

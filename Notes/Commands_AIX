@@ -39,7 +39,7 @@ Networking
 #ifconfig -a                                                                 (show network interface configuration)
 #prtconf                                                                     (partition Info)
 #cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
-#netstat -na | grep <port> 
+#netstat -na | grep <port>                                                   (check if a port is being used)
 
 Veritas Cluster Manager 
 =================================================================================================

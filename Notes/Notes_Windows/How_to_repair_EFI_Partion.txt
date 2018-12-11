@@ -21,7 +21,7 @@ DiskPart>select disk 0          (select the windows disk)
 
 DiskPartion>list partition 
 
-DiskPartion>select partion 2    (select the system partion that is corrupted)
+DiskPartion>select partition 2    (select the system partion that is corrupted)
 
 DiskPartion>assign letter=S     (assign a letter to the partion) 
 

@@ -7,6 +7,6 @@ Networking
 >ip address 10.10.20.101 255.255.255.0                (configure an IP address)
 >gateway 10.10.20.1                                   (configure gateway)
 
-Volume Group Management
+Hyper V 
 =================================================================================================
-
+>bcdedit /set hypervisorlaunchtype auto              (use this command after restores where vms wont start) 

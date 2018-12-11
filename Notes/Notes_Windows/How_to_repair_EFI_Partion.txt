@@ -19,7 +19,7 @@ DiskPart>list disk
 
 DiskPart>select disk 0          (select the windows disk) 
 
-DiskPartion>list partion 
+DiskPartion>list partition 
 
 DiskPartion>select partion 2    (select the system partion that is corrupted)
 

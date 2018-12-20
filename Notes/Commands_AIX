@@ -48,6 +48,12 @@ Veritas Cluster Manager
 #/var/VRTSvcs:# which hastatus
  /opt/VRTSvcs/bin/hastatus
 # hagrp -freeze qcpr_LIVE -persistent
+# /etc/VRTSvcs/conf/config/main.cf                                          (Veritas Configuration File)
+# /var/VRTSvcs/log/engine_A.log                                             (Veritas Logs Files; A is most current)
+# /opt/VRTSvcs/bin/                                                         (Veritas Binaries)
+# /qmd                                                                      (Veritas helper scripts)
+
+
 
 Volume Group Management
 =================================================================================================

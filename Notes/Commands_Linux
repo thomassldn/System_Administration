@@ -1,15 +1,22 @@
 
 Networking
 ==================================================================================================
-#ifconfig                                  (show network interface configuration)
+#ifconfig                                             (show network interface configuration)
 
 
 
-Volume Group Management
+Volume Group/Disk Management
 =================================================================================================
-#vgconvert                                 (convert a volume group from LVM1 to LVM2 - see man page) 
+#fdisk -l                                             (list system disks and identify new drives) 
+#vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
 
-#pvcreate /dev/sda3
+#pvcreate /dev/sda3                                   (prepare for use w/LVM
+#vgcreate <vg_name> /dev/sda3                         (create a VG on the new PV)
+#lvcreate -l 100%FREE -n <vol_name> <vg_name>         (create a logical volume) 
+#mkfs -t ext4 /dev/<vg_name>/<vol_name>               (create a filesystem) 
+#mkdir <mount_point>                                  (create a mount point) 
+#vi /etc/fstab                                        (set mount opts, mntpoint in this file-copy another already created filesystem)
+#mount <mount_point>
 #vgdisplay 
 
 After you add disk space (of whatever size), run the following commands to extend VG's and LV's: 

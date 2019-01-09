@@ -14,7 +14,7 @@ Certificates
 
 DevOps
 =================================================================================================
-#ipcs -mb
+#ipcs -mb                                                        (view memory segments)
 #topas
 #uptime
 #w

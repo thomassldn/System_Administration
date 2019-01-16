@@ -106,3 +106,4 @@ crfs -v jfs2 -d cprhslv -m /qmd/cpr/ucd/HLMPRD1/dbase/cprhs -a options=cio -A ye
 
 crfs -v jfs2 -d dkvwlv -m /qmd/cpr/ucd/HLMPRD1/dbase/dkvwk -a options=cio -A yes;mount /qmd/cpr/ucd/HLMPRD1/dbase/dkvwk;chmod 755 /qmd/cpr/ucd/HLMPRD1/dbase/dkvwk
 crfs -v jfs2 -d cmvlv -m /qmd/cpr/ucd/HLMPRD1/dbase/cmv -a options=cio -A yes;mount /qmd/cpr/ucd/HLMPRD1/dbase/cmv;chmod 755 /qmd/cpr/ucd/HLMPRD1/dbase/cmv
+

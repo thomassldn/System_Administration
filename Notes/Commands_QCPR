@@ -28,6 +28,7 @@ QCPR Tables
 }tab ae             (Employee/Provider Table)
 }tab aeft           (Free-Text Employee Table)
 }tab afa            (Area Table)
+}tab aff            (Facility Table)
 }tab ad             (Device Table)
 }tab app            (Applications Public Profile Table)
 }tab at("pd")       (Telphone Directory Table)

@@ -1,0 +1,23 @@
+Author: Thomas S
+Date: 1 Nov 18
+Desc: Notes on how to install Xfce4 Desktop environment on CentOS7. Xfce is a lightweight Desktop environment.
+
+[1] Install EPEL release
+#yum -y install epel-release
+
+[2] Install System packages
+#yum -y groupinstall "X Window system"
+
+[3] Install Xfce system packages
+#yum groupinstall xfce
+
+[4] Change systemd graphical target
+#systemctl isolate graphical.target
+
+[5] Set boot graphical target
+#systemctl set-default graphical.target
+
+[6] Reboot
+#reboot
+
+At this point, Xfce has been installed, and the GUI Desktop will appear after the reboot.

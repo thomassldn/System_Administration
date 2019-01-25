@@ -46,6 +46,10 @@ Networking
 #cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
 #netstat -na | grep <port>                                                   (check if a port is being used)
 
+Troubleshooting
+==================================================================================================
+#errpt -a                                                                    (generates a report of log files)
+
 Veritas Cluster Manager 
 =================================================================================================
 #/var/VRTSvcs:# which hastatus

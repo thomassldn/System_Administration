@@ -1,5 +1,5 @@
-Desc: 
-Date: 
+Desc: Sometimes you accidently delete or corrupt the windows EFI partion. These notes help recover it. 
+Date: 12 Dec 18
 
 [1] Download the Windows 10 installion media tool: 
 https://www.microsoft.com/en-us/software-download/windows10

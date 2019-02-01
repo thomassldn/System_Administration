@@ -6,7 +6,7 @@ Networking
 
 User Management 
 ==================================================================================================
-#passwd <user_name>                                   (change the password of a user) 
+#passwd <user_name>                                   (change the password of a user - RHEL) 
 
 
 Volume Group/Disk Management

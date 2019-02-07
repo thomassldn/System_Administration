@@ -107,6 +107,13 @@ WIFIPhisher
 Wifite
 SET
 
+SFTP Clients
+======================
+WS_FTP Server 
+FileZilla 
+WinSCP
+MobaXterm
+
 Intrusion Detection
 =======================
 Snort (network intrusion detection system; analyzes packets for malicious payloads)

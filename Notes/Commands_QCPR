@@ -22,6 +22,9 @@ QCPR Commands
 } aidtgvw           (view interface?)
 }set 140,30         (set window size)
 }F7                 (View History)
+}d stonly^%zbg()    (Raw command to stop %zbg w/o any issues)
+}start^%zbg         (Raw command to start %zbg w/o any issues)
+}strt^%zbg          (Raw command to start %zbg w/o any issues)
 
 
 

@@ -108,12 +108,11 @@ WIFIPhisher
 Wifite
 SET
 
-SFTP Clients
-======================
-WS_FTP Server 
-FileZilla 
-WinSCP
-MobaXterm
+Game Development
+=======================
+Maya 2018 
+Unity
+Inkscape
 
 Intrusion Detection
 =======================
@@ -129,6 +128,9 @@ ListDLLs (lets you view currently loaded dynamic link liberies DDLS for a proces
 PsLoggedOn (lets you see who has logged on locally or remotely - Windows)
 Fport (shows open TCP and UDP ports and maps them to a process - WIndows, 182) http://www.mcafee.com/us/downloads/free-tools/fport.aspx
 
+Machine Learning
+======================
+Weka 3.8
 
 Mobile Forensics
 ======================
@@ -170,7 +172,6 @@ The Backdoor Factory
 DSHashes
 Net-Creds
 
-
 Hacking
 =======================
 Kali Linux (Contains Many tools)
@@ -178,23 +179,6 @@ Low Orbit Ion Cannon (DoS)
 Tribe Flood Network (TFN)
 WinZapper (allows you to selectively delete individual records in Windows Logs)
 List Alternate Data Streams (Used to identify whether files are attached via alternate data streams)
-
-
-Steganalys (These tools allow users to hide information or detect steganography)
-=======================
-StegSecret
-StegSpy
-Invisible Secrets (Very Cool)
-MP3Stego
-S-Tools (discovers possible steganography activity in images)
-
-Spyware
-=======================
-Teen Safe: http://www.teensafe.com
-Web Watcher: https://www.webwatcher.com
-ICU: http://www.softpedia.com/get/Security/Security-Related/ICU-Child-Monitoring-Software.shtml
-WorkTime: http://www.nestersoft.com/worktime/corporate/employee_monitoring.shtml
-(pg40 Computer forensic books)
 
 Radio Wave analyzer
 =======================
@@ -222,6 +206,29 @@ GoToMyPc
 pcAnywhere
 Cisco WebEx
 Zoom 
+
+SFTP Clients
+======================
+WS_FTP Server 
+FileZilla 
+WinSCP
+MobaXterm
+
+Steganalys (These tools allow users to hide information or detect steganography)
+=======================
+StegSecret
+StegSpy
+Invisible Secrets (Very Cool)
+MP3Stego
+S-Tools (discovers possible steganography activity in images)
+
+Spyware
+=======================
+Teen Safe: http://www.teensafe.com
+Web Watcher: https://www.webwatcher.com
+ICU: http://www.softpedia.com/get/Security/Security-Related/ICU-Child-Monitoring-Software.shtml
+WorkTime: http://www.nestersoft.com/worktime/corporate/employee_monitoring.shtml
+(pg40 Computer forensic books)
 
 Spam Filters
 =======================

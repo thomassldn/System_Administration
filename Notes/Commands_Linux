@@ -17,6 +17,13 @@ Networking
 User Management 
 ==================================================================================================
 #passwd <user_name>                                   (change the password of a user - RHEL) 
+#id  <user_name>
+#groups <user_name>
+#finger <user_name>
+#getent passwd <user_name>                                             (fetches entries from Name Server Swithc)
+#users                                                (shows the usernames of all users currently logged on the system) 
+#who 
+#w
 
 
 Volume Group/Disk Management

@@ -15,6 +15,18 @@ Networking
 #nmap -sT -O localhost                                (Check what ports are listening on a network node) 
 #sudo netstat -tulpn | grep LISTEN                    (Check what ports are listening on a network node)
 
+Package Manager 
+=================================================================================================
+#rpm -q vsftpd                                         (verify a package is installed, in this case vsftpd)
+#yum -y install 
+#yum help 
+#yum list installed                                    (list installed packages) 
+#yum info vsftpd                                       (list info on a package) 
+#yum search samba                                      (search package names) 
+#yum grouplist
+#yum update
+
+
 User Management 
 ==================================================================================================
 #useradd                                              (add local user)

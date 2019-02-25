@@ -13,6 +13,7 @@ Networking
 ==================================================================================================
 #ifconfig                                             (show network interface configuration)
 #nmap -sT -O localhost                                (Check what ports are listening on a network node) 
+#sudo netstat -tulpn | grep LISTEN                    (Check what ports are listening on a network node)
 
 User Management 
 ==================================================================================================

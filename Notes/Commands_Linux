@@ -17,6 +17,8 @@ Networking
 
 User Management 
 ==================================================================================================
+#useradd                                              (add local user)
+#userdel                                              (delete user) 
 #passwd <user_name>                                   (change the password of a user - RHEL) 
 #id  <user_name>
 #groups <user_name>
@@ -25,6 +27,7 @@ User Management
 #users                                                (shows the usernames of all users currently logged on the system) 
 #who 
 #w
+#lslogins <user_name>                                 (display information about a user)                                         
 
 
 Volume Group/Disk Management

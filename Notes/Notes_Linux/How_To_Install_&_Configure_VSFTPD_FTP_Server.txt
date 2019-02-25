@@ -1,0 +1,12 @@
+These quick notes demonstrate how to install and configure vsftpd 
+
+[1] Install vsftpd 
+#yum -y install vsftpd 
+
+[2] Enable vsftpd service 
+#systemctl start vsftpd 
+
+[3] Verify port 21 is opened
+#netstat -ntl | grep 21 
+
+[4] Create an FTP user and verify access. 

@@ -64,6 +64,8 @@ Volume Group/Disk Management
 #mkdir <mount_point>                                  (create a mount point) 
 #vi /etc/fstab                                        (set mount opts, mntpoint in this file-copy another already created filesystem)
 #mount /dev/sda2 /<mount_point>
+#vi /etc/fstab                                        (filesystems you want to mount at boot) 
+
 #vgdisplay 
 
 After you add disk space (of whatever size), run the following commands to extend VG's and LV's: 

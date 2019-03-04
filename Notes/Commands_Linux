@@ -8,10 +8,10 @@ Certificates
 #openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                   (extract an unecrypted key -not safe)
 #openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
 
-
 Networking
 ==================================================================================================
 #ifconfig                                             (show network interface configuration)
+#ip addr show
 #nmap -sT -O localhost                                (Check what ports are listening on a network node) 
 #netstat -tulpn | grep LISTEN                         (Check what ports are listening on a network node)
 
@@ -26,9 +26,18 @@ Package Manager
 #yum grouplist
 #yum update
 
+OS
+===================================================================================================
+#uname -a                                              (check kernel version) 
+#ps aux | grep process_name                            (check PID of a process) 
+
+Service Management 
+===================================================================================================
+#systemctl status httpd                                (check service status)
+#service httpd status                                  (check service status - old versions) 
 
 User Management 
-==================================================================================================
+====================================================================================================
 #useradd                                              (add local user)
 #userdel                                              (delete user) 
 #passwd <user_name>                                   (change the password of a user - RHEL) 
@@ -44,6 +53,7 @@ User Management
 
 Volume Group/Disk Management
 =================================================================================================
+#df -ah                                               (check disk space) 
 #fdisk -l                                             (list system disks and identify new drives) 
 #vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
 
@@ -53,7 +63,7 @@ Volume Group/Disk Management
 #mkfs -t ext4 /dev/<vg_name>/<vol_name>               (create a filesystem) 
 #mkdir <mount_point>                                  (create a mount point) 
 #vi /etc/fstab                                        (set mount opts, mntpoint in this file-copy another already created filesystem)
-#mount <mount_point>
+#mount /dev/sda2 /<mount_point>
 #vgdisplay 
 
 After you add disk space (of whatever size), run the following commands to extend VG's and LV's: 

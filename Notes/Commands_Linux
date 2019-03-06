@@ -8,6 +8,13 @@ Certificates
 #openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                   (extract an unecrypted key -not safe)
 #openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
 
+DevOPS
+==================================================================================================
+#iostat                                               (CPU Utilization report, the Device Utilization report and the Network Filesystem report.)
+#free -g                                              (
+#vmstat
+
+
 Networking
 ==================================================================================================
 #ifconfig                                             (show network interface configuration)

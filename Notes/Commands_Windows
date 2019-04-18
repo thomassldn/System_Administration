@@ -14,8 +14,8 @@ Networking
 
 PowerShell
 ==================================================================================================
->Get, Set, Start, Stop                                (cmdlets are named in a Verb-Noun patter; these are standard verbs)
-
+> Get, Set, Start, Stop                                           (cmdlets are named in a Verb-Noun patter; these are standard verbs)
+> (Invoke-WebRequest -uri "http://ipecho.net/plain").Content      (Get public IP)
 
 
 

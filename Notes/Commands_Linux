@@ -12,12 +12,13 @@ Certificates
 DevOPS
 ==================================================================================================
 #iostat                                               (CPU Utilization report, the Device Utilization report and the Network Filesystem report.)
-#free -g                                              (
+#free -g                                              (display memory, in GB) 
 #vmstat
 
 File Management
 ==================================================================================================
-#find /export/home/ati -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;             (list/rm files older than x-days)
+#find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;                     (list/rm files older than x-days)
+#find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec mv {} /path/to/new/folder/ \;     (move files to new folder)
 
 Networking
 ==================================================================================================

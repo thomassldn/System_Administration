@@ -62,6 +62,20 @@ User Management
 #w
 #lslogins <user_name>                                 (display information about a user)                                         
 
+View System Specs
+================================================================================================
+#cat /proc/cpuinfo                                    (CPU)
+#free                                                 (Memory)
+#cat /proc/meminfo                                    (Memory)
+#df -h                                                (HDD) 
+#fdisk -l                                             (HDD)
+#uname --m                                            (Hardware Architecture, i386, x86_64) 
+#lshw                                                 (Hardware Configuration)
+
+
+
+
+
 
 Volume Group/Disk Management
 =================================================================================================

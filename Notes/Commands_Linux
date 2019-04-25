@@ -62,8 +62,10 @@ User Management
 #w
 #lslogins <user_name>                                 (display information about a user)                                         
 
+
 View System Specs
 ================================================================================================
+#lscpu                                                (CPU)
 #cat /proc/cpuinfo                                    (CPU)
 #free                                                 (Memory)
 #cat /proc/meminfo                                    (Memory)

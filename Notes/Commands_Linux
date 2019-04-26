@@ -99,3 +99,13 @@ After you add disk space (of whatever size), run the following commands to exten
 # lvextend –L 408G vlm_vg/bklv –r          (extend the logical volume to the maxium size, 408G in this case, anything higher you’ll get an error. Again, specify the VG/LV and make to use the “-r” switch to automatically resize the underlying file system (saves extra work too)
 # df –h                                    (to verify the new disk space has been added)
 When you run the “LSBLK” command it will list every single disk with a “tree” structure on the left hand side. It will also show you what volume group belongs to which disk… The logical volume that is associated to that volume group will also be displayed.
+
+
+
+Sometimes nfs mounts go stale due to network problems, use the following commands to unmount/mount
+
+# mount -t nfs -o remount /mnt/nfs
+# umount /mnt/nfs
+# umount -f /mnt/nfs
+# umount -l /mnt/nfs
+# umount -lf /mnt/nfs

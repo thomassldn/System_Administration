@@ -99,7 +99,7 @@ Or
 After you add disk space (of whatever size), run the following commands to extend VG's and LV's: 
 # lsblk                                    (run an LSBLK command to identify the new disk ID (usually at very bottom of listing))
 # vgextend vlm_vg /dev/sdab                (extend the volume group “qcprbackupvg” and specify the new disk ID “/dev/sdab”)
-# lvextend –L 408G vlm_vg/bklv –r          (extend the logical volume to the maxium size, 408G in this case, anything higher you’ll get an error. Again, specify the VG/LV and make to use the “-r” switch to automatically resize the underlying file system (saves extra work too)
+# lvextend –L +2G vlm_vg/bklv –r          (extend the logical volume to the maxium size, 408G in this case, anything higher you’ll get an error. Again, specify the VG/LV and make to use the “-r” switch to automatically resize the underlying file system (saves extra work too)
 #lvreduce -L -512M -r /dev/sdab
 # df –h                                    (to verify the new disk space has been added)
 When you run the “LSBLK” command it will list every single disk with a “tree” structure on the left hand side. It will also show you what volume group belongs to which disk… The logical volume that is associated to that volume group will also be displayed.

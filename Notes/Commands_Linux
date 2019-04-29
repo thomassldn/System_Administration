@@ -43,6 +43,10 @@ OS
 #uname -a                                              (check kernel version) 
 #ps aux | grep process_name                            (check PID of a process) 
 
+Scripts 
+===================================================================================================
+nohup bash recompileRoutines.bash &
+
 Service Management 
 ===================================================================================================
 #systemctl status httpd                                (check service status)

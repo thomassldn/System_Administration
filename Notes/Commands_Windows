@@ -1,3 +1,8 @@
+General Commands 
+=================================================================================================
+>Restart-Computer                                   (restart computer) 
+
+
 Hyper V 
 =================================================================================================
 >bcdedit /set hypervisorlaunchtype auto              (use this command after restores where vms wont start) 

@@ -37,6 +37,8 @@ Files and Directories
 #find ./ -type f -mtime -3 -exec mv {} <dest_directory> \;                   (move files created in the last 3 days to destination directory)
 #find ./ -type f -mtime -3 -ls                  
 #ls -trl | grep "Nov 18"                                                     (list files created on Nov 18)
+#lslpp -l | grep samba                                                       (verify if samba is installed)
+#lslpp -f samba.base | grep .conf                                            (find conf file) 
 
 Journaling 
 ==================================================================================================

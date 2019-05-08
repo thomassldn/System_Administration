@@ -1,6 +1,6 @@
 General 
 =========================================
-eeprom | grep -i chass
+eeprom | grep -i chass                                                  (get server serial # for Oracle suppor)
 
 Filesystem Management 
 =======================================

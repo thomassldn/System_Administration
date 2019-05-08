@@ -1,4 +1,6 @@
-
+General 
+=========================================
+eeprom | grep -i chass
 
 Filesystem Management 
 =======================================

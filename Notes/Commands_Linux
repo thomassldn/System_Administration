@@ -32,6 +32,13 @@ Firewalld
 #firewall-cmd --add-service=ssh --timeout 15m                                             (open ssh for 15 min)
 #/usr/lib/firewalld/zones/                                                                (this is where predefined zones are store)
 #/etc/firewalld/zones                                                                     (the above files are copied here after they are modified)
+#/usr/lib/firewalld/services/ (/etc/firewalld/services/)                                  (example services)
+#
+
+
+
+
+
 
 Networking
 ==================================================================================================

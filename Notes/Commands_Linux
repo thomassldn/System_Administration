@@ -26,6 +26,7 @@ Firewalld
 #firewall-cmd --zone=public --add-port=80/tcp --permanent                                 (open port using firewalld)
 #firewall-cmd --reload                                                                    (reload firewall configuration)
 #iptables-save | grep 80                                                                  (check if port was added to iptables rules)
+#firewall-cmd --list-all                                                                  (view settings in default zone)
 #firewall-cmd --list-services                                                             (view current firewalld settings)
 #firewall-cmd --add-service=ssh --timeout 15m                                             (open ssh for 15 min)
 #/usr/lib/firewalld/zones/                                                                (this is where predefined zones are store)

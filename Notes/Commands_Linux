@@ -27,6 +27,9 @@ Firewalld
 #firewall-cmd --reload                                                                    (reload firewall configuration)
 #iptables-save | grep 80                                                                  (check if port was added to iptables rules)
 #firewall-cmd --list-services                                                             (view current firewalld settings)
+#firewall-cmd --add-service=ssh --timeout 15m                                             (open ssh for 15 min)
+#/usr/lib/firewalld/zones/                                                                (this is where predefined zones are store)
+#/etc/firewalld/zones                                                                     (the above files are copied here after they are modified)
 
 Networking
 ==================================================================================================

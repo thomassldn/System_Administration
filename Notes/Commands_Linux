@@ -20,7 +20,7 @@ File Management
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;                     (list/rm files older than x-days)
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec mv {} /path/to/new/folder/ \;     (move files to new folder)
 
-Firewalls
+Firewalld
 ==================================================================================================
 #firewall-cmd --stat                                                                      (check if firewalld is running) 
 #firewall-cmd --zone=public --add-port=80/tcp --permanent                                 (open port using firewalld)

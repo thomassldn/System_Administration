@@ -22,6 +22,8 @@ File Management
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;                     (list/rm files older than x-days)
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec mv {} /path/to/new/folder/ \;     (move files to new folder)
 
+
+
 Firewalld
 ==================================================================================================
 #firewall-cmd --help                                                                      (a TON of info)
@@ -36,6 +38,48 @@ Firewalld
 #/etc/firewalld/zones                                                                     (the above files are copied here after they are modified)
 #/usr/lib/firewalld/services/ (/etc/firewalld/services/)                                  (example services)
 #
+
+Filesystem Management
+=================================================================================================
+#vgdisplay                                            (display vgs) 
+#df -ah                                               (check disk space) 
+#df -Th                                               (check fileystem type)
+#fdisk -l                                             (list system disks and identify new drives) 
+#vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
+#mount                                                (list format and mount options for each filesystem) 
+#findmnt                                              (way better than mount command !!!!!) 
+
+#pvcreate /dev/sda3                                   (prepare for use w/LVM
+#vgcreate <vg_name> /dev/sda3                         (create a VG on the new PV)
+#lvcreate -l 100%FREE -n <lv_name> <vg_name>          (create a logical volume) 
+Or
+#lvcreate -L 512M -n <lv_name> <vg_name>
+#mkfs -t ext4 /dev/sda3/<vg_name>-<vol_name>          (create a filesystem) 
+#mkdir <mount_point>                                  (create a mount point) 
+#vi /etc/fstab                                        (set mount opts, mntpoint in this file-copy another already created filesystem)
+#mount /dev/sda2 /<mount_point>
+#vi /etc/fstab                                        (filesystems you want to mount at boot) 
+
+#vgdisplay 
+
+After you add disk space (of whatever size), run the following commands to extend VG's and LV's: 
+# lsblk                                    (run an LSBLK command to identify the new disk ID (usually at very bottom of listing))
+# vgextend vlm_vg /dev/sdab                (extend the volume group “qcprbackupvg” and specify the new disk ID “/dev/sdab”)
+# lvextend –L +2G vlm_vg/bklv –r          (extend the logical volume to the maxium size, 408G in this case, anything higher you’ll get an error. Again, specify the VG/LV and make to use the “-r” switch to automatically resize the underlying file system (saves extra work too)
+#lvreduce -L -512M -r /dev/sdab
+# df –h                                    (to verify the new disk space has been added)
+When you run the “LSBLK” command it will list every single disk with a “tree” structure on the left hand side. It will also show you what volume group belongs to which disk… The logical volume that is associated to that volume group will also be displayed.
+
+
+
+Sometimes nfs mounts go stale due to network problems, use the following commands to unmount/mount
+
+# mount -t nfs -o remount /mnt/nfs
+# umount /mnt/nfs
+# umount -f /mnt/nfs
+# umount -l /mnt/nfs
+# umount -lf /mnt/nfs
+
 
 Networking
 ==================================================================================================
@@ -96,43 +140,4 @@ View System Specs
 #lshw                                                 (Hardware Configuration)
 
 
-Filesystem Management
-=================================================================================================
-#vgdisplay                                            (display vgs) 
-#df -ah                                               (check disk space) 
-#df -Th                                               (check fileystem type)
-#fdisk -l                                             (list system disks and identify new drives) 
-#vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
-#mount                                                (list format and mount options for each filesystem) 
-#findmnt                                              (way better than mount command !!!!!) 
 
-#pvcreate /dev/sda3                                   (prepare for use w/LVM
-#vgcreate <vg_name> /dev/sda3                         (create a VG on the new PV)
-#lvcreate -l 100%FREE -n <lv_name> <vg_name>          (create a logical volume) 
-Or
-#lvcreate -L 512M -n <lv_name> <vg_name>
-#mkfs -t ext4 /dev/sda3/<vg_name>-<vol_name>          (create a filesystem) 
-#mkdir <mount_point>                                  (create a mount point) 
-#vi /etc/fstab                                        (set mount opts, mntpoint in this file-copy another already created filesystem)
-#mount /dev/sda2 /<mount_point>
-#vi /etc/fstab                                        (filesystems you want to mount at boot) 
-
-#vgdisplay 
-
-After you add disk space (of whatever size), run the following commands to extend VG's and LV's: 
-# lsblk                                    (run an LSBLK command to identify the new disk ID (usually at very bottom of listing))
-# vgextend vlm_vg /dev/sdab                (extend the volume group “qcprbackupvg” and specify the new disk ID “/dev/sdab”)
-# lvextend –L +2G vlm_vg/bklv –r          (extend the logical volume to the maxium size, 408G in this case, anything higher you’ll get an error. Again, specify the VG/LV and make to use the “-r” switch to automatically resize the underlying file system (saves extra work too)
-#lvreduce -L -512M -r /dev/sdab
-# df –h                                    (to verify the new disk space has been added)
-When you run the “LSBLK” command it will list every single disk with a “tree” structure on the left hand side. It will also show you what volume group belongs to which disk… The logical volume that is associated to that volume group will also be displayed.
-
-
-
-Sometimes nfs mounts go stale due to network problems, use the following commands to unmount/mount
-
-# mount -t nfs -o remount /mnt/nfs
-# umount /mnt/nfs
-# umount -f /mnt/nfs
-# umount -l /mnt/nfs
-# umount -lf /mnt/nfs

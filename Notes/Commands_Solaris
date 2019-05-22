@@ -5,6 +5,10 @@ eeprom | grep -i chass                                                  (get ser
 Filesystem Management 
 =======================================
 # mount 10.0.2.10:/export/nfsshare /mnt                                 (mount a share via NFS) 
+#zfs list qmdpool                                                       (show pool)
+
+
+
 
 Services
 =======================================

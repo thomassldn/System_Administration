@@ -37,11 +37,6 @@ Firewalld
 #/usr/lib/firewalld/services/ (/etc/firewalld/services/)                                  (example services)
 #
 
-
-
-
-
-
 Networking
 ==================================================================================================
 #ifconfig                                             (show network interface configuration)
@@ -108,6 +103,7 @@ Filesystem Management
 #df -Th                                               (check fileystem type)
 #fdisk -l                                             (list system disks and identify new drives) 
 #vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
+#mount                                                (list format and mount options for each filesystem) 
 
 #pvcreate /dev/sda3                                   (prepare for use w/LVM
 #vgcreate <vg_name> /dev/sda3                         (create a VG on the new PV)

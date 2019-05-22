@@ -44,6 +44,7 @@ Filesystem Management
 #vgdisplay                                            (display vgs) 
 #df -ah                                               (check disk space) 
 #df -Th                                               (check fileystem type)
+#fdisk, gdisk, parted                                 (MBR, GPT, GPT)
 #fdisk -l                                             (list system disks and identify new drives) 
 #vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
 #mount                                                (list format and mount options for each filesystem) 

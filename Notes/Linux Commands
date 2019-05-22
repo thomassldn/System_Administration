@@ -101,7 +101,7 @@ View System Specs
 #lshw                                                 (Hardware Configuration)
 
 
-Volume Group/Disk Management
+Filesystem Management
 =================================================================================================
 #vgdisplay                                            (display vgs) 
 #df -ah                                               (check disk space) 

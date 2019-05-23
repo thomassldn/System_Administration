@@ -16,6 +16,7 @@ QCPR Commands
 }apsview            (Printing Queue)
 }con/ex             (View QCPR version/IPL Level/CurrentJournalSegment)
 }%zbg               (Background job processor, may impact printing if not running, start it in the domain utility)
+}%zbgm              (Monitor Job Table).  
 } %zlioc            (view logons enable)
 } %zld              (Auto Rollover Load) 
 } %zdbl             (Background Log Display) 

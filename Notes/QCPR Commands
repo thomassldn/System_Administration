@@ -1,6 +1,7 @@
 
 QCPR Commands
 ============
+}tab afcoid         (OID table) 
 }dserv              (Show open ports/listening services)
 }gui/off            (Remove gui buttons)
 }cli <Unix command> (command line interpreter)

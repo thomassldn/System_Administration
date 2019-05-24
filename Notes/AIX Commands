@@ -7,6 +7,9 @@ AIX Systems Administration - General Commands
 #find / -name file.txt                                          (find a file)
 #lsconf | head                                                  (list machine type model and serial number of server AIX is running on)
 #dsh -n172.24.176.21,172.23.178.25,172.23.172.28,172.23.164.27 "echo 'ats:<password>'|chpasswd -c" (change password on multiple servers at once)
+##PS1="\@ :\w \$ "                                              (08:44 PM :~/Desktop/iOS Projects $)
+
+
 Certificates
 =================================================================================================
 #openssl x509 -in <cert_name>.pem -text -noout                  (view certificate in txt format) 

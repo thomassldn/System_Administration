@@ -1,7 +1,7 @@
 General Solaris Commands
 ===================================================================================================================
 #while true;do echo `date`;for i in `find . -mtime -1 -type f -size +1000000M -exec ls -l {} \; | awk '{print $9}'`;do ls -lh $i;done;echo -n `df -h | grep sfile | awk '{print $4}'`;echo " of 17G";echo `date`;echo "----------------------------------------------";sleep 300;done > /qmd/monitorSfiles.out &
-
+#PS1="\@ :\w \$ "                                                      (08:44 PM :~/Desktop/iOS Projects $)
 
 Filesystem Management 
 ===================================================================================================================

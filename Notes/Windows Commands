@@ -12,7 +12,7 @@ IIS
 C:\Windows\System32\inetsrv>appcmd /?                  (view appcmd options)
 C:\Windows\System32\inetsrv>appcmd list request        (view requests to the web server) 
 C:\Windows\System32\inetsrv>appcmd list request | clip (pipe output to the clip command) 
->iisreset /noforce
+>iisreset /noforce                                     (restart IIS)
 
 Networking
 ==================================================================================================

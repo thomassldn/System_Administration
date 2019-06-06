@@ -8,6 +8,8 @@ Filesystem Management
 # mount 10.0.2.10:/export/nfsshare /mnt                                 (mount a share via NFS) 
 #zfs list qmdpool                                                       (show pool)
 #zfs set quota=17G <filesystem> 
+# df -h | grep "dbase/cpr$" | awk '{print $4, $5, $6}'                  (Shows: Available Capacity  Mounted on)
+
 
 
 Hardware

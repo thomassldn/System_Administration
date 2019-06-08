@@ -93,6 +93,7 @@ Networking
 #ip addr show
 #nmap -sT -O localhost                                (Check what ports are listening on a network node) 
 #netstat -tulpn | grep LISTEN                         (Check what ports are listening on a network node)
+#netstat -ie                                          (view interfaces, Up)
 #mtr                                                  (Route packages)
 #traceroute                                           (Route packages)
 #dig

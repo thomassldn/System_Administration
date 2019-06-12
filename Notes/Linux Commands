@@ -48,9 +48,11 @@ Filesystem Management
 =================================================================================================
 #vgdisplay                                            (display vgs) 
 #df -ah                                               (check disk space) 
+#lvs -o +devices <device>                             (displays, LV,VG,Attr, LSize,..,.., Devices)
 #df -Th                                               (check fileystem type)
 #fdisk, gdisk, parted                                 (MBR, GPT, GPT)
 #fdisk -l                                             (list system disks and identify new drives) 
+#lsblk                                                (display block devices)
 #vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
 #mount                                                (list format and mount options for each filesystem) 
 #findmnt                                              (way better than mount command !!!!!) 

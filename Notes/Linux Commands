@@ -26,7 +26,8 @@ File Management
 ==================================================================================================
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;                     (list/rm files older than x-days)
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec mv {} /path/to/new/folder/ \;     (move files to new folder)
-
+#locate                                     (find files by name)
+#stat                 (display file or filesystem status)
 
 
 Firewalld

@@ -1,0 +1,21 @@
+
+1)Identify the new disk with the lsblk command (in this case sdr) 
+#lsblk
+NAME                  MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+....
+....
+....
+├─tpdatavg-dkvwlv     253:3    0    2G  0 lvm  /qmd/cpr/ucd/SHCPRD1/dbase/dkvwk
+└─tpdatavg-cmvlv      253:4    0    3G  0 lvm  /qmd/cpr/ucd/SHCPRD1/dbase/cmv
+sdq                    65:0    0  350G  0 disk
+└─qcprbackupvg-bklv   253:34   0  340G  0 lvm  /qcpr_backup
+sdr                    65:16   0  660G  0 disk
+sr0                    11:0    1 1024M  0 rom
+
+
+
+2) Create a new PV on the newly added disk, using the pvcreate command. 
+# # pvcreate /dev/sdr
+  Physical volume "/dev/sdr" successfully created.
+3) Extend the VG that the filesystem belongs to to use the newly created PV. 
+#

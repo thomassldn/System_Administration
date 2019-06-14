@@ -15,7 +15,25 @@ sr0                    11:0    1 1024M  0 rom
 
 
 2) Create a new PV on the newly added disk, using the pvcreate command. 
-# # pvcreate /dev/sdr
+# pvcreate /dev/sdr
   Physical volume "/dev/sdr" successfully created.
-3) Extend the VG that the filesystem belongs to to use the newly created PV. 
-#
+  
+  
+3) Extend the VG that the filesystem belongs, using the vgextend command, to use the newly created PV we created above. 
+# vgextend qcprbackupvg /dev/sdr
+  Volume group "qcprbackupvg" successfully extended
+
+
+4) Finally, extend the filesystem using the lvextend command.
+(verify the name of the filesystem)
+# df -h /qcpr_backup/
+Filesystem                     Size  Used Avail Use% Mounted on
+/dev/mapper/qcprbackupvg-bklv  340G  131G  210G  39% /qcpr_backup
+
+(Expand the filesystem)  
+
+
+
+
+
+

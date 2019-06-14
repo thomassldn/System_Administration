@@ -31,6 +31,24 @@ Filesystem                     Size  Used Avail Use% Mounted on
 /dev/mapper/qcprbackupvg-bklv  340G  131G  210G  39% /qcpr_backup
 
 (Expand the filesystem)  
+# lvextend -L +660G /dev/mapper/qcprbackupvg-bklv -r
+  Size of logical volume qcprbackupvg/bklv changed from 340.00 GiB (87040 extents) to 1000.00 GiB (256000 extents).
+  Logical volume qcprbackupvg/bklv successfully resized.
+meta-data=/dev/mapper/qcprbackupvg-bklv isize=512    agcount=4, agsize=22282240 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0 spinodes=0
+data     =                       bsize=4096   blocks=89128960, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal               bsize=4096   blocks=43520, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 89128960 to 262144000
+
+5) Verify the filesystem was expanded
+#df -h /qcpr_backup
+Filesystem                     Size  Used Avail Use% Mounted on
+/dev/mapper/qcprbackupvg-bklv 1000G  131G  870G  14% /qcpr_backup
 
 
 

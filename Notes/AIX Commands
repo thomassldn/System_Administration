@@ -43,6 +43,27 @@ Files and Directories
 #lslpp -l | grep samba                                                       (verify if samba is installed)
 #lslpp -f samba.base | grep .conf                                            (find conf file) 
 
+File System Management 
+=================================================================================================
+#mklv -y logical_volume_lv -t jfs2 volume_group 1                                            (create a logical volume) 
+#crfs -v jfs2 -d  logical_volume_lv -m /file/system_name -a options=rw -A yes                (create filesystem)
+#mount /file/system_name; chmod 755 /file/system_name; chown user:group /file/system_name    (mount and chmod filesystem) 
+#lsvg | lsvg -li                                                      (display what the filesystems in each volume group)
+#backup                                                               (backsup a filesytem - full or incrementally)  
+#chfs -a size=2G                                                      (modify the size of a filesystem) 
+#df -g                                                                (display filesystem space in GB)
+#snapshot                                                             (use to create a snap shot of JFS2 file system)
+#fsck                                                                 (repair and check filesystems) 
+#mkfs                                                                 (creates a filesytem of a specific size on a LV) 
+#mount                                                                (mount a filesystem) 
+#restore                                                              (used to restore files from a backup) 
+#unmount                                                              (unmount a filesystem) 
+#lsvg                                                                 (display volume groups)
+#lsvg -l <volume_group>                                               (view volume group)
+#lsvg -p <volume_grou>                                                (view disks in a volume group)
+#powermt display dev=all | more
+
+
 Journaling 
 ==================================================================================================
 #for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done                 (list all journals between this date)
@@ -72,18 +93,4 @@ Veritas Cluster Manager
 View System Specs
 ================================================================================================
 
-Volume Group/File System Management 
-=================================================================================================
-#mklv -y logical_volume_lv -t jfs2 volume_group 1                                            (create a logical volume) 
-#crfs -v jfs2 -d  logical_volume_lv -m /file/system_name -a options=rw -A yes                (create filesystem)
-#mount /file/system_name; chmod 755 /file/system_name; chown user:group /file/system_name    (mount and chmod filesystem) 
-#lsvg | lsvg -li                                                      (display what the filesystems in each volume group)
-#backup                                                               (backsup a filesytem - full or incrementally)  
-#chfs -a size=2G                                                      (modify the size of a filesystem) 
-#df -g                                                                (display filesystem space in GB)
-#snapshot                                                             (use to create a snap shot of JFS2 file system)
-#fsck                                                                 (repair and check filesystems) 
-#mkfs                                                                 (creates a filesytem of a specific size on a LV) 
-#mount                                                                (mount a filesystem) 
-#restore                                                              (used to restore files from a backup) 
-#unmount                                                              (unmount a filesystem) 
+

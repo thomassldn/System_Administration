@@ -1,0 +1,21 @@
+These quick notes demonstrate how to create an FTP user with out SSH access
+
+#mkdir /home/ftp 
+#useradd -d /home/ftp/ftpuser/ -s /dev/null ftpuser > /dev/null 2>&1 
+#passwd ftpuser 
+
+Create a non-existent shell to limit the ftp user access to the system 
+#vi /etc/shells 
+/bin/bash
+/bin/sh
+/bin/ash
+/bin/bsh
+/bin/tcsh
+/bin/csh
+/dev/null       <--------
+
+Edit the /etc/passwd file and add modify the following line from this: 
+ftpuser:x:502:502::/home/ftp/ftuser/:/dev/null
+
+To this: 
+ftpuser:x:502:502::/home/ftp/./ftpuser/:/dev/null

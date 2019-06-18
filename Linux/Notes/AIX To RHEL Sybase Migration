@@ -1,0 +1,204 @@
+Connect to CHSMM via VNC to session :1
+Shoot. Pick does not allow me to grab screen shot 
+Stop mmanager
+systemctl stop mmanager
+Stop Backup
+1> shutdown SYB_BACKUP
+2> go
+Backup Server: 3.48.1.1: The Backup Server will go down immediately.
+Terminating sessions.
+1>
+Stop Sybase
+1> shutdown
+2> go
+Server SHUTDOWN by request.
+ASE is terminating this process.
+CT-LIBRARY error:
+ct_results(): network packet layer: internal net library error: Net-Library operation terminated due to disconnect
+systemctl stop sybase
+Verify it is down
+isql64 -U sa -P allpriv -S E0SVAPCAEMM
+CT-LIBRARY error:
+ct_connect(): network packet layer: internal net library error: Net-Lib protocol driver call to connect two endpoints failed
+Start Sybase
+systemctl start Sybase
+Verify it is running
+isql64 -U sa -P allpriv -S E0SVAPCAEMM
+1>
+Find latest backup
+pwd
+/mnt/qcpr_migration/CHSMM
+[Sat Apr 20 07:17:29 root@E0SVAPCAEMM01:/mnt/qcpr_migration/CHSMM ]# ls -lt | head
+
+total 420113920
+rw-r---- 1 sybase sybase 88949024768 Mar 11 10:04 After_March11_load.us
+drwxr-xr-x 9 sybase sybase 4096 Mar 9 09:36 datasync
+rw-r---- 1 sybase sybase 86679529472 Jan 11 22:32 After_Jan_11_load.us
+Restore latest
+1> load database us from '/mnt/qcpr_migration/CHSMM/After_March11_load.us'
+2> go
+Backup Server session id is: 6. Use this value when executing the
+'sp_volchanged' system stored procedure after fulfilling any volume change
+request from the Backup Server. request from the Backup Server.
+Backup Server: 6.28.1.1: Dumpfile name 'us190700852E ' section number 1
+mounted on disk file '/mnt/qcpr_migration/CHSMM/After_March11_load.us'
+Backup Server: 4.188.1.1: Database us: 946354 kilobytes (1%) LOADED.
+Backup Server: 4.188.1.1: Database us: 1892706 kilobytes (2%) LOADED.
+Wait until finished
+Backup Server: 4.188.1.1: Database us: 92315726 kilobytes (98%) LOADED.
+Backup Server: 4.188.1.1: Database us: 93262078 kilobytes (99%) LOADED.
+Backup Server: 4.188.1.1: Database us: 94197676 kilobytes (100%) LOADED.
+Backup Server: 4.188.1.1: Database us: 94210682 kilobytes (100%) LOADED.
+Backup Server: 3.42.1.1: LOAD is complete (database us).
+Started estimating recovery log boundaries for database 'us'.
+Database 'us', checkpoint=(44547174, 14), first=(44547174, 14), last=(44547175,
+9).
+Completed estimating recovery log boundaries for database 'us'.
+Started ANALYSIS pass for database 'us'.
+Completed ANALYSIS pass for database 'us'.
+Started REDO pass for database 'us'. The total number of log records to process
+is 15.
+Redo pass of recovery has processed 2 committed and 0 aborted transactions.
+Completed REDO pass for database 'us'.
+Use the ONLINE DATABASE command to bring this database online; ASE will not
+bring it online automatically.
+1>
+Bring us database online
+1> online database us
+2> go
+Started estimating recovery log boundaries for database 'us'.
+Database 'us', checkpoint=(44547174, 14), first=(44547174, 14), last=(44547175,
+9).
+Completed estimating recovery log boundaries for database 'us'.
+Started ANALYSIS pass for database 'us'.
+Completed ANALYSIS pass for database 'us'.
+Recovery of database 'us' will undo incomplete nested top actions.
+Checking external objects.
+Database 'us' is now online.
+1> quit
+cd /mnt/qcpr_migration/CHSMM/datasync
+Make sure last dumpData has been saved off
+ls -l
+total 936
+drwxr-x--- 3 root root 4096 Mar 9 09:38 dumpData
+drwxrwxrwx 3 root root 4096 Nov 8 19:04 dump_data_pass_1
+drwxrwxrwx 3 root root 4096 Nov 10 14:10 dump_data_pass_2
+drwxrwxrwx 3 root root 4096 Nov 12 09:54 dump_data_pass_3
+drwxrwxrwx 3 root root 4096 Dec 2 04:07 dump_data_pass_4
+drwxrwxrwx 3 root root 4096 Jan 10 09:31 dump_data_pass_5
+drwxrwxrwx 3 root root 4096 Jan 11 20:03 dump_data_pass_6
+rw-rr- 1 sybase sybase 907833 Nov 4 20:03 jconn2.jar
+rw-rr- 1 sybase sybase 1900 Nov 4 20:22 README.md
+rw-rr- 1 sybase sybase 76 Nov 4 20:03 retrieve.sh
+rw-rr- 1 sybase sybase 6397 Nov 4 20:03 syncer.jar
+mv dumpData dump_data_pass_7
+Find last set of images to start new dump
+tail -5 dump_data_pass_7/image_status
+insert into image_status ( image_id, status_time) values ( 'CS2-4511994800', '2019-03-09 09:26:43.716')
+insert into image_status ( image_id, status_time) values ( 'CS2-4511994801', '2019-03-09 09:29:45.28')
+insert into image_status ( image_id, status_time) values ( 'CS2-4511994805', '2019-03-09 09:29:45.306')
+insert into image_status ( image_id, status_time) values ( 'CS2-4511994806', '2019-03-09 09:31:54.806')
+insert into image_status ( image_id, status_time) values ( 'CS2-4511994810', '2019-03-09 09:35:41.29')
+Run new extract
+bash retrieve.sh "CS2-4511994800" 10.40.64.89
+Starting Synchronizer
+startID: CS2-4511994800
+Connecting to jdbc:sybase:Tds:10.40.64.89:5000/us with sa:allpriv
+Adaptive Server Enterprise/12.5.2/EBF 11793/P/RS6000/AIX 5.1/ase1252/1831/64-bit/FBO/Fri Apr 9 06:55:58 2004
+Processing case_status, 396715 rows written.
+Processing case_studies, 396710 rows written.
+Processing cases, 396715 rows written.
+Processing dcm_patient_maps, 0 rows written.
+Processing hl7_case_maps, 0 rows written.
+Processing hl7_patient_maps, 0 rows written.
+Processing hl7_report_maps, 0 rows written.
+Processing hl7_study_maps, 0 rows written.
+Processing image_status, 1113300 rows written.
+Processing images, 1113300 rows written.
+Processing patient_status, 396716 rows written.
+Processing patients, 396716 rows written.
+Processing report_status, 0 rows written.
+Processing reports, 0 rows written.
+Processing series, 396711 rows written.
+Processing studies, 396711 rows written.
+Processing study_status, 396711 rows written.
+Start processing latest dump (I am showing the results. Its possible that during the load, the Sybase transaction log will fill up. If the processing hangs, and this could take a day if you have lots of image data, you will have to clear the transaction log.)
+cd dumpData
+AHA!! We got a log full example:
+[Sun Apr 21 10:10:54 root@E0SVAPCAEMM01:/mnt/qcpr_migration/CHSMM/datasync/dumpData/logs ]# tail case_studies
+
+(1 row affected)
+(1 row affected)
+(1 row affected)
+(1 row affected)
+Space available in segment 'logsegment' has fallen critically low in database
+'us'. All future modifications to this database will be suspended until the
+transaction log is successfully dumped and space becomes available.
+(1 row affected)
+The transaction log in database us is almost full. Your transaction is being
+suspended until space is made available in the log.
+[Sun Apr 21 10:11:05 root@E0SVAPCAEMM01:/mnt/qcpr_migration/CHSMM/datasync/dumpData/logs ]#
+
+Now we clear the log
+isql64 -U sa -P allpriv -S E0SVAPCAEMM
+1> dump transaction us with no_log
+2> go
+1>
+Here we are finished.
+bash restore.sh
+Processing patients
+396716 records processed
+Processing patient_status
+396716 records processed
+Processing hl7_patient_maps
+Processing dcm_patient_maps
+Processing reports
+Processing report_status
+Processing hl7_report_maps
+Processing cases
+396715 records processed
+Processing case_status
+396715 records processed
+Processing hl7_case_maps
+Processing studies
+396711 records processed
+Processing study_status
+396711 records processed
+Processing hl7_study_maps
+Processing case_studies
+396710 records processed
+Processing series
+396711 records processed
+Processing images
+1113300 records processed
+Processing image_status
+1113300 records processed
+Now we run a Full database dump.
+isql64 -U sa -P allpriv -S E0SVAPCAEMM
+1> dump database us to "/mnt/qcpr_migration/CHSMM/After_April20_load.us"
+2> go
+Backup Server: 4.172.1.4: The value of 'allocated pages threshold' has been set
+to 40%.
+Backup Server session id is: 10. Use this value when executing the
+'sp_volchanged' system stored procedure after fulfilling any volume change
+request from the Backup Server.
+Backup Server: 4.41.1.1: Creating new disk file
+/mnt/qcpr_migration/CHSMM/After_April20_load.us.
+Backup Server: 6.28.1.1: Dumpfile name 'us1911207C18 ' section number 1
+mounted on disk file '/mnt/qcpr_migration/CHSMM/After_April20_load.us'
+Backup Server: 4.188.1.1: Database us: 774290 kilobytes (1%) DUMPED.
+Continue until finished.
+Backup Server: 4.188.1.1: Database us: 82279980 kilobytes (95%) DUMPED.
+Backup Server: 4.188.1.1: Database us: 83043514 kilobytes (96%) DUMPED.
+Backup Server: 4.188.1.1: Database us: 83817802 kilobytes (97%) DUMPED.
+Backup Server: 4.188.1.1: Database us: 84581336 kilobytes (97%) DUMPED.
+Backup Server: 4.188.1.1: Database us: 85355624 kilobytes (98%) DUMPED.
+Backup Server: 4.188.1.1: Database us: 86119158 kilobytes (99%) DUMPED.
+Backup Server: 4.188.1.1: Database us: 86893446 kilobytes (100%) DUMPED.
+Backup Server: 3.43.1.1: Dump phase number 1 completed.
+Backup Server: 3.43.1.1: Dump phase number 2 completed.
+Backup Server: 3.43.1.1: Dump phase number 3 completed.
+Backup Server: 4.188.1.1: Database us: 87555406 kilobytes (100%) DUMPED.
+Backup Server: 3.42.1.1: DUMP is complete (database us).
+1>
+This is where we hand it over to JP. I leave Mmanager service down. He can test what he needs.

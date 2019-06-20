@@ -102,6 +102,14 @@ Networking
 #traceroute                                           (Route packages)
 #dig
 
+NTP 
+===================================================================================================
+#yum search chrony
+#firewall-cmd --permanent --add-service=ntp
+#chrony tracking                                       (check if chrony is synchronized)
+#timedatectl status                                   
+#timedatectl set-timezone Eurpoe/Rome                  (set system time zone)
+
 Package Manager 
 =================================================================================================
 #rpm -q vsftpd                                         (verify a package is installed, in this case vsftpd)

@@ -32,5 +32,7 @@ PowerShell
 >(Get-WmiObject Win32_ComputerSystem).name                                                  (get computer name)
 >Get-VM | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName,IPAddresses  (display all hyper-v VM's IP addresses)
 
-
+Roles and Features (PowerShell)
+==================================================================================================
+>start inetmgr                                         (start IIS manager console) 
 

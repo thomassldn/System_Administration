@@ -1,7 +1,7 @@
 General Commands 
 =================================================================================================
 >Restart-Computer                                   (restart computer) 
-
+>dism.exe /online /enable-feature /featurename:NetFX4 /All /Source:c:\temp\sxs /LimitAccess (enable .NET Framework)
 
 Hyper V 
 =================================================================================================
@@ -34,5 +34,13 @@ PowerShell
 
 Roles and Features (PowerShell)
 ==================================================================================================
+>Get-WindowsFeature                                    (Show windows features available and currently installed)
+>Get-help Install-WindowsFeature                       (display syntax of Install-WindowsFeature)
 >start inetmgr                                         (start IIS manager console) 
+
+
+
+
+
+
 

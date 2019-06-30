@@ -1,0 +1,33 @@
+Thomas Saldnaa
+Date 29 June 2019
+
+
+Desc: How to Install Apache 
+
+
+1)Install Apache
+#yum -y install httpd mod_ssl
+
+2)Start Apache service 
+#systemctl start httpd
+
+3)Enable Apache
+#systemctl enable httpd 
+
+4)Modify httpd.conf file 
+#vi /etc/httpd/conf/httpd.conf (Modify ServerName) -  #ServerName www.example.com:80
+
+#systemctl restart httpd 
+
+5)Open up the firewall to allow connections on port 80
+#sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+
+6)Test the server by going to http://www.example.com:80
+
+
+7)Install PHPH
+#yum install php php-mysql php-devel php-gd php-pecl-memcache php-pspell php-snmp php-xmlrpc php-xml
+
+8)Restart Apache
+#systemctl restart httpd 
+

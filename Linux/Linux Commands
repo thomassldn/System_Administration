@@ -102,7 +102,7 @@ Networking
 #traceroute                                           (Route packages)
 #dig
 
-NTP 
+NTP / Chrony
 ===================================================================================================
 #yum search chrony
 #firewall-cmd --permanent --add-service=ntp

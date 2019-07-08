@@ -128,7 +128,13 @@ OS
 
 Scripts 
 ===================================================================================================
-nohup bash recompileRoutines.bash &
+#nohup bash recompileRoutines.bash &                   (run commands in background and after exiting shell)
+
+
+SELinux
+===================================================================================================
+#rpm -qa | grep selinux                                 (View what selinux packages are installed)
+
 
 Service Management 
 ===================================================================================================

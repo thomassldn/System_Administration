@@ -134,7 +134,7 @@ Scripts
 SELinux
 ===================================================================================================
 #rpm -qa | grep selinux                                 (View what selinux packages are installed)
-
+yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
 
 Service Management 
 ===================================================================================================

@@ -134,7 +134,12 @@ Scripts
 SELinux
 ===================================================================================================
 #rpm -qa | grep selinux                                 (View what selinux packages are installed)
-yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
+#yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
+#getenforce                                             (verify current SELinux status, whether Enforcing, Permissive, Disabled)
+#sestatus                                               (verify current SELinux status, whether Enforcing, Permissive, Disabled)
+ 
+
+
 
 Service Management 
 ===================================================================================================

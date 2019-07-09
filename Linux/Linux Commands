@@ -137,7 +137,8 @@ SELinux
 #yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
 #getenforce                                             (verify current SELinux status, whether Enforcing, Permissive, Disabled)
 #sestatus                                               (verify current SELinux status, whether Enforcing, Permissive, Disabled)
- 
+#semodule -l | less                                     (list current SELinux policy modules currently loaded into memory)
+#semodule                                               (can be used to install, remove, reloading, upgrading, enabling, and disabling SELinux policy modules)
 
 
 

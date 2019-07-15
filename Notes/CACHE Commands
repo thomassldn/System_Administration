@@ -6,3 +6,8 @@ CPR>d $SYSTEM.OBJ.Export("%z.GBL","/qmd/cpr/sw")                      (export a 
 CPR>d $SYSTEM.OBJ.Load("/qmd/cpr/sw/%z.stream")                       (import a global from QCPR) 
 %SYS>do ^SECURITY                                                     (view/Edit User setups/roles/services/resources/application/domain/ssl setups, etc)
 %SYS>do ^MIRROR                                                       (list Mirror databases, Remove one or more mirrored databases, Enable Mirror Services)
+%SYS>do ^Buttons
+%SYS>w $system.Mirror.ReconfigParams()
+%SYS>w $SYSTEM.Mirror.GetInfo()
+%SYS>w $SYSTEM.Mirror.ArbiterState()
+%SYS>zw ^MIRROR 

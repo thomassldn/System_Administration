@@ -1,4 +1,5 @@
 <#
+Author(s): Thomas S
 Date: 1 July 19
 Desc: This powershell script updates a HISMC server
 To use this script 1) place new hismc files under the staging folder Ex) C:\Harris\HISMC\AMRDEV\staging 2) Give the script the path name to the live, previous and staging folder Ex) C:\Harris\HISMC\AMRDEV (no \ at the end)

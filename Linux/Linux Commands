@@ -152,6 +152,7 @@ User Management
 #useradd                                              (add local user)
 #userdel                                              (delete user) 
 #passwd <user_name>                                   (change the password of a user - RHEL) 
+#chage -l <user_name>                                 (check password attributes, check when password was last changed)
 #id  <user_name>
 #groups <user_name>
 #finger <user_name>

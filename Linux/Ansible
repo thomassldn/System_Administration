@@ -14,3 +14,8 @@ Adhoc commands (/usr/bin/ansible)
 #ansible linuxservers -m yum -a "name = samba-common.noarch state = absent"    (check if a package is installed)
 #ansible linuxservers -m yum -a "name = samba-common.noarch state = absent"    (check if a package is not installed)
 #ansible linuxservers -m yum -a "name = samba-common.noarch state = absent"    (check latest version of package)
+#ansible linuxservers -m ping -k                                               (ping hosts)
+
+
+
+

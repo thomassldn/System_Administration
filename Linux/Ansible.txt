@@ -1,0 +1,16 @@
+#Desc: List of comman Ansible  commands
+#Date: 24 July 19
+
+General commands
+====================================================================================================================
+#Ansible all -m setup  (view facts about your nodes, can be used to create conditions)
+
+Adhoc commands (/usr/bin/ansible)
+=====================================================================================================================
+#ansible --version                                                             (view ansible version and other related information)
+#ansible 10.157.4.66 -a "/sbin/reboot" -f 12  --ask-pass                       (reboot server, ask for password)
+#ansible linuxservers -m copy -a "src=/qmd/cpr/sw/file.txt dest=/qmd"          (transfer a file)
+#ansible linuxservers -m file -a "dest = /path/to/directory state = absent"    (delete entire directory and files)
+#ansible linuxservers -m yum -a "name = samba-common.noarch state = absent"    (check if a package is installed)
+#ansible linuxservers -m yum -a "name = samba-common.noarch state = absent"    (check if a package is not installed)
+#ansible linuxservers -m yum -a "name = samba-common.noarch state = absent"    (check latest version of package)

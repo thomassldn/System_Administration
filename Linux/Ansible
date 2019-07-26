@@ -20,3 +20,20 @@ Adhoc commands (/usr/bin/ansible)
 
 
 
+
+
+
+
+
+
+
+
+
+Notes:
+======
+Windows Subsystem for Linux Required for Windows Ansible Users:
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
+
+
+
+

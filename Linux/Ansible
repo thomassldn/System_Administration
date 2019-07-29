@@ -20,6 +20,13 @@ Adhoc commands (/usr/bin/ansible)
 
 
 
+Modules
+======
+debug:
+  msg: 
+
+fail:
+  msg:
 
 
 

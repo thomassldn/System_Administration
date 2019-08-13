@@ -50,6 +50,7 @@ Filesystem Management
 =================================================================================================
 #vgdisplay                                            (display vgs) 
 #df -ah                                               (check disk space) 
+#lvs
 #lvs -o +devices <device>                             (displays, LV,VG,Attr, LSize,..,.., Devices)
 #df -Th                                               (check fileystem type)
 #fdisk, gdisk, parted                                 (MBR, GPT, GPT)

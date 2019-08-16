@@ -20,6 +20,7 @@ DevOPS
 #free -g                                              (display memory, in GB) 
 #vmstat
 #pstree                                               (output list of process in tree format)
+#ps -aux | less                                       (shows processes currently running on the system)
 
 
 File Management

@@ -141,6 +141,8 @@ SELinux
 #sestatus                                               (verify current SELinux status, whether Enforcing, Permissive, Disabled)
 #semodule -l | less                                     (list current SELinux policy modules currently loaded into memory)
 #semodule                                               (can be used to install, remove, reloading, upgrading, enabling, and disabling SELinux policy modules)
+#ps -eZ | grep auditd                                   (
+#sesearch --allow --source auditd_t --target auditd_log_t --class file --perm write (check if rule is enabled in the system)
 
 
 

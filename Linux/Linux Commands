@@ -143,6 +143,14 @@ SELinux
 #semodule                                               (can be used to install, remove, reloading, upgrading, enabling, and disabling SELinux policy modules)
 #ps -eZ | grep auditd                                   (
 #sesearch --allow --source auditd_t --target auditd_log_t --class file --perm write (check if rule is enabled in the system)
+#getfattr -m security.selinux -d /var/log/audit/audit.log (view file attribute)
+#ls -lZ /var/log/audit/audit.log                        (view file attribute)
+#date -d @1565897401.603                                (view date in easy to read format, i.e. Thu Aug 15 12:30:01 PDT 2019)
+
+
+#/var/log/audit/audit.log                               (selinux log file)
+#/var/log/avc.log                                       (selinux log file)
+#/var/log/audit.log                                     (selinux log file)
 
 
 

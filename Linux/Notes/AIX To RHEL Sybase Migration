@@ -1,4 +1,4 @@
-Connect to CHSMM via VNC to session :1
+Connect to Instnace via VNC to session :1
 Shoot. Pick does not allow me to grab screen shot 
 Stop mmanager
 systemctl stop mmanager
@@ -17,18 +17,18 @@ CT-LIBRARY error:
 ct_results(): network packet layer: internal net library error: Net-Library operation terminated due to disconnect
 systemctl stop sybase
 Verify it is down
-isql64 -U sa -P allpriv -S E0SVAPCAEMM
+isql64 -U sa -P allpriv -S <Instance>
 CT-LIBRARY error:
 ct_connect(): network packet layer: internal net library error: Net-Lib protocol driver call to connect two endpoints failed
 Start Sybase
 systemctl start Sybase
 Verify it is running
-isql64 -U sa -P allpriv -S E0SVAPCAEMM
+isql64 -U sa -P allpriv -S <Instance>
 1>
 Find latest backup
 pwd
 /mnt/qcpr_migration/CHSMM
-[Sat Apr 20 07:17:29 root@E0SVAPCAEMM01:/mnt/qcpr_migration/CHSMM ]# ls -lt | head
+[Sat Apr 20 07:17:29 root@<Instance>:/mnt/qcpr_migration/CHSMM ]# ls -lt | head
 
 total 420113920
 rw-r---- 1 sybase sybase 88949024768 Mar 11 10:04 After_March11_load.us
@@ -125,7 +125,7 @@ Processing study_status, 396711 rows written.
 Start processing latest dump (I am showing the results. Its possible that during the load, the Sybase transaction log will fill up. If the processing hangs, and this could take a day if you have lots of image data, you will have to clear the transaction log.)
 cd dumpData
 AHA!! We got a log full example:
-[Sun Apr 21 10:10:54 root@E0SVAPCAEMM01:/mnt/qcpr_migration/CHSMM/datasync/dumpData/logs ]# tail case_studies
+[Sun Apr 21 10:10:54 root@<Instance>:/mnt/qcpr_migration/CHSMM/datasync/dumpData/logs ]# tail case_studies
 
 (1 row affected)
 (1 row affected)
@@ -137,10 +137,10 @@ transaction log is successfully dumped and space becomes available.
 (1 row affected)
 The transaction log in database us is almost full. Your transaction is being
 suspended until space is made available in the log.
-[Sun Apr 21 10:11:05 root@E0SVAPCAEMM01:/mnt/qcpr_migration/CHSMM/datasync/dumpData/logs ]#
+[Sun Apr 21 10:11:05 root@<Instance>:/mnt/qcpr_migration/CHSMM/datasync/dumpData/logs ]#
 
 Now we clear the log
-isql64 -U sa -P allpriv -S E0SVAPCAEMM
+isql64 -U sa -P allpriv -S <Instance>
 1> dump transaction us with no_log
 2> go
 1>
@@ -174,7 +174,7 @@ Processing images
 Processing image_status
 1113300 records processed
 Now we run a Full database dump.
-isql64 -U sa -P allpriv -S E0SVAPCAEMM
+isql64 -U sa -P allpriv -S <Instance>
 1> dump database us to "/mnt/qcpr_migration/CHSMM/After_April20_load.us"
 2> go
 Backup Server: 4.172.1.4: The value of 'allocated pages threshold' has been set
@@ -201,4 +201,4 @@ Backup Server: 3.43.1.1: Dump phase number 3 completed.
 Backup Server: 4.188.1.1: Database us: 87555406 kilobytes (100%) DUMPED.
 Backup Server: 3.42.1.1: DUMP is complete (database us).
 1>
-This is where we hand it over to JP. I leave Mmanager service down. He can test what he needs.
+

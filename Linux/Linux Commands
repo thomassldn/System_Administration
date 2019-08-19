@@ -150,6 +150,8 @@ SELinux
 #ausearch -m LOGIN --start recent                       (parse audit file and search for entries;The recent start gives the denials from the last 10 minutes. You can also use today for, well, today's denials. )
 #chcon -t public_content_t '/var/www/html/file1'.       (change security context of file; gets erased after reboot)
 #matchpathcon /srv/logs/audit                           (outputs this:/srv/logs/audit	system_u:object_r:var_t:s0)
+#semanage fcontext -a -t var_log_t "/srv/logs(/.*)?" ; restorecon -Rv /srv/logs (mark /srv/logs ast var_log_t; restorecon updates the context of the files)
+
 
 #/var/log/audit/audit.log                               (selinux log file)
 #/var/log/avc.log                                       (selinux log file)

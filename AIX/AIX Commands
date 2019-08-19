@@ -60,6 +60,7 @@ File System Management
 #unmount                                                              (unmount a filesystem) 
 #lsvg                                                                 (display volume groups)
 #lsvg -l <volume_group>                                               (view volume group)
+#lspv                                                                 (list physical volumes)
 #lsvg -p <volume_grou>                                                (view disks in a volume group)
 #powermt display dev=all | more
 

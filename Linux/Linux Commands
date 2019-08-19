@@ -60,7 +60,10 @@ Filesystem Management
 #vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
 #mount                                                (list format and mount options for each filesystem) 
 #findmnt                                              (way better than mount command !!!!!) 
-
+#mkfs.ext3                                             (make ext3 filesystem)
+#mkfs.ext4                                             (make ext4 filesystem)
+#mkfs.xfs                                              (make xfs filesystem)
+#cat /proc/swap                                       (view swap space currently configured)
 #pvcreate /dev/sda3                                   (prepare for use w/LVM
 #vgcreate <vg_name> /dev/sda3                         (create a VG on the new PV)
 #lvcreate -l 100%FREE -n <lv_name> <vg_name>          (create a logical volume) 

@@ -148,7 +148,9 @@ SELinux
 #date -d @1565897401.603                                (view date in easy to read format, i.e. Thu Aug 15 12:30:01 PDT 2019)
 #find /sys -xdev -inum 30                               (find a file in a filesystem by inode #)
 #ausearch -m LOGIN --start recent                       (parse audit file and search for entries;The recent start gives the denials from the last 10 minutes. You can also use today for, well, today's denials. )
-#chcon -t public_content_t '/var/www/html/file1'.       (change security context of file
+#chcon -t public_content_t '/var/www/html/file1'.       (change security context of file; gets erased after reboot)
+#matchpathcon /srv/logs/audit                           (outputs this:/srv/logs/audit	system_u:object_r:var_t:s0)
+
 #/var/log/audit/audit.log                               (selinux log file)
 #/var/log/avc.log                                       (selinux log file)
 #/var/log/audit.log                                     (selinux log file)

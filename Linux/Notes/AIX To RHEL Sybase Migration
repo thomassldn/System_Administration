@@ -1,13 +1,17 @@
 Connect to Instnace via VNC to session :1
 Shoot. Pick does not allow me to grab screen shot 
+
 Stop mmanager
 systemctl stop mmanager
+
 Stop Backup
 1> shutdown SYB_BACKUP
 2> go
 Backup Server: 3.48.1.1: The Backup Server will go down immediately.
 Terminating sessions.
 1>
+
+
 Stop Sybase
 1> shutdown
 2> go
@@ -25,15 +29,18 @@ systemctl start Sybase
 Verify it is running
 isql64 -U sa -P allpriv -S <Instance>
 1>
+
+
 Find latest backup
 pwd
 /mnt/qcpr_migration/CHSMM
 [Sat Apr 20 07:17:29 root@<Instance>:/mnt/qcpr_migration/CHSMM ]# ls -lt | head
-
 total 420113920
 rw-r---- 1 sybase sybase 88949024768 Mar 11 10:04 After_March11_load.us
 drwxr-xr-x 9 sybase sybase 4096 Mar 9 09:36 datasync
 rw-r---- 1 sybase sybase 86679529472 Jan 11 22:32 After_Jan_11_load.us
+
+
 Restore latest
 1> load database us from '/mnt/qcpr_migration/CHSMM/After_March11_load.us'
 2> go
@@ -76,6 +83,8 @@ Recovery of database 'us' will undo incomplete nested top actions.
 Checking external objects.
 Database 'us' is now online.
 1> quit
+
+
 cd /mnt/qcpr_migration/CHSMM/datasync
 Make sure last dumpData has been saved off
 ls -l
@@ -99,6 +108,8 @@ insert into image_status ( image_id, status_time) values ( 'CS2-4511994801', '20
 insert into image_status ( image_id, status_time) values ( 'CS2-4511994805', '2019-03-09 09:29:45.306')
 insert into image_status ( image_id, status_time) values ( 'CS2-4511994806', '2019-03-09 09:31:54.806')
 insert into image_status ( image_id, status_time) values ( 'CS2-4511994810', '2019-03-09 09:35:41.29')
+
+
 Run new extract
 bash retrieve.sh "CS2-4511994800" 10.40.64.89
 Starting Synchronizer
@@ -124,9 +135,10 @@ Processing studies, 396711 rows written.
 Processing study_status, 396711 rows written.
 Start processing latest dump (I am showing the results. Its possible that during the load, the Sybase transaction log will fill up. If the processing hangs, and this could take a day if you have lots of image data, you will have to clear the transaction log.)
 cd dumpData
+
+
 AHA!! We got a log full example:
 [Sun Apr 21 10:10:54 root@<Instance>:/mnt/qcpr_migration/CHSMM/datasync/dumpData/logs ]# tail case_studies
-
 (1 row affected)
 (1 row affected)
 (1 row affected)
@@ -144,6 +156,8 @@ isql64 -U sa -P allpriv -S <Instance>
 1> dump transaction us with no_log
 2> go
 1>
+
+
 Here we are finished.
 bash restore.sh
 Processing patients
@@ -173,6 +187,8 @@ Processing images
 1113300 records processed
 Processing image_status
 1113300 records processed
+
+
 Now we run a Full database dump.
 isql64 -U sa -P allpriv -S <Instance>
 1> dump database us to "/mnt/qcpr_migration/CHSMM/After_April20_load.us"

@@ -62,6 +62,7 @@ File System Management
 #lsvg -l <volume_group>                                               (view volume group)
 #lspv                                                                 (list physical volumes)
 #lsvg -p <volume_grou>                                                (view disks in a volume group)
+#lslv -l <lv>                                                         (list all physical Volumes in a LV)
 #powermt display dev=all | more
 
 

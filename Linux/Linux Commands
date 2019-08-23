@@ -37,6 +37,7 @@ Firewalld
 #firewall-cmd --help                                                                      (a TON of info)
 #firewall-cmd --stat                                                                      (check if firewalld is running) 
 #firewall-cmd --zone=public --add-port=80/tcp --permanent                                 (open port using firewalld)
+# firewall-cmd --zone=public --remove-port=80/tcp --permanent                             (close port using firewalld)
 #firewall-cmd --reload                                                                    (reload firewall configuration)
 #iptables-save | grep 80                                                                  (check if port was added to iptables rules)
 #firewall-cmd --list-all                                                                  (view settings in default zone)

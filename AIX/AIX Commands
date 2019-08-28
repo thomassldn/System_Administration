@@ -8,7 +8,7 @@ AIX Systems Administration - General Commands
 #lsconf | head                                                  (list machine type model and serial number of server AIX is running on)
 #dsh -n172.24.176.21,172.23.178.25,172.23.172.28,172.23.164.27 "echo 'ats:<password>'|chpasswd -c" (change password on multiple servers at once)
 ##PS1="\@ :\w \$ "                                              (08:44 PM :~/Desktop/iOS Projects $)
-
+#mkitab "slinksc:23456789:once:/home/rss/slink/slinksc start > /dev/console 2>&1" (start a service after reboot)
 
 Certificates
 =================================================================================================

@@ -13,6 +13,8 @@ Certificates
 #opessl rsa -in <keyfile-encrypted.key> -out <otherfile>                                (remove password from key)
 #openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                   (extract an unecrypted key -not safe)
 #openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
+#grep -n BEGIN "/qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem"
+#for a in 1 29;do sed -n $a',$p' /qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem | openssl x509 -noout -text | grep Subject:;done
 
 DevOPS
 ==================================================================================================

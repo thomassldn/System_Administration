@@ -16,6 +16,7 @@ Certificates
 
 DevOPS
 ==================================================================================================
+#pgrep -a firefox                                     (similar to ps aux | grep firefox)
 #iostat                                               (CPU Utilization report, the Device Utilization report and the Network Filesystem report.)
 #free -g                                              (display memory, in GB) 
 #vmstat

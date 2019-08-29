@@ -102,13 +102,14 @@ Sometimes nfs mounts go stale due to network problems, use the following command
 
 Networking
 ==================================================================================================
-#ifconfig                                             (show network interface configuration)
+#for i in $(seq 1 254);do ping -c1 -t 1 10.0.75.$1;done (ping all host in a network)
+#ifconfig                                               (show network interface configuration)
 #ip addr show
-#nmap -sT -O localhost                                (Check what ports are listening on a network node) 
-#netstat -tulpn | grep LISTEN                         (Check what ports are listening on a network node)
-#netstat -ie                                          (view interfaces, Up)
-#mtr                                                  (Route packages)
-#traceroute                                           (Route packages)
+#nmap -sT -O localhost                                  (Check what ports are listening on a network node) 
+#netstat -tulpn | grep LISTEN                           (Check what ports are listening on a network node)
+#netstat -ie                                            (view interfaces, Up)
+#mtr                                                    (Route packages)
+#traceroute                                             (Route packages)
 #dig
 
 NTP / Chrony

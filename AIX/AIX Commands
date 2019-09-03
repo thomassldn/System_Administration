@@ -2,6 +2,7 @@
 
 AIX Systems Administration - General Commands
 =================================================================================================
+#oslevel
 #ps -ef | grep <service>                                        (view service running)
 #for i in *.JPG;do echo $i;mv -- "$i" "${i%.JPG}.jpg";done      (rename file extension from JPG to jpg) 
 #find / -name file.txt                                          (find a file)
@@ -9,6 +10,17 @@ AIX Systems Administration - General Commands
 #dsh -n172.24.176.21,172.23.178.25,172.23.172.28,172.23.164.27 "echo 'ats:<password>'|chpasswd -c" (change password on multiple servers at once)
 ##PS1="\@ :\w \$ "                                              (08:44 PM :~/Desktop/iOS Projects $)
 #mkitab "slinksc:23456789:once:/home/rss/slink/slinksc start > /dev/console 2>&1" (start a service after reboot)
+#./apachectl -version
+#ccontrol list
+#lslpp -l | grep "bos.adt.debug"                                 (DBX debuger)
+#gs -v                                                           (GPL Ghostscript) 
+#java -version                                                   (java version)
+#lslpp -l | grep XL                                              (IBM XL C/C++ Runtime for AIX)
+#lslpp -l | grep "lsof"                                          (LSOF - Open file utility from IBM)
+#lssrc -ls xntpd                                                 (View NTP version)
+#cd;qpdf -version                                                (QPDF)
+#lslpp -l | grep "samba"                                         (view samba version) 
+
 
 Certificates
 =================================================================================================

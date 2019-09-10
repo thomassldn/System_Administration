@@ -1,0 +1,27 @@
+#!/bin/bash
+
+     2  # Only run if MM is running on this server :
+     3  MMCHECK=$( ps -ef | grep tm.Telemanager | grep -v grep )
+     4  if [ -n "$MMCHECK" ]
+     5  then
+
+     6  now=`date +"%Y%m%d_%H%M%S"`
+
+     7  systemctl stop mmanager
+
+     8  mv /home/ati/log/server.log /home/ati/log/server.$now.log
+     9  mv /home/ati/logaccesslog /home/ati/logaccesslog.$now.log
+
+    10  systemctl start mmanager
+
+    11  gzip /home/ati/log/server.$now.log
+    12  mv /home/ati/log/server.$now.log.gz /home/ati/log/archive/server.$now.log.gz
+    13  gzip /home/ati/logaccesslog.$now.log
+    14  mv /home/ati/logaccesslog.$now.log.gz /home/ati/log/archive/logaccesslog.$now.log.gz
+
+    15  mv /home/ati/log/omm.*.log.gz /home/ati/log/archive/
+
+    16  # Cleanup:
+    17  #find /home/ati/log -mtime +30 -name server*.gz -exec rm -f {} \;
+
+    18  fi

@@ -168,8 +168,10 @@ SELinux
 
 
 
-Service Management 
+Service Management  
 ===================================================================================================
+#systemctl list-unit-files --type service --all        (list all services on a system)
+#netstat -tlpn                                         (view what port is being used by what service)
 #systemctl status httpd                                (check service status)
 #service httpd status                                  (check service status - old versions) 
 

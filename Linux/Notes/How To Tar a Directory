@@ -1,0 +1,10 @@
+
+In this example, the directory /qmd/cpr/sw/customer/pc_software/CMV/Vocab/6.2/October_2018 and all its contents will be tared. 
+
+1) To tar a directory and all its contents run the following command: 
+
+#tar -cvf October_2018.tar /qmd/cpr/sw/customer/pc_software/CMV/Vocab/6.2/October_2018           (October_2018.tar can be any name you wish) 
+
+2) To untar the directory: 
+
+#tar -xvf October_2018.tar

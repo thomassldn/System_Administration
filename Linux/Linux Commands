@@ -16,6 +16,8 @@ Certificates
 #openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
 #grep -n BEGIN "/qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem"
 #for a in 1 29;do sed -n $a',$p' /qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem | openssl x509 -noout -text | grep Subject:;done
+#grep -n BEGIN
+#for a in 1 26 61;do sed -n $a',$p' newswmdirectcert_prod_chain.pem | openssl x509 -noout -text | grep CN=;echo;done
 
 DevOPS
 ==================================================================================================

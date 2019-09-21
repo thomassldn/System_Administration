@@ -32,7 +32,7 @@ QCPR Commands
 
 QCPR Tables
 ===========
-}tab ae             (Employee/Provider Table)
+}tab ae             (Employee/User/Provider Table)
 }tab aeft           (Free-Text Employee Table)
 }tab afa            (Area Table)
 }tab aff            (Facility Table)

@@ -1,4 +1,8 @@
 #! /bin/bash
+#Desc: Cache System Audit (Template) - This bash script generates a system audit of a server and generates an html report.
+#Thomas S
+#
+
 
 ##Function addHTMLTop
 function addHTMLTop {
@@ -194,12 +198,7 @@ function main {
 
 	#HealthShare Database Path Permissions and Ownerships
 	echo "<h3>HealthShare Database Path Permissions and Ownerships</h3>" >> cache_audit_report.html
-
-
 	
-
-
-
 
 	#addTable	
 	addHTMLBottom

@@ -20,6 +20,8 @@ AIX Systems Administration - General Commands
 #lssrc -ls xntpd                                                 (View NTP version)
 #cd;qpdf -version                                                (QPDF)
 #lslpp -l | grep "samba"                                         (view samba version) 
+#svmon -G -O unit=GB                                             (view available memory)
+#vmstat -v                                                       (view available memory)
 
 
 Certificates

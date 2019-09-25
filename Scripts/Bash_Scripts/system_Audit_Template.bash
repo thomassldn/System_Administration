@@ -3,7 +3,6 @@
 #Thomas S
 #
 
-
 ##Function addHTMLTop
 function addHTMLTop {
 
@@ -14,7 +13,7 @@ echo "<!DOCTYPE html>
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 50%;
 }
 
 td, th {
@@ -31,52 +30,61 @@ tr:nth-child(even) {
 <body>
 
 <h1 align='center'>Cache Audit</h1>
-</br>
-</br> " > cache_audit_report.html
+" > cache_audit_report.html
 
 }
 
 ##Function addTable 
 function addTable {
 
-echo "<h3>Table #1</h3>
+#declaration of variables
+#this variables will be used in the system overview table of this report
+hostname=$(hostname)
+uptime=$(uptime)
+date=$(date)
 
+
+echo "
 <table>
   <tr>
-    <th>Column #1</th>
-    <th>Column #2</th>
-    <th>Column #3</th>
+    <th>Item</th>
+    <th>Value</th>
   </tr>
   <tr>
-    <td>Value #1</td>
-    <td>Value #2</td>
-    <td>Value #3</td>
+    <td>Computer Name</td>
+    <td>$hostname</td>
   </tr>
   <tr>
-    <td>Value #1</td>
+    <td>Domain Name</td>
     <td>Value #2</td>
-    <td>Value #3</td>
   </tr>
   <tr>
-    <td>Value #1</td>
+    <td>Site Name</td>
     <td>Value #2</td>
-    <td>Value #3</td>
   </tr>
   <tr>
-    <td>Value #1</td>
+    <td>Operating System</td>
     <td>Value #2</td>
-    <td>Value #3</td>
   </tr>
   <tr>
-    <td>Value #1</td>
+    <td>Total Memory</td>
     <td>Value #2</td>
-    <td>Value #3</td>
   </tr>
   <tr>
-    <td>Value #1</td>
+    <td>Total Hard Drive</td>
     <td>Value #2</td>
-    <td>Value #3</td>
   </tr>
+
+  <tr>
+    <td>System Uptime</td>
+    <td>$uptime</td>
+  </tr>
+
+  <tr>
+    <td>Local Time</td>
+    <td>$date</td>
+  </tr>
+
 </table>" >> cache_audit_report.html
 
 
@@ -198,7 +206,12 @@ function main {
 
 	#HealthShare Database Path Permissions and Ownerships
 	echo "<h3>HealthShare Database Path Permissions and Ownerships</h3>" >> cache_audit_report.html
+
+
 	
+
+
+
 
 	#addTable	
 	addHTMLBottom
@@ -206,4 +219,5 @@ function main {
 }
 
 #call main and start execution
-main
+main 
+

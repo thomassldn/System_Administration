@@ -252,17 +252,6 @@ function main {
         #mount=$(mount | mount | awk -F ' ' '{print  $NF}' | sed 's/$/<br>/')
 
 
-       # echo "<table>
-        #        <tr>
-         #         <th bgcolor="#95B9C7">Settings</th>
-          #      </tr>
-
- #               </tr>
-  #                <td>$mount</td>
-   #             </tr>
-    #         </table> " >> cache_audit_report.html
-
-
         #Virtual Memory Manager Options
         echo "<h3>Virtual Memory Manager</h3>" >> cache_audit_report.html
         vmo=$(vmo -aF | egrep 'minperm%|maxclient%|maxperm%' | sed 's/$/<br>/')

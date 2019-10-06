@@ -1,0 +1,6 @@
+1) Disable root user logins
+2) Allow wrong passwords to only be entered 4 times 
+3) Secure cron and at in /etc/cron.deny and /etc/at.deny
+4) Close unessary ports 
+5)Change ssh port
+6)

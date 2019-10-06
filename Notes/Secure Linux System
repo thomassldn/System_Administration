@@ -2,5 +2,10 @@
 2) Allow wrong passwords to only be entered 4 times 
 3) Secure cron and at in /etc/cron.deny and /etc/at.deny
 4) Close unessary ports 
-5)Change ssh port
-6)
+5) Change ssh port
+6) Encrypt transmited data whenever possible 
+7) Minimize software to minimize vulnerabilities 
+8) Run different network services on seperate systems
+9) Configure security tools to improve system robustness (zone-based firewalls, SELinux, log analysis)
+10) Use the principle of least privilage 
+

@@ -180,6 +180,7 @@ Service Management
 
 User Management 
 ====================================================================================================
+#lastlog                                              (view when users last logged in) 
 #useradd                                              (add local user)
 #userdel                                              (delete user) 
 #passwd <user_name>                                   (change the password of a user - RHEL) 

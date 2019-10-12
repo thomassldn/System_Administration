@@ -1,6 +1,6 @@
 Thomas s
 14 June 2019
-Desc: in this example, I performed the following steps to expand the /qcpr_backup filesystem
+Desc: Perform the following steps to expand the /qcpr_backup filesystem, after adding a new disk to the server. 
 
 1)Identify the new disk with the lsblk command (in this case sdr) 
 #lsblk

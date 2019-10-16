@@ -1,0 +1,80 @@
+INSTALL/CONFIGURE OPENSSH FOR WINDOWS
+1.	REFERENCES
+2.	OBTAIN SOFTWARE
+  a)	\\ont-sw\qmd_cpr_sw\SystemsIntegration\OpenSSH_Related\OpenSSH-Win64.zip
+3.	INSTALLATION
+	a)	Extract contents of the latest build to C:\Program Files\OpenSSH
+	b)	Start Windows Powershell as Administrator
+	c)	Navigate to the OpenSSH directory
+				cd 'C:\Program Files\OpenSSH\OpenSSH-Win64\'
+			i)	Install sshd and ssh-agent services
+					powershell -ExecutionPolicy Bypass -File install-sshd.ps1
+			ii)	Generate SSH host keys
+					.\ssh-keygen.exe -A
+					powershell -ExecutionPolicy Bypass '.\FixHostFilePermissions.ps1 -Confirm:$false'
+			iii)	Open the firewall on TCP port 22 to allow inbound SSH connections
+					New-NetFirewallRule -Protocol TCP -LocalPort 22 -Direction Inbound -Action Allow -DisplayName SSH
+			iv)	Setup sshd and ssh-agent to auto-start (optional)
+					Set-Service sshd -StartupType Automatic
+					Set-Service ssh-agent -StartupType Automatic
+			v)	Start the sshd and ssh-agent
+					net start sshd
+	d)	Uninstall Win32 OpenSSH (just in case)
+			i)	Start Windows Powershell as Administrator
+			ii)	Navigate to the OpenSSH directory
+					cd C:\Program Files\OpenSSH\OpenSSH-Win64\
+			iii)	Run the uninstall script
+						powershell.exe -ExecutionPolicy Bypass -File uninstall-sshd.ps1
+	e)	END OF SECTION
+4.	CONFIGURE LOCAL DHITSSH USER ACCOUNT
+	a)	Logout of server and log in as DHITSSH
+	b)	Start Windows Powershell as Administrator
+	c)	Navigate to the OpenSSH directory
+			cd C:\Program Files\OpenSSH\OpenSSH-Win64\
+	d)	Generate key
+			.\ssh-keygen
+	e)	Enter through all of the prompts until completed
+5.	COPY PUBLIC KEY(S) FROM QCPR
+	a)	Login to QCPR server
+	b)	Copy the file from the AIX server to the Windows server of the id_rsa.pub file locate in the QCPR user’s (chIoId??) ~\.ssh\ directory
+	c)	Login to the DHIT server
+	d)	Navigate to the .ssh directory of the DHITSSH user’s directory
+			i)	cd c:\Users\DHITSSH\.ssh
+	e)	Copy in and rename the id_rsa.pub file to a file called authorized_keys
+			i)	For prod servers, you need both the primary and failover id_rsa.pub files.  And they both have to reside in the same file, so you’ll have to merge them together with notepad++.  The easiest way I found was to copy the id_rsa.pub from one server into a temp directory in UNIX.  Then do a cat of the other servers id_rsa.pub file into it
+					(1)	Example:
+						(a)	cat /home/chIoIdPd/.ssh/id_rsa.pub >> /qmd/cpr/sw/cms/id_rsa.pub
+								aomcpr01-03 <root>:/:# mv /qmd/cpr/sw/cms/id_rsa.pub /qmd/cpr/sw/cms/authorized_keys
+
+								# View the file to see both files.
+								aomcpr01-03 <root>:/:# vi /qmd/cpr/sw/cms/authorized_keys
+								"/qmd/cpr/sw/cms/authorized_keys" 2 lines, 804 characters
+								ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDnaQf0ux8OoRwMI5/6GUhCRyXNWFuIxvth1poQSbAmUeFocCmZ/Q5bnX/h+jr5WI6Hkj1wsf+3iWZl3pGfa3FApUARlJlxY+GSqRsWviSpQLPWShJpeGdIb0CfE//dL8H2P2soWJbjfGAr
+								O8qqmX2EuGDwAGCYeiZV7mllh5TPzQ5NPOERNgKTs0P6LlLa29PSPWbBUzbFXTMkjdMTo+oHqN6hJj6EzAmg2rqsUNdG4w8wqcCuvfjGNy06GF+Sbb0Q40VQ7ZunV07rGNaFiEaHIRFH9opCsgHPTI+YP9wYIiGNqvSVW1Z3sVz26MtiwOoF
+								8PRARrt7pbUIQmF75c+3 chIoIdPd@aomcpr02-03
+								ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsZS3jS8QThshCvn7RQZ2BkSsYven3/DAoWW8YvItHsCS3TpOfKD+91/ZmR8pPFfrBOLmq0BCdYvVoO3e9A7hz7cSYYZeg96a3ceo8BGqqQqTws8D3ovtg6NhTbDW88LQJIWzW2GjFwCV5
+								gtYcIHh34BLDA+bTz7MnGqaNG6U2K+tfvy9ZnfMi8+pGfLfp3sLfYf0NxM3yX90Q1CnemUpUhmjDXCMHGv4nICNWaMq6DdfnWhBzpl5iiTxIhpR5O9US6PLfZhoa+fGbJt9AwdEzUa2NJz0BQ28RWUePU122y3h7TrcDBGt0713bhjBnhNBd
+								5jCSkfkf21hEAyMUcqKz chIoIdPd@aomcpr01-03
+	f)	Open text editor as Administrator
+	g)	Modify the following parameters in the c:\Program Files\OpenSSH\OpeSSH-Win64\sshd_config file
+			i)	From
+					(1)	#StrictModes yes
+					(2)	#RSAAuthentication yes
+					(3)	#PubkeyAuthentication yes
+					(4)	#PasswordAuthentication yes
+					(5)	#PidFile /var/run/sshd.pid
+					(6)	Subsystem   sftp    sftp-server.exe
+			ii)	To
+					(1)	StrictModes no
+					(2)	RSAAuthentication yes
+					(3)	PubkeyAuthentication yes
+					(4)	PasswordAuthentication yes
+					(5)	PidFile C:\Users\DHITSSH\sshd.pid
+					(6)	Subsystem   sftp    C:\Program Files\OpenSSH\OpenSSH-Win64\sftp-server.exe
+	h)	Run the following command in a cmd.exe or powershell that has been run as administrator to give sshd access to the file you created
+		i)	icacls C:\Users\DHITSSH\.ssh /grant "NT Service\sshd:R" /T
+	i)	Restart ssh-agent service in Windows services (will also force a restart of the sshd service)
+	
+	
+	
+	

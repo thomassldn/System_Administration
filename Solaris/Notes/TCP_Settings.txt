@@ -1,0 +1,17 @@
+To get the settings:
+
+ndd -get /dev/tcp tcp_conn_req_max_q
+ndd -get /dev/tcp tcp_conn_req_max_q0
+ndd -get /dev/tcp tcp_time_wait_interval
+ndd -get /dev/tcp tcp_keepalive_interval
+ndd -get /dev/tcp tcp_rexmit_interval_max
+ndd -get /dev/tcp tcp_ip_abort_interval
+
+To Change them:
+
+ndd -set /dev/tcp tcp_conn_req_max_q 1024
+ndd -set /dev/tcp tcp_conn_req_max_q0 1024
+ndd -set /dev/tcp tcp_time_wait_interval 60000
+ndd -set /dev/tcp tcp_keepalive_interval 20000
+ndd -set /dev/tcp tcp_rexmit_interval_max 20000
+ndd -set /dev/tcp tcp_ip_abort_interval 120000

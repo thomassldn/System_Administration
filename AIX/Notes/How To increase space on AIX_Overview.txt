@@ -1,0 +1,31 @@
+If you cannot increase a LUN, chvg -g, and then increase a filesystem due to SAN limitations, you would have to do the following steps to add disk. 
+
+1)	Freeze Veritas.
+2)	Add new LUNs in SAN and introduce to both servers.
+3)	Extendvg. Takes 5 seconds.
+4)	Chfs the file system to grow. Takes 40 seconds.
+5)	Stop QCPR.
+6)	Stop Cache.
+7)	Unmount FS.
+8)	Varyoffvg.
+9)	On DB02, exportvg.
+10)	Importvg.
+11)	Mount FS to test.
+12)	Unmount.
+13)	Varyoffvg.
+14)	Back on DB01, varyonvg
+15)	Mount.
+16)	Start Cache.
+17)	Start QCPR.
+18)	Unfreeze Veritas.
+
+
+You do NOT exportvg on DB01 or on DB02 AFTER the importvg. Only Varyoffvg.
+
+
+
+
+
+
+
+

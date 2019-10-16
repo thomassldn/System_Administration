@@ -1,19 +1,21 @@
 1.	REGISTER A SYSTEM TO THE RED HAT CUSTOMER PORTAL
-a)	Check RHEL registration status
 
-subscription-manager version
+    a)	Check RHEL registration status
 
-b)	The following command will register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager
+        subscription-manager version
 
-# subscription-manager register --username <username> --password <password> --auto-attach
+    b)	The following command will register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager
 
-c)	A successful response will be similar to the following:
+        # subscription-manager register --username <username> --password <password> --auto-attach
 
-[root@ONT-RHEL-SI-01 dhcp]# subscription-manager register --username christopher.seeger@quadramed.com --password disneyland1! --auto-attach
-The system has been registered with ID: b13cf825-17ad-4c17-a935-c4594e449762
-Installed Product Current Status:
-Product Name: Red Hat Enterprise Linux Server
-Status:       Subscribed
+    c)	A successful response will be similar to the following:
 
-d)	If not successful, check syntax and retry
-e)	If further attempts are unsuccessful, contact Systems Integration or ATS
+        [root@ONT-RHEL-SI-01 dhcp]# subscription-manager register --username christopher.seeger@quadramed.com --password disneyland1! --auto-attach
+        The system has been registered with ID: b13cf825-17ad-4c17-a935-c4594e449762
+        Installed Product Current Status:
+        Product Name: Red Hat Enterprise Linux Server
+        Status:       Subscribed
+
+  d)	If not successful, check syntax and retry
+  
+  e)	If further attempts are unsuccessful, contact Systems Integration or ATS

@@ -10,7 +10,7 @@
 
     c)	A successful response will be similar to the following:
 
-        [root@ONT-RHEL-SI-01 dhcp]# subscription-manager register --username christopher.seeger@quadramed.com --password disneyland1! --auto-attach
+        [root@ONT-RHEL-SI-01 dhcp]# subscription-manager register --username <user>@quadramed.com --password <password> --auto-attach
         The system has been registered with ID: b13cf825-17ad-4c17-a935-c4594e449762
         Installed Product Current Status:
         Product Name: Red Hat Enterprise Linux Server

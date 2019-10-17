@@ -141,11 +141,16 @@ PsLoggedOn (lets you see who has logged on locally or remotely - Windows)
 Fport (shows open TCP and UDP ports and maps them to a process - WIndows, 182) http://www.mcafee.com/us/downloads/free-tools/fport.aspx
 
 Machine Learning
-======================
+==========================
 Weka 3.8
 
+
+Meeting & Event Management
+==========================
+cvent.com
+
 Mobile Forensics
-======================
+==========================
 Oxygen Forensics—A full forensic tool capable of imaging and examining iPhones and Android phones. It provides a number of user-friendly tools for extracting specific data such as contacts, social media data, and the like.
 Cellabrite—The most widely known phone forensics tool. Used heavily by federal law enforcement. It is a very robust and effective tool. Downside: the high cost. It is the most expensive phone forensics tool on the market.
 MobileEdit—There are several variations of this product. MobileEdit Lite is the most forensically advanced version of MobileEdit. This is a very easy-to-use tool that can aid a forensic examiner in extracting data from cell phones.

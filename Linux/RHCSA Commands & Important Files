@@ -1,0 +1,39 @@
+Desc: The following are the commands and important files found in the RHCA/RHCE Red Hat Linux Certification Study Guide, Seventh Edition (Exams EX200 & EX300) by Micheal Jang and Alessandro Orsaria. This text document only goes over chapters 1 - 9, which are covered in the RHCSA exam. 
+
+
+
+1. Prepare for the Red Hat Hands-on Certifications 
+=====================================================
+
+2. Virtual Machines & Automated Installations 
+=====================================================
+
+3. Fundamental Command-Line Skills 
+=====================================================
+
+4. RHCSA-Level Security Options 
+=====================================================
+
+5. The Boot Process 
+=====================================================
+
+6. Linux Filesystem Administration 
+=====================================================
+#fdisk 
+#gdisk 
+#parted 
+#df -h 
+#fdisk -l 
+#mount 
+#findmnt 
+
+
+7. Package Management 
+=====================================================
+
+8. User Administration 
+=====================================================
+
+9. RHCSA-Level System Administration Tasks
+=====================================================
+

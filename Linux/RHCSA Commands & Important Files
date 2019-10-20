@@ -26,6 +26,31 @@ Desc: The following are the commands and important files found in the RHCA/RHCE 
 #fdisk -l 
 #mount 
 #findmnt 
+#partprobe /dev/vda 
+#mkfs
+#mkfs.ext3
+#mkfs.ext4
+#mkfs.xfs
+#mkswap 
+#fsck
+#mount 
+#mount -a
+
+#pvcreate
+#pvchange
+#pvck
+#pvdisplay
+#pvmove
+#pvremove
+#pvresize
+#pvs
+#pvscan
+
+#vgcreate
+#vgdisplay
+#lvcreate
+#lvextend 
+#vgextend 
 
 
 7. Package Management 

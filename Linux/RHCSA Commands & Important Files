@@ -31,10 +31,15 @@ Desc: The following are the commands and important files found in the RHCA/RHCE 
 #mkfs.ext3
 #mkfs.ext4
 #mkfs.xfs
+#xfs_admin
+#dumpe2fs
 #mkswap 
 #fsck
 #mount 
 #mount -a
+#unmount 
+#blkid 
+
 
 #pvcreate
 #pvchange
@@ -47,10 +52,39 @@ Desc: The following are the commands and important files found in the RHCA/RHCE 
 #pvscan
 
 #vgcreate
+#vgcfgbackup
+#vgcfgrestore 
+#vgchange
+#vgck
+#vgconvert 
 #vgdisplay
-#lvcreate
-#lvextend 
+#vgexport
+#vgimport
 #vgextend 
+#vgmerge
+#vgmknodes 
+#vgreduce 
+#vgremove 
+#vgrename 
+#vgs
+#vgscan
+#vgsplit
+
+#lvchange
+#lvconvert
+#lvcreate
+#lvdisplay
+#lvextend 
+#lvreduce 
+#lvremove
+#lvrename
+#lvresize
+#lvs
+#lvscan
+
+#cat /etc/fstab
+#cat /etc/mtab 
+
 
 
 7. Package Management 

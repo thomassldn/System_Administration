@@ -15,3 +15,6 @@ Desc: Some useful MongoDB commands
 >db.<COLLECTION_NAME>.drop()                        (drop collection)
 >db.<COLLECTION_NAME>.find()                        (query a document from MongoDB collection) 
 >>db.<COLLECTION_NAME>.find().pretty()              (same as above, but displays name in pretty format)
+
+
+

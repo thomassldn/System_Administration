@@ -1,16 +1,17 @@
 Desc: Some useful MongoDB commands 
 
->help                         (get full list of MongoDB commands)
->db.stats()                   (view stats about MongoDB server)
->db                           (show current database)
->show dbs                     (shows the names of the available databases) 
->use <DB_NAM>                 (Use/Create new database if it does not exist)
->show collections             (shows the collections in the current database)
->show users                   (shows the users in the current database) 
->use <db name>                (sets the current database to <db name>)
+>help                                               (get full list of MongoDB commands)
+>db.stats()                                         (view stats about MongoDB server)
+>db                                                 (show current database)
+>show dbs                                           (shows the names of the available databases) 
+>show collections                                   (shows the collections in the current database)
+>show users                                         (shows the users in the current database) 
 
 
-
-
-
-
+>use <DB_NAM>                                       (Use/Create new database if it does not exist)
+>db.dropDatabase()                                  (drop database, switch to it first)
+>db.<DOCUMENT>.insert({"name":"my test doc"})       (create document in db, creates a collection aswell)
+>db.createCollection(name, options)                 (create a collection)
+>db.<COLLECTION_NAME>.drop()                        (drop collection)
+>db.<COLLECTION_NAME>.find()                        (query a document from MongoDB collection) 
+>>db.<COLLECTION_NAME>.find().pretty()              (same as above, but displays name in pretty format)

@@ -1,7 +1,10 @@
 Desc: Some useful MongoDB commands 
 
 >help                         (get full list of MongoDB commands)
+>db.stats()                   (view stats about MongoDB server)
+>db                           (show current database)
 >show dbs                     (shows the names of the available databases) 
+>use <DB_NAM>                 (Use/Create new database if it does not exist)
 >show collections             (shows the collections in the current database)
 >show users                   (shows the users in the current database) 
 >use <db name>                (sets the current database to <db name>)

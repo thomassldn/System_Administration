@@ -1,0 +1,72 @@
+
+1. Create a logical volume for the new file system
+#lvcreate -L +4G -n /dev/mapper/qmdvg-templv qmdvg
+
+2. View the newly created LV using lvdisplay
+#lvdisplay
+....
+....
+....
+ --- Logical volume ---
+  LV Path                /dev/qmdvg/templv
+  LV Name                templv
+  VG Name                qmdvg
+  LV UUID                ytOLPu-ManM-PdRQ-GqrU-MaHo-Ooc2-ASJ6tb
+  LV Write Access        read/write
+  LV Creation host, time rhpQCPRprdDB01.rehabhospital.org, 2019-10-21 12:40:24 -1000
+  LV Status              available
+  # open                 1
+  LV Size                4.00 GiB
+  Current LE             1024
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:50
+
+3. Create the filesystem 
+#mkfs.xfs /dev/qmdvg/templv
+
+4. Mount the filesystem 
+#mount /dev/qmdvg/templv Temp/
+
+5. Change owndership of filesystem 
+#chown chEuIdPd:chEgGpPd Temp
+
+6. Change permissions of filesystem 
+#chmod 775 Temp/
+
+7. Find the UUID for the LV, will add this to the /etc/fstab file so that the filesystem can mount automatically after a reboot. 
+#blkid 
+...
+...
+...
+/dev/mapper/qmdvg-weblv: UUID="dab8508b-68ba-460c-9b11-098354e90f7b" TYPE="xfs"
+/dev/mapper/qmdvg-bklv: UUID="391e0f8b-276f-4b05-b52a-941ba2bef245" TYPE="xfs"
+/dev/mapper/qmdvg-custlv: UUID="6a8cf7c5-c354-47d3-8108-5d63a3182c76" TYPE="xfs"
+/dev/mapper/qmdvg-templv: UUID="d85500d5-2d27-45b8-935a-d4bf98b07259" TYPE="xfs"
+
+8. Add the Filesystem to the end of the /etc/fstab file. 
+Ex)
+#vi /etc/fstab
+
+# /etc/fstab
+# Created by anaconda on Fri Jul 27 01:19:19 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/rhel-root   /                       xfs     defaults        0 0
+UUID=10edbfa9-d8d8-4d5f-b33a-0a6272e8d7a5 /boot                   xfs     defaults        0 0
+/dev/mapper/rhel-swap   swap                    swap    defaults        0 0
+/dev/mapper/qmdvg-custlv /customer xfs defaults 1 2
+/dev/mapper/qmdvg-hssyslv /qmd/cache_rhpprd_1/mgr/hssys  xfs defaults 1 2
+/dev/mapper/qmdvg-cprhslv /qmd/cpr/ucd/RHPPRD1/dbase/cprhs  xfs defaults 1 2
+/dev/mapper/qmdvg-templv d85500d5-2d27-45b8-935a-d4bf98b07259 xfs defaults 1 2
+
+
+9. Verify the filesystem exists with df -h 
+#df -h
+
+
+

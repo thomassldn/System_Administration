@@ -62,7 +62,7 @@ UUID=10edbfa9-d8d8-4d5f-b33a-0a6272e8d7a5 /boot                   xfs     defaul
 /dev/mapper/qmdvg-custlv /customer xfs defaults 1 2
 /dev/mapper/qmdvg-hssyslv /qmd/cache_rhpprd_1/mgr/hssys  xfs defaults 1 2
 /dev/mapper/qmdvg-cprhslv /qmd/cpr/ucd/RHPPRD1/dbase/cprhs  xfs defaults 1 2
-/dev/mapper/qmdvg-templv d85500d5-2d27-45b8-935a-d4bf98b07259 xfs defaults 1 2
+UUID=d85500d5-2d27-45b8-935a-d4bf98b07259 /qmd/cache_rhpprd_1/mgr/Temp xfs defaults 1 2
 
 
 9. Verify the filesystem exists with df -h 

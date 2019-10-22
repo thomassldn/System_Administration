@@ -28,7 +28,7 @@
 #mkfs.xfs /dev/qmdvg/templv
 
 4. Mount the filesystem 
-#mount /dev/qmdvg/templv Temp/
+#mount /dev/qmdvg/templv /qmd/cache_rhpprd_1/mgr/Temp
 
 5. Change owndership of filesystem 
 #chown chEuIdPd:chEgGpPd Temp

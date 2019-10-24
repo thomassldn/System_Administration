@@ -69,6 +69,7 @@ Filesystem Management
 #lsblk                                                (display block devices)
 #vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page) 
 #mount                                                (list format and mount options for each filesystem) 
+#10.1.6.60:/customer /customer -o nfsvers=3 -o nolock (mount AIX to Linux)
 #findmnt                                              (way better than mount command !!!!!) 
 #mkfs.ext3                                             (make ext3 filesystem)
 #mkfs.ext4                                             (make ext4 filesystem)

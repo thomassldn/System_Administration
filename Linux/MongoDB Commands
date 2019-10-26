@@ -18,3 +18,13 @@ Desc: Some useful MongoDB commands
 
 
 
+Indexes
+======================================================
+>db.indexes.find()                                 (show indexes)
+>db.<COLLECTION>.getIndexes()                      (show indexes in a specific location)
+>db.<COLLECTION>.ensureIndex()                     (used to add a custom index)
+
+
+
+
+

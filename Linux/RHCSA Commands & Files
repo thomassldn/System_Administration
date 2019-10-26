@@ -24,6 +24,7 @@ Desc: The following are the commands and important files found in the RHCA/RHCE 
 #parted 
 #df -h 
 #fdisk -l 
+#cfdisk
 #mount 
 #findmnt 
 #partprobe /dev/vda 

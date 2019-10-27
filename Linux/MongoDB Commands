@@ -1,30 +1,49 @@
 Desc: Some useful MongoDB commands 
 
+
+General Commands
+========================================================================================================================
 >help                                               (get full list of MongoDB commands)
 >db.stats()                                         (view stats about MongoDB server)
 >db                                                 (show current database)
+
+Find Commands
+========================================================================================================================
+>db.indexes.find()                                 (show indexes)
+>db.<COLLECTION>.find()                            (query a document from MongoDB collection) 
+>db.<COLLECTION>.find({ Artis: "Nirvana" })        (query a document from MongoDB collection from a certain type of doc) 
+>db.<COLLECTION>.find({"Tracklist.Title": "In Bloom"})   (Query embedded documents)
+
+Find Command Using Sort, Limit, and Skip Functions
+========================================================================================================================
+
+
+Indexes
+========================================================================================================================
+>db.indexes.find()                                 (show indexes)
+>db.<COLLECTION>.getIndexes()                      (show indexes in a specific location)
+>db.<COLLECTION>.ensureIndex()                     (used to add a custom index)
+>>db.<COLLECTION>.find().pretty()                  (same as above, but displays name in pretty format)
+
+Show Commands
+========================================================================================================================
 >show dbs                                           (shows the names of the available databases) 
 >show collections                                   (shows the collections in the current database)
 >show users                                         (shows the users in the current database) 
 
-
+Update, Create, Delete Commands
+========================================================================================================================
 >use <DB_NAM>                                       (Use/Create new database if it does not exist)
 >db.dropDatabase()                                  (drop database, switch to it first)
 >document = ({"":""})                               (create a doc) 
->db.<COLLECTION_NAME>.insert(document)              (insert a doc into a collection)
->db.<COLLECTION_NAME>.insert({"name":"my test doc"})       (create document in db, creates a collection aswell)
+>db.<COLLECTION>.insert(document)              (insert a doc into a collection)
+>db.<COLLECTION>.insert({"name":"my test doc"})       (create document in db, creates a collection aswell)
 >db.createCollection(name, options)                 (create a collection)
->db.<COLLECTION_NAME>.drop()                        (drop collection)
->db.<COLLECTION_NAME>.find()                        (query a document from MongoDB collection) 
->>db.<COLLECTION_NAME>.find().pretty()              (same as above, but displays name in pretty format)
+>db.<COLLECTION>.drop()                        (drop collection)
 
 
 
-Indexes
-======================================================
->db.indexes.find()                                 (show indexes)
->db.<COLLECTION>.getIndexes()                      (show indexes in a specific location)
->db.<COLLECTION>.ensureIndex()                     (used to add a custom index)
+
 
 
 

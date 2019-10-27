@@ -10,7 +10,9 @@ Desc: Some useful MongoDB commands
 
 >use <DB_NAM>                                       (Use/Create new database if it does not exist)
 >db.dropDatabase()                                  (drop database, switch to it first)
->db.<DOCUMENT>.insert({"name":"my test doc"})       (create document in db, creates a collection aswell)
+>document = ({"":""})                               (create a doc) 
+>db.<COLLECTION_NAME>.insert(document)              (insert a doc into a collection)
+>db.<COLLECTION_NAME>.insert({"name":"my test doc"})       (create document in db, creates a collection aswell)
 >db.createCollection(name, options)                 (create a collection)
 >db.<COLLECTION_NAME>.drop()                        (drop collection)
 >db.<COLLECTION_NAME>.find()                        (query a document from MongoDB collection) 

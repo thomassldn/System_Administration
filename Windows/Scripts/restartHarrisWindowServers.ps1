@@ -1,6 +1,6 @@
 #Author:Thomas S, ATS
 #Date:Oct 31, 2019
-#Desc: This power shell restarts Harris' Window Servers ( "sbqep1", "sbqep2", "sbqmc1", "sbqmc2")
+#Desc: This power shell script restarts Harris' Window Servers ( "sbqep1", "sbqep2", "sbqmc1", "sbqmc2", and "sbqima")
 #
 
 #Restart the "sbqep1", "sbqep2", "sbqmc1", "sbqmc2" servers forcefully. These servers are currently not being used, so 

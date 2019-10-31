@@ -35,6 +35,9 @@ PowerShell
 >(Get-WmiObject Win32_ComputerSystem).Domain                                                (display domain)
 >(Get-WmiObject Win32_ComputerSystem).name                                                  (get computer name)
 >Get-VM | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName,IPAddresses  (display all hyper-v VM's IP addresses)
+>systeminfo | find "System Boot Time"                                                       (get uptime) 
+
+
 
 Roles and Features (PowerShell)
 ==================================================================================================

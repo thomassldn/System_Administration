@@ -10,7 +10,7 @@ Restart-Computer -ComputerName "sbqep1", "sbqep2", "sbqmc1", "sbqmc2" -Force
 #After restarting the above servers, sleep for 15 seconds before restartign this server. 
 Start-Sleep -s 15
 
-#When this command is executed, you will get logged off this server, and it will reboot. 
+#When this command is executed, you will be logged off, and this server will reboot. 
 Restart-Computer -ComputerName "sbqima" -Force 
 
 #End

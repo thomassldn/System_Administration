@@ -39,7 +39,7 @@ File Management
 #find / -type f -name "*.zip" -size +1M
 #locate                                     (find files by name)
 #stat                 (display file or filesystem status)
-
+#for i in `ls *.exception` ; do mv $i ${i%.exception} ; done                                   (remove ".exception" from all files in a directory)
 
 Firewalld
 ==================================================================================================

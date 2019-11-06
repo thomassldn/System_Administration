@@ -118,6 +118,9 @@ Networking
 #mtr                                                    (Route packages)
 #traceroute                                             (Route packages)
 #dig
+#traceroute -w 3 -q 1 -m 16 securelink.quadramed.com
+
+
 
 NTP / Chrony
 ===================================================================================================

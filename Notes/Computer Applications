@@ -107,6 +107,15 @@ Rufus              (Windows)
 CloneZilla
 Macrium Reflect    (Windows, works great!)
 
+Editors
+========================
+Notepad++
+Sublime
+Atom
+vi/vim
+Nano
+Notepad
+
 Exploitation Tools
 ========================
 Burp Suit Pro
@@ -228,6 +237,14 @@ Gitrob
 Masscan
 SpiderFoot
 WMAP
+
+Remote Desktop/Terminal 
+=======================
+Terminals 
+Putty
+Solar Winds Putty
+MobaXterm (Windows)
+Terminator 
 
 Remote Desktop Sharing
 =======================

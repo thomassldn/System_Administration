@@ -11,3 +11,4 @@ CPR>d $SYSTEM.OBJ.Load("/qmd/cpr/sw/%z.stream")                       (import a 
 %SYS>w $SYSTEM.Mirror.GetInfo()
 %SYS>w $SYSTEM.Mirror.ArbiterState()
 %SYS>zw ^MIRROR 
+USER>w $ZV                                                             (view Cache Version)

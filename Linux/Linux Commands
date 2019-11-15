@@ -1,6 +1,7 @@
 General Linux Commands
 ================================================================================================
 #PS1="\@ :\w \$ "                                                                        (08:44 PM :~/Desktop/iOS Projects $)
+#PS1="\e[0;31mPRODUCTION\e[m:\h \W]$ "                                                   (PRODUCTION:<hostname> ~$ ) - PRODUCTION is RED)
 #<command> | sed 's/$/<br>/'                                                             (replace the output of a command end of file characters with <br> to create html report; <pre> bracket could also be used for html report)
 #virt-what                                                                               (view what hyper-visor vm is currently running on)
 

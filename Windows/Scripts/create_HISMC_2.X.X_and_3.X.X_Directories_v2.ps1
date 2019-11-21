@@ -1,3 +1,10 @@
+<#
+Date: 20 Nov 2019
+Author(s): ATS 
+Desc: This powershell script creates the HISMC v 2.X.X and 3.X.X required directories. 
+#>
+
+
 #Create required HISMC V3.X.X directories
 #SQLENGHH Directories 
 New-Item -Path "E:\" -Name "Harris" -ItemType "directory"

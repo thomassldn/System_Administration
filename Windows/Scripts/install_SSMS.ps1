@@ -4,6 +4,7 @@
 #
 
 #Folder where SSMS installer will be downloaded and ran in 
+#Change the ssmsPath below or script will not work
 $ssmsPath="C:\Scripts\SQLInstallationMedia" 
 
 #SSMS executable 

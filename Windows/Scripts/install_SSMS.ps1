@@ -1,10 +1,10 @@
-#Author(s):Thomas S, ATS
+#Author:Thomas S, ATS
 #Date: 22 Nov 2019
 #Desc: This power shell script downloads SSMS and installs it 
 #
+
 #Folder where SSMS installer will be downloaded and ran in 
-#Modify ssmsPath below or script will not work
-$ssmsPath="C:\Users\qmsupport\Downloads\HISMC_Installation_Files" 
+$ssmsPath="C:\Scripts\SQLInstallationMedia" 
 
 #SSMS executable 
 $ssmsExecutable="$ssmsPath\SSMS-Setup-ENU.exe"
@@ -32,5 +32,4 @@ $args = $installationParameters.Split(" ")
 
 #Execute SSMS Executeable and pass above arguments
 & "$ssmsExecutable" $args 
-
 Write-Host "`nSSMS installation complete!" -ForegroundColor Green

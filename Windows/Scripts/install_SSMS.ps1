@@ -1,4 +1,4 @@
-#Author:Thomas S, ATS
+#Author(s):Thomas S, ATS
 #Date: 22 Nov 2019
 #Desc: This power shell script downloads SSMS and installs it 
 #

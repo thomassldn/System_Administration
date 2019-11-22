@@ -4,7 +4,7 @@ General Commands
 >Restart-Computer                                   (restart computer) 
 >dism.exe /online /enable-feature /featurename:NetFX4 /All /Source:c:\temp\sxs /LimitAccess (enable .NET Framework)
 PS C:\Scripts\SQLEXPR_x64_ENU> .\SETUP.EXE /ACTION=INSTALL /UIMODE=Normal                   (create configuration file out of SQL Express)
-
+>net user <domain_username> /domain                 (view user domain information)
 Group Policies
 =================================================================================================
 >gpupdate /force                                     (update group policies)

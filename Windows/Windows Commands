@@ -3,6 +3,7 @@ General Commands
 >Get-Command -Type Cmdlet                           (Display all PowerShell Commands)
 >Restart-Computer                                   (restart computer) 
 >dism.exe /online /enable-feature /featurename:NetFX4 /All /Source:c:\temp\sxs /LimitAccess (enable .NET Framework)
+PS C:\Scripts\SQLEXPR_x64_ENU> .\SETUP.EXE /ACTION=INSTALL /UIMODE=Normal                   (create configuration file out of SQL Express)
 
 Group Policies
 =================================================================================================

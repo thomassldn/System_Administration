@@ -78,7 +78,7 @@ File System Management
 #lsvg -p <volume_grou>                                                (view disks in a volume group)
 #lslv -l <lv>                                                         (list all physical Volumes in a LV)
 #powermt display dev=all | more
-
+#chvg –g <VG>                                                         (add new space in LUN and see it in UNIX)
 
 Journaling 
 ==================================================================================================

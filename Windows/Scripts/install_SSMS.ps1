@@ -32,4 +32,5 @@ $args = $installationParameters.Split(" ")
 
 #Execute SSMS Executeable and pass above arguments
 & "$ssmsExecutable" $args 
+
 Write-Host "`nSSMS installation complete!" -ForegroundColor Green

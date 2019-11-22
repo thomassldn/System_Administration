@@ -17,7 +17,7 @@ If (!(Test-Path $ssmsExecutable)){
     $URL = "https://aka.ms/ssmsfullsetup"
 
     $webClient = New-Object System.Net.WebClient
-    $webClient.DownloadFile($url,$ssmsExecutable)
+    $webClient.DownloadFile($URL,$ssmsExecutable)
 
     Write-Host "`nSSMS 18.4 installer download complete ..." -ForegroundColor Green
 

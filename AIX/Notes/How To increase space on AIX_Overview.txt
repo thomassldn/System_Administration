@@ -2,8 +2,8 @@ If you cannot increase a LUN, chvg -g, and then increase a filesystem due to SAN
 
 1)	Freeze Veritas.
 2)	Add new LUNs in SAN and introduce to both servers.
-3)	Extendvg. Takes 5 seconds.
-4)	Chfs the file system to grow. Takes 40 seconds.
+3)	Extendvg. Takes 5 seconds. (chvg -g)
+4)	Chfs the file system to grow. Takes 40 seconds. (chfs -a size=+100G /filesystem)
 5)	Stop QCPR.
 6)	Stop Cache.
 7)	Unmount FS.

@@ -81,23 +81,32 @@ File System Management
 #chvg –g <VG>                                                         (add new space in LUN and see it in UNIX)
 
 Journaling 
-==================================================================================================
+============================================================================================================================
 #for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done                 (list all journals between this date)
 #for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; yes | rm $i; done    (remove all journals between this date)
 
 Networking
-==================================================================================================
+============================================================================================================================
 #ifconfig -a                                                                 (show network interface configuration)
 #prtconf                                                                     (partition Info)
 #cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
 #netstat -na | grep <port>                                                   (check if a port is being used)
 
+SAN Related Commands
+============================================================================================================================
+#for i in {47..66};do powermt display dev=hdiskpower$i;done                  (Display hdiskpower info) 
+#lsattr -El hdisk128                                                         (Displays attribute characteristics and possible values of attributes for devices in the system.)
+#lsvg -p qcprdatavg                                                          (view disks associated with a VG)
+#getconf DISK_SIZE /dev/hdisk4                                               (View Disk size in AIX) 
+#varyoffvg qcprbackupvg                                                      (Varryoff a VG)
+varyonvg qcprbackupvg                                                        (Varyon a VG) 
+
 Troubleshooting
-==================================================================================================
+============================================================================================================================
 #errpt -a                                                                    (generates a report of log files)
 
 Veritas Cluster Manager 
-=================================================================================================
+============================================================================================================================
 #/var/VRTSvcs:# which hastatus
  /opt/VRTSvcs/bin/hastatus
 # hagrp -freeze qcpr_LIVE -persistent

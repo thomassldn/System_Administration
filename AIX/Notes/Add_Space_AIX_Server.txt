@@ -1,0 +1,83 @@
+#Add space to an AIX server (SAN)
+
+UHN-DD-EPR-010D <root>:/:# lsvg qcprbackupvg
+VOLUME GROUP:       qcprbackupvg             VG IDENTIFIER:  00f910ee00004c0000000145bfc0e5c7
+VG STATE:           active                   PP SIZE:        1024 megabyte(s)
+VG PERMISSION:      read/write               TOTAL PPs:      98 (100352 megabytes)
+MAX LVs:            256                      FREE PPs:       2 (2048 megabytes)
+LVs:                2                        USED PPs:       96 (98304 megabytes)
+OPEN LVs:           2                        QUORUM:         2 (Enabled)
+TOTAL PVs:          2                        VG DESCRIPTORS: 3
+STALE PVs:          0                        STALE PPs:      0
+ACTIVE PVs:         2                        AUTO ON:        yes
+MAX PPs per VG:     32512
+MAX PPs per PV:     1016                     MAX PVs:        32
+LTG size (Dynamic): 512 kilobyte(s)          AUTO SYNC:      no
+HOT SPARE:          no                       BB POLICY:      relocatable
+PV RESTRICTION:     none                     INFINITE RETRY: no
+DISK BLOCK SIZE:    512                      CRITICAL VG:    no
+FS SYNC OPTION:     no
+UHN-DD-EPR-010D <root>:/:# lspv | grep qcprbackupvg
+hdisk5          00f910eeb481aaf7                    qcprbackupvg    active
+hdisk6          00f910eeb481af28                    qcprbackupvg    active
+
+
+UHN-DD-EPR-010D <root>:/:# for i in hdisk5 hdisk6
+> do
+> getconf DISK_SIZE /dev/$i
+> done
+51200
+51200
+
+
+UHN-DD-EPR-010D <root>:/:# lsvg -l qcprbackupvg
+qcprbackupvg:
+LV NAME             TYPE       LPs     PPs     PVs  LV STATE      MOUNT POINT
+bklv                jfs2       95      95      2    open/syncd    /qcpr_backup
+loglv02             jfs2log    1       1       1    open/syncd    N/A
+UHN-DD-EPR-010D <root>:/:# df -g /qcpr_backup
+Filesystem    GB blocks      Free %Used    Iused %Iused Mounted on
+/dev/bklv         95.00     53.79   44%    16196     1% /qcpr_backup
+
+After expansion
+==================================================
+
+UHN-DD-EPR-010D <root>:/:# for i in 5 6
+> do
+> getconf DISK_SIZE /dev/hdisk$i
+> done
+61440
+61440
+
+UHN-DD-EPR-010D <root>:/:# chvg -g qcprbackupvg
+
+UHN-DD-EPR-010D <root>:/:# lsvg qcprbackupvg
+VOLUME GROUP:       qcprbackupvg             VG IDENTIFIER:  00f910ee00004c0000000145bfc0e5c7
+VG STATE:           active                   PP SIZE:        1024 megabyte(s)
+VG PERMISSION:      read/write               TOTAL PPs:      118 (120832 megabytes)
+MAX LVs:            256                      FREE PPs:       22 (22528 megabytes)
+LVs:                2                        USED PPs:       96 (98304 megabytes)
+OPEN LVs:           2                        QUORUM:         2 (Enabled)
+TOTAL PVs:          2                        VG DESCRIPTORS: 3
+STALE PVs:          0                        STALE PPs:      0
+ACTIVE PVs:         2                        AUTO ON:        yes
+MAX PPs per VG:     32512
+MAX PPs per PV:     1016                     MAX PVs:        32
+LTG size (Dynamic): 512 kilobyte(s)          AUTO SYNC:      no
+HOT SPARE:          no                       BB POLICY:      relocatable
+PV RESTRICTION:     none                     INFINITE RETRY: no
+DISK BLOCK SIZE:    512                      CRITICAL VG:    no
+FS SYNC OPTION:     no
+
+UHN-DD-EPR-010D <root>:/:# chfs -a size=+10G /qcpr_backup
+Filesystem size changed to 220200960
+UHN-DD-EPR-010D <root>:/:# df -g /qcpr_backup
+Filesystem    GB blocks      Free %Used    Iused %Iused Mounted on
+/dev/bklv        105.00     63.79   40%    16196     1% /qcpr_backup
+
+UHN-DD-EPR-010D <root>:/:# lsvg -l qcprbackupvg
+qcprbackupvg:
+LV NAME             TYPE       LPs     PPs     PVs  LV STATE      MOUNT POINT
+bklv                jfs2       105     105     2    open/syncd    /qcpr_backup
+loglv02             jfs2log    1       1       1    open/syncd    N/A
+UHN-DD-EPR-010D <root>:/:#

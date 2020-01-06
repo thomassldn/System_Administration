@@ -1,0 +1,115 @@
+####################################################
+#               DB Group                           #
+####################################################
+[root@sbqpm1g1 ~]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/rhel-root             45G   12G   33G  27% /
+devtmpfs                          16G     0   16G   0% /dev
+tmpfs                             16G  2.6M   16G   1% /dev/shm
+tmpfs                             16G  1.7G   15G  11% /run
+tmpfs                             16G     0   16G   0% /sys/fs/cgroup
+/dev/mapper/qcprbackupvg-bklv   1000G  329G  671G  33% /qcpr_backup
+/dev/mapper/customervg-custlv     24G   11G   14G  42% /customer
+/dev/mapper/qmdvg-qmdlv         1014M  432M  583M  43% /qmd
+/dev/mapper/qcprsfilevg-qcprlv  1014M   33M  982M   4% /qmd/cpr/ucd/SHCPRD1
+/dev/mapper/tpapiswvg-hlilv      2.0G   33M  2.0G   2% /qmd/cpr/hli
+/dev/mapper/qcprswvg-swlv         30G   20G   11G  66% /qmd/cpr/sw
+/dev/mapper/tpapiswvg-dkvlv      4.0G   33M  4.0G   1% /qmd/cpr/dkv
+/dev/mapper/tpapiswvg-jdklv      2.0G   33M  2.0G   2% /qmd/cpr/jdk
+/dev/mapper/tpapiswvg-apchlv    1014M   88M  927M   9% /qmd/apache
+/dev/mapper/qmdvg-corelv          18G   33M   18G   1% /qmd/core_files
+/dev/mapper/qcprsystemvg-qliblv  2.0G   44M  2.0G   3% /qmd/cpr/ucd/SHCPRD1/dbase/qmdlib
+/dev/mapper/qcprswvg-weblv      1014M   33M  982M   4% /qmd/web
+/dev/mapper/qcprdatavg-rtnblv     32G  8.9G   24G  28% /qmd/cpr/ucd/SHCPRD1/dbase/routineB
+/dev/mapper/qcprsystemvg-tchlv   8.0G   64M  8.0G   1% /qmd/cpr/ucd/SHCPRD1/dbase/tcache
+/dev/mapper/qcprdatavg-sysblv   1014M  137M  878M  14% /qmd/cpr/ucd/SHCPRD1/dbase/cprsysb
+/dev/mapper/tpdatavg-dkvwlv      2.0G   34M  2.0G   2% /qmd/cpr/ucd/SHCPRD1/dbase/dkvwk
+/dev/mapper/qcprdatavg-rtnalv     32G  8.2G   24G  26% /qmd/cpr/ucd/SHCPRD1/dbase/routineA
+/dev/mapper/cprhsvg-cprhslv      3.0G  188M  2.9G   7% /qmd/cpr/ucd/SHCPRD1/dbase/cprhs
+/dev/mapper/qcprdatavg-scollv    125G  6.8G  119G   6% /qmd/cpr/ucd/SHCPRD1/dbase/cprstdcol
+/dev/mapper/qcprdatavg-cprlv     125G   37G   89G  30% /qmd/cpr/ucd/SHCPRD1/dbase/cpr
+/dev/mapper/tpdatavg-cmvlv       3.0G   34M  3.0G   2% /qmd/cpr/ucd/SHCPRD1/dbase/cmv
+/dev/mapper/qcprdatavg-syslv    1014M  121M  894M  12% /qmd/cpr/ucd/SHCPRD1/dbase/cprsys
+/dev/mapper/qcprdatavg-kslv       17G  1.5G   16G   9% /qmd/cpr/ucd/SHCPRD1/dbase/keystore
+/dev/mapper/qcprsfilevg-etclv   1014M   55M  960M   6% /qmd/cpr/ucd/SHCPRD1/qcprETC
+/dev/mapper/qcprsfilevg-csplv   1014M   35M  980M   4% /qmd/cpr/ucd/SHCPRD1/qcprCSP
+/dev/mapper/qcprsystemvg-errlv  1014M   44M  971M   5% /qmd/cpr/ucd/SHCPRD1/dbase/error
+/dev/mapper/qcprsfilevg-sfillv    14G  8.7G  5.4G  62% /qmd/cpr/ucd/SHCPRD1/sfiles
+/dev/sda1                        497M  230M  268M  47% /boot
+/dev/mapper/qcprsystemvg-nojlv    16G  104M   16G   1% /qmd/cpr/ucd/SHCPRD1/dbase/nojo
+/dev/mapper/cachevg-cchlv       1014M  467M  548M  47% /qmd/cache_shcprd_1
+/dev/mapper/qcprsystemvg-dojlv    11G   94M   11G   1% /qmd/cpr/ucd/SHCPRD1/dbase/dojo
+/dev/mapper/cachevg-binlv       1014M  345M  670M  34% /qmd/cache_shcprd_1/bin
+/dev/mapper/cachevg-mgrlv        2.0G  390M  1.7G  20% /qmd/cache_shcprd_1/mgr
+/dev/mapper/ensvg-ensdemolv     1014M   86M  929M   9% /qmd/cache_shcprd_1/mgr/ensdemo
+/dev/mapper/cachedatavg-cuserlv 1014M   44M  971M   5% /qmd/cache_shcprd_1/mgr/user
+/dev/mapper/cachedatavg-ctmplv    32G   38M   32G   1% /qmd/cache_shcprd_1/mgr/cachetemp
+/dev/mapper/hsvg-hssyslv        1014M   35M  980M   4% /qmd/cache_shcprd_1/mgr/hssys
+/dev/mapper/cachejrnlvg-jrnlv    248G  5.1G  243G   3% /qmd/cache_shcprd_1/mgr/journal
+/dev/mapper/ensvg-ensliblv      1014M  393M  622M  39% /qmd/cache_shcprd_1/mgr/enslib
+/dev/mapper/cachewijvg-wijlv      16G  2.3G   14G  15% /qmd/cache_shcprd_1/mgr/wij
+/dev/mapper/ensvg-mprliblv      1014M   64M  951M   7% /qmd/cache_shcprd_1/mgr/mprllib
+/dev/mapper/hsvg-hslliblv        2.0G  859M  1.2G  43% /qmd/cache_shcprd_1/mgr/hslib
+/dev/mapper/cachedatavg-caudlv   2.0G  1.2G  880M  57% /qmd/cache_shcprd_1/mgr/cacheaudit
+/dev/mapper/cachedatavg-cachelv 1014M   44M  971M   5% /qmd/cache_shcprd_1/mgr/cache
+/dev/mapper/cachedatavg-csmplv  1014M  124M  891M  13% /qmd/cache_shcprd_1/mgr/samples
+/dev/mapper/cachedatavg-cliblv  1014M  539M  476M  54% /qmd/cache_shcprd_1/mgr/cachelib
+/dev/mapper/cachedatavg-cdoclv  1014M  215M  800M  22% /qmd/cache_shcprd_1/mgr/docbook
+/dev/mapper/cachevg-bkplv       1014M  169M  846M  17% /qmd/cache_shcprd_1/mgr/Backup
+/dev/mapper/ensvg-enslv         1014M   45M  970M   5% /qmd/cache_shcprd_1/mgr/ensemble
+tmpfs                            3.2G  4.0K  3.2G   1% /run/user/42
+tmpfs                            3.2G   44K  3.2G   1% /run/user/1000
+tmpfs                            3.2G     0  3.2G   0% /run/user/0
+[root@sbqpm1g1 ~]#
+
+
+
+
+
+####################################################
+#                APP Group                         #
+####################################################
+[root@sbqpapg4 ~]# df -h
+Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/rhel-root             45G  2.5G   43G   6% /
+devtmpfs                          12G     0   12G   0% /dev
+tmpfs                             12G  496K   12G   1% /dev/shm
+tmpfs                             12G  1.2G   11G  11% /run
+tmpfs                             12G     0   12G   0% /sys/fs/cgroup
+/dev/sda1                        497M  212M  286M  43% /boot
+/dev/mapper/qmdvg-qmdlv         1014M  149M  866M  15% /qmd
+/dev/mapper/qmdvg-corelv         3.0G   33M  3.0G   2% /qmd/core_files
+/dev/mapper/tpapiswvg-apchlv    1014M   33M  982M   4% /qmd/apache
+/dev/mapper/tpapiswvg-dkvlv      4.0G   33M  4.0G   1% /qmd/cpr/dkv
+/dev/mapper/cachevg-cchlv       1014M  464M  551M  46% /qmd/cache_shcprd_4
+/dev/mapper/cachevg-binlv       1014M  342M  673M  34% /qmd/cache_shcprd_4/bin
+/dev/mapper/cachevg-mgrlv        2.0G  251M  1.8G  13% /qmd/cache_shcprd_4/mgr
+/dev/mapper/cachevg-bkplv       1014M   33M  982M   4% /qmd/cache_shcprd_4/mgr/Backup
+/dev/mapper/cachewijvg-wijlv     3.0G   83M  3.0G   3% /qmd/cache_shcprd_4/mgr/wij
+/dev/mapper/cachejrnlvg-jrnlv    8.0G  813M  7.2G  10% /qmd/cache_shcprd_4/mgr/journal
+/dev/mapper/qcprsfilevg-qcprlv  1014M   33M  982M   4% /qmd/cpr/ucd/SHCPRD4
+/dev/mapper/qcprsfilevg-sfillv   6.0G  1.1G  5.0G  17% /qmd/cpr/ucd/SHCPRD4/sfiles
+/dev/mapper/qcprsfilevg-csplv   1014M   33M  982M   4% /qmd/cpr/ucd/SHCPRD4/qcprCSP
+/dev/mapper/qcprsfilevg-etclv   1014M   33M  982M   4% /qmd/cpr/ucd/SHCPRD4/qcprETC
+/dev/mapper/cachedatavg-cachelv 1014M   34M  981M   4% /qmd/cache_shcprd_4/mgr/cache
+/dev/mapper/cachedatavg-caudlv  1014M  237M  778M  24% /qmd/cache_shcprd_4/mgr/cacheaudit
+/dev/mapper/cachedatavg-cliblv  1014M  539M  476M  54% /qmd/cache_shcprd_4/mgr/cachelib
+/dev/mapper/cachedatavg-ctmplv    10G   36M   10G   1% /qmd/cache_shcprd_4/mgr/cachetemp
+/dev/mapper/cachedatavg-cdoclv  1014M  215M  800M  22% /qmd/cache_shcprd_4/mgr/docbook
+/dev/mapper/cachedatavg-csmplv  1014M  124M  891M  13% /qmd/cache_shcprd_4/mgr/samples
+/dev/mapper/cachedatavg-cuserlv 1014M   44M  971M   5% /qmd/cache_shcprd_4/mgr/user
+/dev/mapper/ensvg-ensdemolv     1014M   86M  929M   9% /qmd/cache_shcprd_4/mgr/ensdemo
+/dev/mapper/ensvg-enslv         1014M   45M  970M   5% /qmd/cache_shcprd_4/mgr/ensemble
+/dev/mapper/ensvg-ensliblv      1014M  393M  622M  39% /qmd/cache_shcprd_4/mgr/enslib
+/dev/mapper/ensvg-mprliblv      1014M   64M  951M   7% /qmd/cache_shcprd_4/mgr/mprllib
+/dev/mapper/hsvg-hslliblv        2.0G  859M  1.2G  43% /qmd/cache_shcprd_4/mgr/hslib
+/dev/mapper/hsvg-hssyslv        1014M   35M  980M   4% /qmd/cache_shcprd_4/mgr/hssys
+/dev/mapper/qcprsystemvg-tchlv   4.0G   44M  4.0G   2% /qmd/cpr/ucd/SHCPRD4/dbase/tcache
+tmpfs                            2.4G     0  2.4G   0% /run/user/52002
+sbqpmdb:/qcpr_backup            1000G  329G  671G  33% /qcpr_backup
+sbqpmdb:/customer                 24G   11G   14G  42% /customer
+sbqpmdb:/qmd/cpr/sw               30G   20G   11G  66% /qmd/cpr/sw
+sbqpmdb:/qmd/web                1014M   32M  982M   4% /qmd/web
+tmpfs                            2.4G     0  2.4G   0% /run/user/1000
+tmpfs                            2.4G     0  2.4G   0% /run/user/0
+[root@sbqpapg4 ~]# 

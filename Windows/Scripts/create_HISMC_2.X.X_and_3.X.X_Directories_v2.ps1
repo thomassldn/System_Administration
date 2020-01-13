@@ -5,7 +5,26 @@ Desc: This powershell script creates the HISMC v 2.X.X and 3.X.X required direct
 #>
 
 
-#Create required HISMC V3.X.X directories
+#################################################################################
+#			Create HISMC V 2.X.X & 3.X.X Required Directories                   #
+#################################################################################
+
+#Ask user to enter the Site name, Will be used to create the required directories 
+$siteName = Read-Host -Prompt "`nEnter <SITE><DOMAIN> Name (Ex: AOMDEV or AOMPROD)"
+Write-Host "`nThe site name is '$siteName'.`n"
+
+#Check if GDD is enabled 
+$gddEnabled = Read-Host -Prompt "`nIs GDD Enabled? [y/n]"
+
+#Dont let user enter an invalid option
+While ( ($gddEnabled -ne "y") -AND ($gddEnabled -ne "n") ){
+
+    $gddEnabled = Read-Host -Prompt "Invalid Entry. `n`nIs GDD Enabled? [y/n]"
+
+} 
+
+
+#Create required HISMC V2.X.X & 3.X.X directories
 #SQLENGHH Directories 
 New-Item -Path "E:\" -Name "Harris" -ItemType "directory"
 New-Item -Path "E:\" -Name "Harris\SQLENGHH" -ItemType "directory"
@@ -40,31 +59,32 @@ New-Item -Path "L:\" -Name "Harris\HISMCDB\Logs" -ItemType "directory"
 
 #Wolters Kluwer Medi-Span Clinicals Application Files 
 New-Item -Path "E:\" -Name "Harris\WKAPI" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\WKAPI\PIMPROD\live" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\WKAPI\PIMPROD\previous" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\WKAPI\PIMPROD\staging" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\WKAPI\$siteName\live" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\WKAPI\$siteName\previous" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\WKAPI\$siteName\staging" -ItemType "directory"
 
 #Wolters Kluwer Medi-Span Clinicals Data Files 
 New-Item -Path "E:\" -Name "Harris\WKDATA" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\WKDATA\PIMPROD\live" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\WKDATA\PIMPROD\previous" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\WKDATA\PIMPROD\staging" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\WKDATA\PIMPROD\Leaflets" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\WKDATA\$siteName\live" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\WKDATA\$siteName\previous" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\WKDATA\$siteName\staging" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\WKDATA\$siteName\Leaflets" -ItemType "directory"
 
 #MEDFILEAPP Directories 
 New-Item -Path "E:\" -Name "Harris\MEDFILEAPP" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\MEDFILEAPP\PIMPROD\live" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\MEDFILEAPP\PIMPROD\previous" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\MEDFILEAPP\PIMPROD\staging" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\MEDFILEAPP\$siteName\live" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\MEDFILEAPP\$siteName\previous" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\MEDFILEAPP\$siteName\staging" -ItemType "directory"
 
 #MEDFILEDATA Directories 
 New-Item -Path "E:\" -Name "Harris\MEDFILEDATA" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\MEDFILEDATA\PIMPROD\live" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\MEDFILEDATA\PIMPROD\previous" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\MEDFILEDATA\PIMPROD\staging" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\MEDFILEDATA\$siteName\live" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\MEDFILEDATA\$siteName\previous" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\MEDFILEDATA\$siteName\staging" -ItemType "directory"
 
 #HISMC Directories 
 New-Item -Path "E:\" -Name "Harris\HISMC" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\HISMC\PIMPROD\live" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\HISMC\PIMPROD\previous" -ItemType "directory"
-New-Item -Path "E:\" -Name "Harris\HISMC\PIMPROD\staging" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\HISMC\$siteName\live" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\HISMC\$siteName\previous" -ItemType "directory"
+New-Item -Path "E:\" -Name "Harris\HISMC\$siteName\staging" -ItemType "directory"
+

@@ -1,11 +1,6 @@
 #!/bin/sh
-
-# Free Database Space Script
-# by Jimmy Chen (QuadraMed ATS)
-# 02/29/2012 v04
-
 # Distribution list
-email_addr=anthony.hernandez@quadramed.com
+email_addr=z@quadramed.com
 
 sitename=Arnot
 

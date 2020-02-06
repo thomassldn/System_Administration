@@ -10,3 +10,7 @@ These quick notes demonstrate how to install and configure vsftpd
 #netstat -ntl | grep 21 
 
 [4] Create an FTP user and verify access. 
+
+
+
+

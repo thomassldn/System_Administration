@@ -19,3 +19,12 @@ ftpuser:x:502:502::/home/ftp/ftuser/:/dev/null
 
 To this: 
 ftpuser:x:502:502::/home/ftp/./ftpuser/:/dev/null
+
+
+
+
+
+
+
+
+

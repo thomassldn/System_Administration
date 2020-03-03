@@ -91,7 +91,7 @@ Networking
 #prtconf                                                                     (partition Info)
 #cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
 #netstat -na | grep <port>                                                   (check if a port is being used)
-
+#lsdev -CH | grep en                                                         (view interfaces)
 SAN Related Commands
 ============================================================================================================================
 #for i in {47..66};do powermt display dev=hdiskpower$i;done                  (Display hdiskpower info) 

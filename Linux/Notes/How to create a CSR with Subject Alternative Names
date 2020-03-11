@@ -1,0 +1,45 @@
+#Date: 11 March 2020
+#These notes show how to create a CSR that contains Subject Alernative Names
+
+1: Creat the following configuration file
+Ex) something.domain.cnf
+
+# cat something.domain.cnf
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+C = CA
+ST = Ontario
+L = Toronto
+O = Sunnybrook Health Sciences Centre
+emailAddress = email@domain.com
+CN = server1.domain.com
+
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = server1.domain.com
+DNS.2 = server2.domain.com
+DNS.3 = server3.domain.com
+DNS.4 = server4.domain.com
+
+Note: Make sure there are no whitespaces at the end of the lines.
+
+2) Run the following command to create the csr and key
+
+#openssl req -new -out something.domain.csr -newkey rsa:2048 -nodes -sha256 -keyout something.domain.key -config something.domain.cnf
+
+3) Verify the SAN names appear on the CSR: 
+
+# openssl req -text -noout -verify -in something.domain.csr
+
+
+
+
+
+
+

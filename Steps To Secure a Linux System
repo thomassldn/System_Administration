@@ -8,4 +8,6 @@
 8) Run different network services on seperate systems
 9) Configure security tools to improve system robustness (zone-based firewalls, SELinux, log analysis)
 10) Use the principle of least privilage 
+11) Create Script to update System
+12) Enable an Intrusion Detection System 
 

@@ -1,4 +1,4 @@
-Error: 
+These notes help resolve the following error message: 
 
 12:33:49.248 ERROR FILEIMPORT: OpenMed Manager: Error: Failed to import file /export/home/ati/fileimport/FETCHIARNT0105182282objd.SEM:OpenMed Manager: Error: FileImportJob.importData(): OpenMed Manager: Error: FileImportJob.updatePatient():OpenMed Manager: Error: OMM Database: DBPatient.imp;ortFile(): Can't allocate space for object 'normalized_patients' in database 'us' because 'default' segment is full/has no free extents. If you ran out of space in syslogs, dump the transaction log. Otherwise, use ALTER DATABASE to increase the size of the segment.
 

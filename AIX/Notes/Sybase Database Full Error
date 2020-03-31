@@ -1,0 +1,87 @@
+Error: 
+
+12:33:49.248 ERROR FILEIMPORT: OpenMed Manager: Error: Failed to import file /export/home/ati/fileimport/FETCHIARNT0105182282objd.SEM:OpenMed Manager: Error: FileImportJob.importData(): OpenMed Manager: Error: FileImportJob.updatePatient():OpenMed Manager: Error: OMM Database: DBPatient.imp;ortFile(): Can't allocate space for object 'normalized_patients' in database 'us' because 'default' segment is full/has no free extents. If you ran out of space in syslogs, dump the transaction log. Otherwise, use ALTER DATABASE to increase the size of the segment.
+
+
+
+
+
+To fix the above error, log on to the Media Manager server with the ati user and run the following command to view the omm log: 
+
+ash-4.2$ which ommlog
+/export/home/ati/bin/ommlog
+
+
+
+-bash-4.2$ ommlog
+11:18:32.398 ERROR FILEIMPORT: OpenMed Manager: Error: Failed to import file /export/home/ati/fileimport/FETCHIARNT0105182266objd.SEM:OpenMed Manager: Error: FileImportJob.importData(): OpenMed Manager: Error: FileImportJob.updatePatient():OpenMed Manager: Error: OMM Database: DBPatient.imp;ortFile(): Can't allocate space for object 'normalized_patients' in database 'us' because 'default' segment is full/has no free extents. If you ran out of space in syslogs, dump the transaction log. Otherwise, use ALTER DATABASE to increase the size of the segment.
+
+
+
+ In the above log, notice that we see the "Can't allocate space for object 'normalized_patients' in database 'us' because 'default' segment is full/has no free extents. If you ran out of space in syslogs, dump the transaction log. Otherwise, use ALTER DATABASE to increase the size of the segment." error message.  In order to resolve this, the sybase log has to be truncated or space needs to be added if the truncation of the logs is not enough. 
+
+Log on to the sybase database by running the following two commands:
+-bash-4.2$ ps -ef | grep RUN
+sybadmin 5046468 1 0 Sep 25 - 0:00 /bin/sh /export/home/sybadmin/ASE-16_0/install/RUN_AOM05
+sybadmin 6422738 1 0 Sep 25 - 0:00 /bin/sh /export/home/sybadmin/ASE-16_0/install/RUN_AOM05_BS
+
+ 
+
+-bash-4.2$ isql64 -U sa -P allpriv -S AOM05
+1>
+
+
+Note:  AOM05 will be different for every client site.
+
+Add a new device to the database "us"
+-bash-4.2$ isql64 -U sa -P allpriv -S AOM05
+1> disk init
+2> name="dev_dbrus2",physname="/sybase_data/dev_dbrus2.dat",size=1000000
+3> go
+1> alter database us on dev_dbrus2=1953
+2> go
+Extending database by 499968 pages (1953.0 megabytes) on disk dev_dbrus2
+Processed 196 allocation unit(s) out of 1953 units (allocation page 2190848).
+10% completed.
+Processed 391 allocation unit(s) out of 1953 units (allocation page 2240768).
+20% completed.
+Processed 586 allocation unit(s) out of 1953 units (allocation page 2290688).
+30% completed.
+Processed 782 allocation unit(s) out of 1953 units (allocation page 2340864).
+40% completed.
+Processed 977 allocation unit(s) out of 1953 units (allocation page 2390784).
+50% completed.
+Processed 1172 allocation unit(s) out of 1953 units (allocation page 2440704).
+60% completed.
+Processed 1368 allocation unit(s) out of 1953 units (allocation page 2490880).
+70% completed.
+Processed 1563 allocation unit(s) out of 1953 units (allocation page 2540800).
+80% completed.
+Processed 1758 allocation unit(s) out of 1953 units (allocation page 2590720).
+90% completed.
+Processed 1953 allocation unit(s) out of 1953 units (allocation page 2640640).
+100% completed.
+1>
+
+If you see files with the ".exception" extension, under the fileimports directory, run the following command to remove them. 
+#for i in `ls *.exception` ; do mv $i ${i%.exception} ; done
+
+Verify images are being processed 
+-bash-4.2$ ommlog
+14:06:24.749 INFO ARNT0105184527 I Job 59760511(I) finished, elapsed time 3 ms
+14:06:24.760 INFO ARNT0105184528 I Job 59760512(I) finished, elapsed time 3 ms
+14:06:24.771 INFO ARNT0105184529 I Job 59760513(I) finished, elapsed time 8 ms
+14:06:24.776 INFO ARNT0105184530 I Job 59760514(I) finished, elapsed time 2 ms
+14:06:24.788 INFO ARNT0105184531 I Job 59760515(I) finished, elapsed time 3 ms
+14:06:24.799 INFO ARNT0105184532 I Job 59760516(I) finished, elapsed time 3 ms
+14:06:24.813 INFO ARNT0105184533 I Job 59760517(I) finished, elapsed time 9 ms
+14:06:24.821 INFO ARNT0105184534 I Job 59760518(I) finished, elapsed time 2 ms
+14:06:24.828 INFO ARNT0105184535 I Job 59760519(I) finished, elapsed time 3 ms
+14:06:24.839 INFO ARNT0105184536 I Job 59760520(I) finished, elapsed time 3 ms
+
+If you do not see images being process try killing and restarting the OMM service 
+
+-bash-4.2$ ps -ef | grep Tele
+ati 23527616 11665592 0 13:54:40 pts/2 0:46 java -Xms128m -Xmx256m -Djava.library.path=/export/home/ati/lib tm.Telemanager
+-bash-4.2$ kill -9 23527616
+-bash-4.2$ ommctl start

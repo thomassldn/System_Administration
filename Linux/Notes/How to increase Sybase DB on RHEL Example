@@ -1,0 +1,78 @@
+1> sp_helpdb us
+2> go
+ name     db_size                    owner      dbid     created                  durability           lobcomplvl           inrowlen         status
+ -------- -------------------------- ---------- -------- ------------------------ -------------------- -------------------- ---------------- ----------------------------
+ us          20480.0 MB              sa            4     Apr 04, 2020             full                          0               NULL         no options set
+
+(1 row affected)
+
+ device_fragments                 size                       usage              created                                free_kbytes
+ -------------------------------- -------------------------- ------------------ -------------------------------------- --------------------------------
+ devdbrus                            16384.0 MB              data only          Apr  4 2020  7:57PM                            16704032
+ devlogus                             4096.0 MB              log only           Apr  4 2020  7:57PM                    not applicable
+
+1> disk init
+2> name="devdbrus2",
+3> physname="/opt/sap/data/devdbrus2.dat",
+4> size=8192000
+5> go
+1> alter database us on devdbrus2=16000
+2> go
+Extending database by 4096000 pages (16000.0 megabytes) on disk devdbrus2
+Processed 1600 allocation unit(s) out of 16000 units (allocation page 5652224). 10% completed.
+Processed 3200 allocation unit(s) out of 16000 units (allocation page 6061824). 20% completed.
+Processed 4800 allocation unit(s) out of 16000 units (allocation page 6471424). 30% completed.
+Processed 6400 allocation unit(s) out of 16000 units (allocation page 6881024). 40% completed.
+Processed 8000 allocation unit(s) out of 16000 units (allocation page 7290624). 50% completed.
+Processed 9600 allocation unit(s) out of 16000 units (allocation page 7700224). 60% completed.
+Processed 11200 allocation unit(s) out of 16000 units (allocation page 8109824). 70% completed.
+Processed 12800 allocation unit(s) out of 16000 units (allocation page 8519424). 80% completed.
+Processed 14400 allocation unit(s) out of 16000 units (allocation page 8929024). 90% completed.
+Processed 16000 allocation unit(s) out of 16000 units (allocation page 9338624). 100% completed.
+
+1> sp_helpdb us
+2> go
+ name     db_size                    owner      dbid     created                  durability           lobcomplvl           inrowlen         status
+ -------- -------------------------- ---------- -------- ------------------------ -------------------- -------------------- ---------------- ----------------------------
+ us          36480.0 MB              sa            4     Apr 04, 2020             full                          0               NULL         no options set
+
+(1 row affected)
+
+ device_fragments                 size                       usage              created                                free_kbytes
+ -------------------------------- -------------------------- ------------------ -------------------------------------- --------------------------------
+ devdbrus                            16384.0 MB              data only          Apr  4 2020  7:57PM                            16704032
+ devlogus                             4096.0 MB              log only           Apr  4 2020  7:57PM                    not applicable
+ devdbrus2                           16000.0 MB              data only          Apr  5 2020  9:41AM                            16320000
+                       
+1> disk resize
+2> name='devdbrus2',
+3> size='8G'
+4> go
+1> alter database us on devdbrus2=8000
+2> go
+Extending database by 2048000 pages (8000.0 megabytes) on disk devdbrus2
+Processed 800 allocation unit(s) out of 8000 units (allocation page 9543424). 10% completed.
+Processed 1600 allocation unit(s) out of 8000 units (allocation page 9748224). 20% completed.
+Processed 2400 allocation unit(s) out of 8000 units (allocation page 9953024). 30% completed.
+Processed 3200 allocation unit(s) out of 8000 units (allocation page 10157824). 40% completed.
+Processed 4000 allocation unit(s) out of 8000 units (allocation page 10362624). 50% completed.
+Processed 4800 allocation unit(s) out of 8000 units (allocation page 10567424). 60% completed.
+Processed 5600 allocation unit(s) out of 8000 units (allocation page 10772224). 70% completed.
+Processed 6400 allocation unit(s) out of 8000 units (allocation page 10977024). 80% completed.
+Processed 7200 allocation unit(s) out of 8000 units (allocation page 11181824). 90% completed.
+Processed 8000 allocation unit(s) out of 8000 units (allocation page 11386624). 100% completed.
+
+1> sp_helpdb us
+2> go
+ name     db_size                    owner      dbid     created                  durability           lobcomplvl           inrowlen         status
+ -------- -------------------------- ---------- -------- ------------------------ -------------------- -------------------- ---------------- ----------------------------
+ us          44480.0 MB              sa            4     Apr 04, 2020             full                          0               NULL         no options set
+
+(1 row affected)
+
+ device_fragments                 size                       usage              created                                free_kbytes
+ -------------------------------- -------------------------- ------------------ -------------------------------------- --------------------------------
+ devdbrus                            16384.0 MB              data only          Apr  4 2020  7:57PM                            16704032
+ devlogus                             4096.0 MB              log only           Apr  4 2020  7:57PM                    not applicable
+ devdbrus2                           16000.0 MB              data only          Apr  5 2020  9:41AM                            16320000
+ devdbrus2                            8000.0 MB              data only          Apr  5 2020 10:46AM                             8160000

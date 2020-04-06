@@ -1,0 +1,29 @@
+#These notes show how  to extract the certificates from a p7b file into one .cer file that contains the certificate chain. 
+
+
+1) Open the .p7b file in vi
+
+2) Change the leader and trailer of the .p7b file 
+
+  From: 
+  -----BEGIN PKCS7-----
+  ......
+  ... cert stuff ...
+  ......
+  -----END PKCS7-----
+  
+  To this: 
+  -----BEGIN CERTIFICATE-----
+  ......
+  ... cert stuff ...
+  ......
+  -----END CERTIFICATE-----
+  
+  3) Save and close the file 
+  4) Use the following command to extract all the contents of the .p7b  file into a .cer certificate chain
+  #openssl pkcs7 -print_certs -in <your_p7b_file>.p7b -out <your_cert_chain>.cer
+  
+  
+  
+  
+  

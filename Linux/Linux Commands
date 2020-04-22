@@ -88,7 +88,7 @@ Or
 #vi /etc/fstab                                        (filesystems you want to mount at boot) 
 
 #vgdisplay 
-
+#vgdisplay -v <volume_group> | grep "LV Path"         (check what LVs belong to a VG)
 After you add disk space (of whatever size), run the following commands to extend VG's and LV's: 
 # lsblk                                    (run an LSBLK command to identify the new disk ID (usually at very bottom of listing))
 # vgextend vlm_vg /dev/sdab                (extend the volume group “qcprbackupvg” and specify the new disk ID “/dev/sdab”)

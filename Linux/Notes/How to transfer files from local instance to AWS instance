@@ -1,0 +1,6 @@
+To copy a file from local instance to AWS instance use the following command format: 
+
+  scp -i path/to/key file/to/copy user@ec2-xx-xx-xxx-xxx.compute-1.amazonaws.com:path/to/file
+
+To copy files in a directory recursively: 
+  scp -i path/to/key -r directory/to/copy user@ec2-xx-xx-xxx-xxx.compute-1.amazonaws.com:path/to/directory

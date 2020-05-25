@@ -47,7 +47,7 @@ PowerShell
 >Get-VM | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName,IPAddresses  (display all hyper-v VM's IP addresses)
 >systeminfo | find "System Boot Time"                                                       (get uptime) 
 >Restart-Computer -ComputerName "sbqep1", "sbqep2", "sbqmc1", "sbqmc2" -Force
-
+>$PSVersionTable.PSVersion                                                                  (check powershell version)
 
 
 Roles and Features (PowerShell)

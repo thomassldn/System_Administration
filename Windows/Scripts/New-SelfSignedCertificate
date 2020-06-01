@@ -1,0 +1,1 @@
+New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\My -DnsName "localhost" -KeyExportPolicy Exportable -NotAfter (Get-Date).AddYears(10) -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider"

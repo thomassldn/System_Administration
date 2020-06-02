@@ -1,0 +1,30 @@
+#SELinux HTTPD Context examples 
+
+1) httpd_exec_t
+# ls -Z /usr/sbin/httpd
+-rwxr-xr-x. root root system_u:object_r:httpd_exec_t:s0 /usr/sbin/httpd
+
+2) httpd_config_t
+# ls -dZ /etc/httpd/
+drwxr-xr-x. root root system_u:object_r:httpd_config_t:s0 /etc/httpd/
+
+3) httpd_sys_content_t
+# ls -dZ /var/www/html/
+drwxr-xr-x. root root system_u:object_r:httpd_sys_content_t:s0 /var/www/html/
+
+4) httpd_log_t
+# ls -dZ /var/log/httpd/
+drwx------. root root system_u:object_r:httpd_log_t:s0 /var/log/httpd/
+
+5) httpd_t
+# ps axZ | grep httpd
+system_u:system_r:httpd_t:s0     5414 ?        Ss     0:00 /usr/sbin/httpd -DFOREGROUND
+system_u:system_r:httpd_t:s0     5415 ?        S      0:00 /usr/sbin/httpd -DFOREGROUND
+system_u:system_r:httpd_t:s0     5416 ?        S      0:00 /usr/sbin/httpd -DFOREGROUND
+system_u:system_r:httpd_t:s0     5417 ?        S      0:00 /usr/sbin/httpd -DFOREGROUND
+system_u:system_r:httpd_t:s0     5418 ?        S      0:00 /usr/sbin/httpd -DFOREGROUND
+system_u:system_r:httpd_t:s0     5419 ?        S      0:00 /usr/sbin/httpd -DFOREGROUND
+
+
+# netstat -tnlpZ | grep [h]ttpd_t
+tcp6       0      0 :::80                   :::*                    LISTEN      5414/httpd           system_u:system_r:httpd_t:s0            

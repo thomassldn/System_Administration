@@ -178,7 +178,7 @@ SELinux
 #/var/log/audit/audit.log                               (selinux log file)
 #/var/log/avc.log                                       (selinux log file)
 #/var/log/audit.log                                     (selinux log file)
-
+# cat /etc/selinux/targeted/active/booleans.local       (view what booleans have been set)
 
 
 Service Management  

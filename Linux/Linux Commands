@@ -157,6 +157,7 @@ SELinux
 #rpm -qa | grep selinux                                 (View what selinux packages are installed)
 #yum -y install setroubleshoot setroubleshoot-server; service auditd restart (selinux trouble shooting tools) 
 #getsebool -a                                           (see selinux booleans)
+#journalctl -b -o | grep sealert                        (looks in /var/log/messages for any selinux related errors, for troubleshooting)
 #yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
 #getenforce                                             (verify current SELinux status, whether Enforcing, Permissive, Disabled)
 #sestatus                                               (verify current SELinux status, whether Enforcing, Permissive, Disabled)

@@ -155,6 +155,7 @@ Scripts
 SELinux
 ===================================================================================================
 #rpm -qa | grep selinux                                 (View what selinux packages are installed)
+#yum -y install setroubleshoot setroubleshoot-server; systemctl restart auditd.service (selinux trouble shooting tools) 
 #getsebool -a                                           (see selinux booleans)
 #yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
 #getenforce                                             (verify current SELinux status, whether Enforcing, Permissive, Disabled)

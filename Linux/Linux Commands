@@ -4,7 +4,7 @@ General Linux Commands
 #PS1="\e[0;31mPRODUCTION\e[m:\h \W]$ "                                                   (PRODUCTION:<hostname> ~$ ) - PRODUCTION is RED)
 #<command> | sed 's/$/<br>/'                                                             (replace the output of a command end of file characters with <br> to create html report; <pre> bracket could also be used for html report)
 #virt-what                                                                               (view what hyper-visor vm is currently running on)
-
+#while true;do sleep  1; date +%s" "%d" "%b" "%Y" "%T; done                              (view monatomic time)
 
 Certificates
 =================================================================================================

@@ -1,0 +1,16 @@
+To Delete a LV from a VG: 
+
+1) Verify LV name
+[root@sbqpm1g1 ~]# df -h | grep dkv
+/dev/mapper/tpapiswvg-dkvlv      4.0G   33M  4.0G   1% /qmd/cpr/dkv
+
+2) Unmount the filesystem 
+[root@sbqpm1g1 ~]# umount /qmd/cpr/dkv
+
+3) Disable the LV 
+[root@sbqpm1g1 ~]# lvchange -an /dev/mapper/tpapiswvg-dkvlv
+
+4) Remove the LV from the FS
+[root@sbqpm1g1 ~]# lvremove  /dev/mapper/tpapiswvg-dkvlv
+
+

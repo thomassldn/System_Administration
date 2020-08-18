@@ -14,7 +14,8 @@ Certificates
 #openssl s_client -connect server.com:62444
 #openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt>              (extract Cert)
 #openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>                (extract key)
-#opessl rsa -in <keyfile-encrypted.key> -out <otherfile>                                (remove password from key)
+#openssl pkcs12 -in <yourfile.pfx> -cacerts -nokeys -out <chain-ca.crt>                 (extract chain)
+#opessl rsa -in <keyfile-encrypted.key> -out <keyfile-unencrypted.key>                  (remove password from key)
 #openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                   (extract an unecrypted key -not safe)
 #openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
 #openssl x509 -inform der -in certificatename.der -out certificatename.pem              (convert der cert to pem)

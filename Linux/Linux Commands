@@ -149,6 +149,12 @@ Package Manager
 #yum grouplist
 #yum update
 
+Package Manager Security
+=================================================================================================
+#yum --security --sec-severity=Critical check-update   (check for Critical security updates)
+#yum update -cve="CVE-2018-YDYZ"                       (apply patch for specific vulnerability
+#yum update -advisory="RHSA-2018-XYZW"                 (apply  an avisory) 
+
 OS
 ===================================================================================================
 #uname -a                                              (check kernel version) 

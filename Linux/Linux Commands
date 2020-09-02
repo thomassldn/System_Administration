@@ -148,12 +148,7 @@ Package Manager
 #yum search samba                                      (search package names) 
 #yum grouplist
 #yum update
-
-Package Manager Security
-=================================================================================================
-#yum --security --sec-severity=Critical check-update   (check for Critical security updates)
-#yum update -cve="CVE-2018-YDYZ"                       (apply patch for specific vulnerability
-#yum update -advisory="RHSA-2018-XYZW"                 (apply  an avisory) 
+ 
 
 OS
 ===================================================================================================
@@ -200,6 +195,17 @@ Service Management
 #netstat -tlpn                                         (view what port is being used by what service)
 #systemctl status httpd                                (check service status)
 #service httpd status                                  (check service status - old versions) 
+
+Security
+=================================================================================================
+#yum --security --sec-severity=Critical check-update   (check for Critical security updates)
+#yum update -cve="CVE-2018-YDYZ"                       (apply patch for specific vulnerability
+#yum update -advisory="RHSA-2018-XYZW"                 (apply  an avisory)
+
+Subscription Manager
+====================================================================================================
+#subscription-manager attach --auto                    (auto attach available subscription)
+#subscriptin-manager --release set=7.8                 (set a release version)
 
 User Management 
 ====================================================================================================

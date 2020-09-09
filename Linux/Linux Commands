@@ -204,6 +204,7 @@ Security
 
 Subscription Manager
 ====================================================================================================
+#subscription-manager status                           (check status of subscription)
 #subscription-manager attach --auto                    (auto attach available subscription)
 #subscriptin-manager --release set=7.8                 (set a release version)
 

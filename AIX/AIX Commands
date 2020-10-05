@@ -22,6 +22,7 @@ AIX Systems Administration - General Commands
 #lslpp -l | grep "samba"                                         (view samba version) 
 #svmon -G -O unit=GB                                             (view available memory)
 #vmstat -v                                                       (view available memory)
+#prtconf | head                                                  (view machine type and machine serial number)
 
 
 Certificates

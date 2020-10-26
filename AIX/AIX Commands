@@ -93,7 +93,15 @@ Networking
 #prtconf                                                                     (partition Info)
 #cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
 #netstat -na | grep <port>                                                   (check if a port is being used)
-#lsdev -CH | grep en                                                         (view interfaces)
+#lsdev -CH | grep en                                                          (view interfaces)
+#no –p –o tcp_nodelayack=1
+#no –p –o tcp_keepcnt=8
+#no –p –o tcp_keepidle=120
+#no –p –o tcp_keepinit=60
+#no –p –o tcp_keepintvl=60
+#no –p –o tcp_recvspace=65536
+#no –p –o tcp_sendspace=65536
+
 SAN Related Commands
 ============================================================================================================================
 #for i in {47..66};do powermt display dev=hdiskpower$i;done                  (Display hdiskpower info) 

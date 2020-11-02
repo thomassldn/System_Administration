@@ -1,6 +1,6 @@
 #Author:Thomas S, ATS
 #Date:Oct 31, 2019
-#Desc: This power shell script gets the windows versions of the following servers: "sbqep1", "sbqep2", "sbqmc1", "sbqmc2", and "sbqima"
+#Desc: This power shell script runs a command(s) on multiple servers  
 
 $servers = "<Server1>","<Server1>","<Server1>","<Server1>","<Server1>"
 

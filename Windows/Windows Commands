@@ -68,6 +68,10 @@ SSH
 icacls C:\Users\DHITSSH\.ssh /grant "NT Service\sshd:R" /T                                   (process .ssh\authorized_keys, .ssh\id_rsa, and .ssh\id_rsa.pub files)
 
 
+Updates: 
+========================================================================================================
+>wmic qfe list                                                                               (check update history)
+
 
 
 

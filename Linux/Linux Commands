@@ -39,6 +39,7 @@ DevOPS
 
 File Management
 ==================================================================================================
+#split –n 19  <file name>                                                                      (split a large file into smaller files)
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;                     (list/rm files older than x-days)
 #find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec mv {} /path/to/new/folder/ \;     (move files to new folder)
 #find / -type f -name "*.zip" -size +1M

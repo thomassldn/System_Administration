@@ -1,0 +1,5 @@
+List of SNMP commands 
+
+#snmpget -h                                                                       (help menu)
+#snmpwalk -h                                                                      (query complete MIBs with snmpwalk)
+#snmptranslate -On 'NET-SNMP-EXTEND-MIB::nsExtendOutput1Line."script1".1'         (get MIB for custom script1 in /etc/snmp/snmpd.conf)

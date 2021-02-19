@@ -87,6 +87,9 @@ Journaling
 #for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done                 (list all journals between this date)
 #for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; yes | rm $i; done    (remove all journals between this date)
 
+LPAR
+============================================================================================================================
+#lparstat -i                                                                 (view lpar statistics, CPU, MEM, etc)
 Networking
 ============================================================================================================================
 #ifconfig -a                                                                 (show network interface configuration)

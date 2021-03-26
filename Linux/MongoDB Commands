@@ -7,7 +7,7 @@ General Commands
 >help                                               (get full list of MongoDB commands)
 >db.stats()                                         (view stats about MongoDB server)
 >db                                                 (show current database)
->use admin >db.shutdownServer()                     (use the admin user to shutdown server)
+>use admin >db.shutdownServer()                     (shutdown server)
 
 Find Commands
 ========================================================================================================================

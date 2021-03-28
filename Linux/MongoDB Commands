@@ -44,7 +44,9 @@ Update, Create, Delete Commands
 >db.<COLLECTION>.drop()                        (drop collection)
 
 
-
+Users
+=========================================================================================================================
+> db.createUser({ user: "cseuser", pwd: "1amcsedevuser!", roles: ["dbOwner"]})  (create user)
 
 
 

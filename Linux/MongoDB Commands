@@ -47,7 +47,7 @@ Update, Create, Delete Commands
 Users
 =========================================================================================================================
 > db.createUser({ user: "cseuser", pwd: "<PASSWORD>", roles: ["dbOwner"]})  (create user)
-
+> db.createUser({ user: "admin", pwd:"<PASSWORD>",roles:[{role: "userAdminAnyDatabase", db: "admin"}]}) (create admin user)
 
 
 

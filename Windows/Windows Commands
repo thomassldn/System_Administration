@@ -9,8 +9,27 @@ PS C:\Scripts\SQLEXPR_x64_ENU> .\SETUP.EXE /ACTION=INSTALL /UIMODE=Normal       
 >systeminfo /fo csv | ConvertFrom-Csv | select OS*, System*, Hotfix* | Format-List          (view Windows version)
 >sc create hdss_DEV start= auto binPath= "C:\Program Files\rktools\srvany.exe" DisplayName= "hdss_PROD" obj= DOMAIN\User password= passwd123 (Create a windows service, modify regestry after)
 >sc delete hdss_DEV                                                                          (delete Windows service, modify regestry afterwards)
+>whoami
+>tasklist                                            (see what tasks are running) 
+>wmic process list full                              (same as tasklist but more info, similar to ps -aux in linux)
 
 
+
+Environtment Variables 
+=================================================================================================
+>set                                                (view all environment variables)
+>set Path                                           (view one environment variable)
+
+Files & Directory
+=================================================================================================
+>dir                                                (list files in a directory
+>copy file.txt copy.txt                             (copy files)
+>erase file.txt                                     (deletes a file)
+>type file.txt                                      (print contents of a file - similar to cat in linux)
+>type file.txt | more                               (same as type above but prints one page at a time)   
+>echo "some content" > file.txt                     (add content to a file)
+>echo "some more content" >> file.txt               (append content to a file)
+>dir c:\ /b/s | find "password"                     (find a file name in a directory)
 
 
 Group Policies
@@ -35,7 +54,10 @@ Networking
 >Restart-Computer                                     (Restart computer) 
 >ip address 10.10.20.101 255.255.255.0                (configure an IP address & netmask)
 >gateway 10.10.20.1                                   (configure gateway)
->netstat -an                                          (view listening services/ports)
+>netstat -ano                                         (view listening services/ports)
+>netstat -naob                                        (list processes)
+>netstat -naob | find 9999                            (look for specific service)
+
 
 PowerShell
 ==================================================================================================
@@ -49,7 +71,6 @@ PowerShell
 >systeminfo | find "System Boot Time"                                                       (get uptime) 
 >Restart-Computer -ComputerName "sbqep1", "sbqep2", "sbqmc1", "sbqmc2" -Force
 >$PSVersionTable.PSVersion                                                                  (check powershell version)
-
 
 Roles and Features (PowerShell)
 ==================================================================================================

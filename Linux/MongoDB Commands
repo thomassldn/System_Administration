@@ -1,6 +1,5 @@
 Desc: Some useful MongoDB commands 
 
-
 General Commands
 ========================================================================================================================
 >mongo                                              (open mongo shell)
@@ -8,6 +7,13 @@ General Commands
 >db.stats()                                         (view stats about MongoDB server)
 >db                                                 (show current database)
 >use admin >db.shutdownServer()                     (shutdown server)
+
+
+Collections
+========================================================================================================================
+>show collections                                   (show collections)
+>db.createCollection("<colection_name>")            (create collection)
+
 
 Find Commands
 ========================================================================================================================

@@ -36,6 +36,9 @@ DevOPS
 #pstree                                               (output list of process in tree format)
 #ps -aux | less                                       (shows processes currently running on the system)
 
+DNS
+==================================================================================================
+#for i in `egrep -v "^$|^;|^#" /etc/resolv.conf | sed -n '2,$'p | awk '{print $NF}'` ; do echo checking reachability of and resolution from $i nameserver;  ping -c2 $i ; dig redhat.com @$i +short sleep 1 ; echo ; done      (Check DNS /etc/resolve.conf alive)
 
 File Management
 ==================================================================================================

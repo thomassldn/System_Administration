@@ -15,6 +15,11 @@ Collections
 >db.createCollection("<colection_name>")            (create collection)
 
 
+Documents
+========================================================================================================================
+db.README.find()                                    (show document in a colleciton)
+
+
 Find Commands
 ========================================================================================================================
 >db.indexes.find()                                 (show indexes)

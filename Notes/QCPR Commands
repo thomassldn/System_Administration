@@ -28,7 +28,7 @@ QCPR Commands
 }start^%zbg         (Raw command to start %zbg w/o any issues)
 }strt^%zbg          (Raw command to start %zbg w/o any issues)
 }d ^aps5            (Use this command to manually start print job helpers)
-
+}d setTO^ucpefile(12) (eFile,extends timout, might be depricated)
 
 QCPR Tables
 ===========

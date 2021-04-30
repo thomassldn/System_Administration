@@ -24,6 +24,7 @@ AIX Systems Administration - General Commands
 #svmon -G -O unit=GB                                             (view available memory)
 #vmstat -v                                                       (view available memory)
 #prtconf | head                                                  (view machine type and machine serial number)
+#priv su -                                                       (escalate privaleges) 
 
 
 Certificates

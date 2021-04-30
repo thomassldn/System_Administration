@@ -93,3 +93,8 @@ services:
  In the above docker compose yml file
 4) Start up next cloud on docker
 #docker-compose up –d (inside your projects directory)
+
+At this point, you now have a NextCloud server up and running!
+
+
+

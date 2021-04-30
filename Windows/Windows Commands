@@ -22,6 +22,7 @@ Environtment Variables
 
 Files & Directory
 =================================================================================================
+>robocopy <path> <destination>                      (robust file copy for windows to transfer large files)
 >dir                                                (list files in a directory
 >copy file.txt copy.txt                             (copy files)
 >erase file.txt                                     (deletes a file)

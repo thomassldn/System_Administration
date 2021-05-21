@@ -95,6 +95,22 @@ Updates:
 >wmic qfe list                                                                               (check update history)
 
 
+Wi-Fi
+========================================================================================================
+netsh wlan show profile  "WIFI-NAME" key=clear                                               (get wifi info including current wifi password)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

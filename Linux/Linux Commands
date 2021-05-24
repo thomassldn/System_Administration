@@ -6,6 +6,11 @@ General Linux Commands
 #virt-what                                                                               (view what hyper-visor vm is currently running on)
 #while true;do sleep  1; date +%s" "%d" "%b" "%Y" "%T; done                              (view monatomic time)
 
+
+Awk
+=================================================================================================
+#grep Automatic cconsole.log | nawk -v FS=. 'BEGIN {last=""} {if ($1 != last}
+
 Certificates
 =================================================================================================
 #openssl x509 -in <cert_name>.pem -text -noout                                          (view certificate in txt format) 

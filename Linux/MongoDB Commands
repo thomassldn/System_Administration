@@ -13,8 +13,8 @@ Collections
 ========================================================================================================================
 >show collections                                   (show collections)
 >db.createCollection("<colection_name>")            (create collection)
-
-
+>db.<collection>.drop()                             (drop collection from db)
+  
 Documents
 ========================================================================================================================
 db.README.find()                                    (show document in a colleciton)

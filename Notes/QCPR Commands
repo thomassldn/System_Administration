@@ -19,7 +19,7 @@ QCPR Commands
 }%zbg               (Background job processor, may impact printing if not running, start it in the domain utility)
 }%zbgm              (Monitor Job Table).  
 } %zlioc            (view logons enable)
-} %zld              (Auto Rollover Load) 
+} %zld              (Auto Rollover Load, check when a upgrade last took place) 
 } %zdbl             (Background Log Display) 
 } aidtgvw           (view interface?)
 }set 140,30         (set window size)

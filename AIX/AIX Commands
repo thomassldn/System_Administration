@@ -82,6 +82,7 @@ File System Management
 #lslv -l <lv>                                                         (list all physical Volumes in a LV)
 #powermt display dev=all | more
 #chvg –g <VG>                                                         (add new space in LUN and see it in UNIX)
+#cfgmgr                                                               (after removing mapped host from san, run cfgmgr to verify disk was removed)
 
 Journaling 
 ============================================================================================================================

@@ -224,6 +224,12 @@ Security
 #yum update -cve="CVE-2018-YDYZ"                       (apply patch for specific vulnerability
 #yum update -advisory="RHSA-2018-XYZW"                 (apply  an avisory)
 
+Strace
+=================================================================================================
+#strace ls -l                                          (view system calls made by running the executable ls -l)
+#strace -o output.log                                  (save strace output to log file)
+#stracce -c ls -l                                      (summary)
+
 Subscription Manager
 ====================================================================================================
 #subscription-manager status                           (check status of subscription)

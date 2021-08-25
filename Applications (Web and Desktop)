@@ -450,6 +450,16 @@ SubSeven
 Dark Comet
 Poison Ivy
 
+Wireless WI-FI Hacking Tools
+===========================
+Aircrack-ng (uses algorithms to recover wireless passwords by capturing packets)
+WIFITE (python script, runs wi-fi hacking tools)
+Kismet (it passively collect packets being broadcast in its viciniity and analyzes  them to detect even hidden Wi-fi networks)
+Wifiphisher (performs man-in-the middle attacks by exploiting Wi-fi association. it also enables an attacker to launch web phishing attacks to collect user credentails for third-party sites or Wi-Fi network credentials)
+inSSIDer (for Windows and MacOS OSs, performs varios Wi-fi attacks, including finding open Wi-Fi access points, tracking signal strength and saving logs with GPS records)
+WireShark 
+Kali Linux Net Hunter (fully open-source android penetration platform designed to run on Nexus phones)
+
 Web Browsers (Encrypted) 
 =========================
 Tor
@@ -478,6 +488,17 @@ CyberGhost
 ProtonVPN
 TunnelBear
 IPVanish
+
+Vulnerability Analysis 
+=======================
+Nikto (Web server scanner)
+Legion (extensible and automated network penetration testing framework)
+Zenmap (finds live hosts on a network, performs port scanning ping, sweeps, os detection, and version detection)
+Voiphopper (test security infastructure of a VLAN)
+Spike 
+UNIX-PRIVESC-CHECK (find misconfiguration sthat could allow local unprivileged users to escalte privileges to other users or to access local apps)
+
+
 
 Software Development Methodologies 
 ==================================

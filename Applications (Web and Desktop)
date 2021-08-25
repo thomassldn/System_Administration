@@ -350,6 +350,12 @@ Mobogenie
 Root Master
 KingRoot
 
+Search Engines
+======================
+DuckDuckGo 
+QWANT
+SEARX
+
 SSO
 =======================
 Okta
@@ -443,12 +449,20 @@ NetBus
 SubSeven
 Dark Comet
 Poison Ivy
+
+Web Browsers (Encrypted) 
+=========================
+Tor
+Brave
+
 Video Conferencing
 =========================
 Mycollab
 WebEx
 Zoom
 Microsoft Team
+Chime
+Bluejeans
 
 VPN Providers
 =========================

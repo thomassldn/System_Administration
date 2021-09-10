@@ -15,7 +15,7 @@ Certificates (OpenSSl)
 =================================================================================================
 #openssl version -a                                                                     (get version of openssl)
 #openssl help                                                                           (openssl help)
-#openssl-ciphers                                                                        (get more info on a particular module)
+#man openssl-ciphers                                                                        (get more info on a particular module)
 #openssl x509 -in <cert_name>.pem -text -noout                                          (view certificate in txt format) 
 #openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/<key>.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:<port>
                                                                  Should see " Verify return code: 0 (ok)"

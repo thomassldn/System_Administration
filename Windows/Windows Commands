@@ -50,14 +50,15 @@ C:\Windows\System32\inetsrv>appcmd list request | clip (pipe output to the clip 
 
 Networking
 ==================================================================================================
->ipconfig                                             (show network interface configuration)
->ipconfig /all                                        (show network interface configuration-detailed)
->Restart-Computer                                     (Restart computer) 
->ip address 10.10.20.101 255.255.255.0                (configure an IP address & netmask)
->gateway 10.10.20.1                                   (configure gateway)
->netstat -ano                                         (view listening services/ports)
->netstat -naob                                        (list processes)
->netstat -naob | find 9999                            (look for specific service)
+>ipconfig                                                        (show network interface configuration)
+>ipconfig /all                                                   (show network interface configuration-detailed)
+>Restart-Computer                                                (Restart computer) 
+>ip address 10.10.20.101 255.255.255.0                           (configure an IP address & netmask)
+>gateway 10.10.20.1                                              (configure gateway)
+>netstat -ano                                                    (view listening services/ports)
+>netstat -naob                                                   (list processes)
+>netstat -naob | find 9999                                       (look for specific service)
+>Test-NetConnection -ComputerName server.domain.com -Port 4437   (Test TCP connection)
 
 
 PowerShell

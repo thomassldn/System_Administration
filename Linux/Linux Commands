@@ -17,18 +17,18 @@ Certificates
 #openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/<key>.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:<port>
                                                                  Should see " Verify return code: 0 (ok)"
 #openssl s_client -connect server.com:62444
-#openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt>              (extract Cert)
-#openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>                (extract key)
-#openssl pkcs12 -in <yourfile.pfx> -cacerts -nokeys -out <chain-ca.crt>                 (extract chain)
-#opessl rsa -in <keyfile-encrypted.key> -out <keyfile-unencrypted.key>                  (remove password from key)
-#openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                   (extract an unecrypted key -not safe)
-#openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
-#openssl x509 -inform der -in certificatename.der -out certificatename.pem              (convert der cert to pem)
+#openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt>                                             (extract Cert)
+#openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>                                               (extract key)
+#openssl pkcs12 -in <yourfile.pfx> -cacerts -nokeys -out <chain-ca.crt>                                                (extract chain)
+#opessl rsa -in <keyfile-encrypted.key> -out <keyfile-unencrypted.key>                                                 (remove password from key)
+#openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                                                  (extract an unecrypted key -not safe)
+#openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>                                 (convert private key to pem format)
+#openssl x509 -inform der -in certificatename.der -out certificatename.pem                                              (convert der cert to pem)
 #grep -n BEGIN "/qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem"
 #for a in 1 29;do sed -n $a',$p' /qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem | openssl x509 -noout -text | grep Subject:;done
 #grep -n BEGIN
 #for a in 1 26 61;do sed -n $a',$p' newswmdirectcert_prod_chain.pem | openssl x509 -noout -text | grep CN=;echo;done
-                            
+#for i in *.*; do printf "\n\n\n%s\n%s\n\n" "$i" "========================" ; openssl x509 -in $i -text -noout | grep "Not After";done   (check the expiriation date of all the certificates in a directory)                            
 
 
 

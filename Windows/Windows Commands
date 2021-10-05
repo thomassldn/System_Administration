@@ -1,6 +1,7 @@
 General Commands 
 =================================================================================================
->sconfig                                            (Server configuration, cool)
+>sconfig                                            (Server configuration)
+>function prompt {"$(Get-Date)> "}                  (Change PS prompt)
 >Get-Command -Type Cmdlet                           (Display all PowerShell Commands)
 >Restart-Computer                                   (restart computer) 
 >dism.exe /online /enable-feature /featurename:NetFX4 /All /Source:c:\temp\sxs /LimitAccess (enable .NET Framework)

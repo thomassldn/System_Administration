@@ -161,6 +161,8 @@ Package Manager
 #yum search samba                                      (search package names) 
 #yum grouplist
 #yum update
+#yum repolist                                          (see repolist)
+#yum info                                              (view info on a program, e.g, version, etc)
  
 Performance
 ===================================================================================================

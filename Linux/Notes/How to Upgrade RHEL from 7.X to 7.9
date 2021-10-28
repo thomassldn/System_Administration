@@ -1,7 +1,6 @@
 Desc: The following notes show how to upgrade from RHEL7.X to 7.8
 
-1) Set the release
-Ex) 
+1) Set the release 
 #subscription-manager release --set=7.9
 
 2) Clean all 
@@ -10,7 +9,10 @@ Ex)
 3) rm yum cache
 #sudo rm -r /var/cache/yum
 
-4)Perform Upgrade
+4) Perform Upgrade
 #sudo yum upgrade
+
+5) Reboot 
+#systemctl reboot
 
 

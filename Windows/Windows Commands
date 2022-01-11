@@ -37,6 +37,7 @@ Files & Directory
 Group Policies
 =================================================================================================
 >gpupdate /force                                     (update group policies)
+>gpresult /r                                         (verify if or what GPOs are being applied to a computer) 
 
 Hyper V 
 =================================================================================================

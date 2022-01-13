@@ -96,7 +96,7 @@ icacls C:\Users\DHITSSH\.ssh /grant "NT Service\sshd:R" /T                      
 Updates: 
 ========================================================================================================
 >wmic qfe list                                                                               (check update history)
-
+>wusa /uninstall /kb:KB5009555                                                               (uninstall update)
 
 Wi-Fi
 ========================================================================================================

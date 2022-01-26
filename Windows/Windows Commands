@@ -14,7 +14,9 @@ PS C:\Scripts\SQLEXPR_x64_ENU> .\SETUP.EXE /ACTION=INSTALL /UIMODE=Normal       
 >tasklist                                            (see what tasks are running) 
 >wmic process list full                              (same as tasklist but more info, similar to ps -aux in linux)
 
-
+AD/DC
+=================================================================================================
+>Get-WmiObject -Namespace root\cimv2 -Class Win32_ComputerSystem | Select Name, Domain       (Get domain name of a computer)
 
 Environtment Variables 
 =================================================================================================

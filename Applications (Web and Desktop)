@@ -226,6 +226,10 @@ Intrusion Detection
 =======================
 Snort (network intrusion detection system; analyzes packets for malicious payloads)
 
+Inventory Management
+=======================
+Device42      
+
 Live System Analysis
 =======================
 PsList (Used to view all running process and thread statistics on a system - Windows/Free, 179)

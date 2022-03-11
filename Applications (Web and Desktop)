@@ -123,10 +123,6 @@ Git
 Jenkins
 ITerm
 
-Device Management
-=========================
-Microsoft Endpoint Configuration Management (SSCM) (remote control, patch management, software distribution, operating system deployment, network access protection and hardware and software inventory)
-
 Disk Management
 ========================
 TreeSize  (Windows)
@@ -473,7 +469,12 @@ Tripwire (monitoring tool that monitor unwanted changes in desktops, routers, sw
   http://www.tripwire.com
 CimTrak (monitoring tool that monitor unwanted changes in desktops, routers, switches and other devices)
   https://www.cimcor.com/cimtrak
-  
+
+System/Device Management
+=========================
+Microsoft Endpoint Configuration Management (SSCM) (remote control, patch management, software distribution, operating system deployment, network access protection and hardware and software inventory)
+IBM Big Fix
+
 Training
 ========================
 Trainual

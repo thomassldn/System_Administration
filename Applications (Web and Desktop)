@@ -46,10 +46,6 @@ Change Control
 =======================
 Service Now (https://www.servicenow.com/products/it-service-automation-applications/change-and-release-management.html)
 
-Content Filtering and Threat Protection
-========================================
-DNSFilter 
-
 Computer Forensics
 =======================
 Disk Digger (Windows File recovery software)
@@ -133,6 +129,20 @@ Win 32 Disk Imager (Windows)
 Rufus              (Windows) 
 CloneZilla
 Macrium Reflect    (Windows, works great!)
+
+DNS Filtering 
+========================
+Perimeter 81
+Open DNS 
+Cloudfare Gateway 
+DNSFilter
+SafeDNS
+Webroot
+DNSCyte
+Cisco Umbrella
+CIRA DNS Firewall
+MXToolbox 
+ScoutDNS
 
 Documentation
 =======================

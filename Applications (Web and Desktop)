@@ -238,6 +238,12 @@ Inventory Management
 =======================
 Device42      
 
+Kubernetes
+=======================
+Portainer.io   (Universal container management system) 
+Lens           (https://k8slens.dev/desktop.html) 
+Docker Desktop
+
 Live System Analysis
 =======================
 PsList (Used to view all running process and thread statistics on a system - Windows/Free, 179)

@@ -176,7 +176,23 @@ Performance
 #free -m
 #sar -n DEV 1
 #sar -n TCP,ETCP 1
+#htop
 #top
+
+Process Management
+===================================================================================================
+# for i in $(pgrep lsof); do ps -p  $i -o lstart=; done                 (view when a process was started)
+# stress -c 1 -&                                                        (Stress system) 
+# top                                                                   (view running processes) 
+# nice -n 19 stress  -c 1 &                                             (give stress command a niceness of 19
+# renice -n 10 17350                                                    (renice a process 
+# chrt --max                                                            (adjust processes) 
+# chrt -f -p 45 17350                                                   (change scheduling policy) 
+# chrt -p 17350                                                         (view scheduling policy and priority) 
+# pgrep stress                                                          (get running process) 
+# pkill stress                                                          (kill a process) 
+# kill -9 <process>                                                     (kill a process by pid) 
+# kill -l                                                               (list all kill options) 
 
 OS
 ===================================================================================================

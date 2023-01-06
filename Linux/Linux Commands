@@ -182,6 +182,7 @@ Performance
 Process Management
 ===================================================================================================
 # for i in $(pgrep lsof); do ps -p  $i -o lstart=; done                 (view when a process was started)
+# for i in $(pgrep lsof); do kill -9 $i; done                           (force kill a bunch of proccess that are not in an uninterruptible state "D")
 # stress -c 1 -&                                                        (Stress system) 
 # top                                                                   (view running processes) 
 # nice -n 19 stress  -c 1 &                                             (give stress command a niceness of 19

@@ -19,7 +19,7 @@ AD/DC
 >Get-WmiObject -Namespace root\cimv2 -Class Win32_ComputerSystem | Select Name, Domain       (Get domain name of a computer)
 >Get-ADGroupMember -Identity "SG_<group>" -Recursive | Get-ADUser -Property DisplayName | Select-Object DisplayName | Sort-Object DisplayName (get a list of users in sec group)
 >PS C:\> Get-ADGroupMember -Identity "SG_Office" -Recursive | Get-ADUser -Property DisplayName | Select-Object DisplayName | Sort-Object DisplayName | Export-Csv C:\temp\members.csv -Encoding UTF8 -NoTypeInformation  (get list of users and export them to csv file) 
-
+>$user = Get-ADUser -Identity [USERNAME] -Properties CanonicalName                  (get user properties includig OU and store it in a variable)
 
 Environtment Variables 
 =================================================================================================

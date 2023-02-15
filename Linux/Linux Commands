@@ -138,6 +138,8 @@ $ git config --global user.name "USERNAME"                               (Add gi
 $ git config --global user.name                                          (verify username)
 $ git config --global user.email "email_address@example.com"             (set email address)
 $ git config --global --list                                             (verify email address)
+$ git init                                                               ( create a new locat GIT repo)
+$ git clone <https//github.com/repo>                                     ( copy a repository to a working dir)
 $ git checkout master                                                    (pull the latest changes made to the master branch)
 $ git pull origin <name_of_branch> -u                                    (fetch the latest changes to the working directory, where <name_of_branch> is could be 'master')
 $ git add <file_name>                                                    (add a file to staging)

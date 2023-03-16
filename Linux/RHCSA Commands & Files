@@ -1,99 +1,644 @@
-Desc: The following are the commands and important files found in the RHCA/RHCE Red Hat Linux Certification Study Guide, Seventh Edition (Exams EX200 & EX300) by Micheal Jang and Alessandro Orsaria. This text document only goes over chapters 1 - 9, which are covered in the RHCSA exam. 
+
+Chp2 - Understanding and Using  Essential Tools on RHEL 
+
+Video 1:  Accessing Linux Systems
+=====================================================================================
+# ip a s                                                                                                  (get IP of host) 
+# su - root                                                                                            (become root user) 
+# su -                                                                                                     (become root) 
+# sudo -I                                                                                               (escalate with sudo privileges) 
+# sudo dnf update                                                                              (update system) 
+# ssh-keygen                                                                                        (generate new key) 
+# ssh-copy-id <user>@<server>                                                       (copy an ssh key to another server) 
+# ssh <user>@<server>                                                                      (verify you can log in to remote server with out a password) 
+# ssh <user>@<server> <command>                                               (run a command on a remote server) 
+# scp <user>@<server>:/path/to/file .                                            (scp a file from a remote server to current path) 
+# scp <file> <user>@<server>:/path/to/file                                   (pull a file from a server) 
+# sftp <use>@<server>                                                                       (sftp) ?  (or help) for help, mget *.gz) 
+
+Video 2:  Using System Documentation on RHEL 8
+=====================================================================================
+
+# ls -l /usr/share/doc | grep -i "httpd|mariadb|mysql"        (documentation) 
+# info <command>                                                                        (documenation)
+# man <command>                                                                       (documenation) 
+# mariadb --help                                                                            (view documentation of a specific command) 
+# mariadb  -? | more                                                                     (view  documenation, same as --help) 
+# whatis                                                                                           (display one-line manual page descriptions)
+# apropos htppd                                                                            (documentation) 
+# man 8 httpd.socket                                                                    (get specific documenation) 
+
+Video 3:  Manipulating Text Files in Linux
+=====================================================================================
+# tree                                                                                                                    (view files in a director using a tree structure)
+# grep httpd /var/log/* > raw_logs/master.log                                            (grep all httpd instances in the log directory and dump it into a master log file) 
+# grep httpd /var/log/* > raw_logs/master.log 2> errors.log                    (redirect errors to a log file) 
+# grep httpd /var/log/* >  raw_logs/master.log 2>&1  errors.log             (redirect stderr and stdout to a log file) 
+#  grep httpd /var/log/* >  raw_logs/master.log 2> /dev/null                   (redirect errros to null) 
+#  journalctl --unit=httpd --no-pager >> raw_logs/master.log                   (get journalctl httpd logs) 
+
+Video4:  Editing Files using Vi/VIM
+=====================================================================================
+Vi Commands: 
+-------------------
+Esc -> 
+:wq                                                                          (write and quit) 
+x                                                                               (delete 1 character) 
+3x                                                                             (delete 3 characters)
+o                                                                               (insert line underneath) 
+O                                                                              (insert line above)
+d                                                                               (delete line) 
+3dd                                                                          (delete 3 lines) 
+p                                                                               (paste lines) 
+Shift + g                                                                   (go to the end of the file) 
+Shift + $                                                                   (go to end of line)
+:%s/<pattern>/<replace_word/g                       (replace a pattern) 
+
+Video5:  Working with Linux Files - Permissions / Links
+=====================================================================================
+# chmod a+x  <file>                                              (a=ugo get x permission) 
+# chmod -R go-wx                                                 (recursively remove wx permissions from group and others)
+# chmod u=rw, go=r                                             (u gets read and write permissions, while group and other get r only permission)
+# ln -s /web_data/* /var/www                           (create symbolic links for all files under /web_data in the /var/www directory) 
+# ln /path/to/file .                                                 (create a hard link of some file in the current directory '.') 
+# echo 'umask 0022' ~/.bashrc                           (set umask for a specific user) 
+
+Video6:  Compressing and Decompressing Files in Linux 
+=====================================================================================
+# df -h                                                                                                          (view filesystems ) 
+# mkdir archives                                                                                        (make a directory where your archive files are going to be stored) 
+# tar cvf user1.tar user1_directory                                                        (archive everything in the user1_directory and store it in user1.tar) 
+# star -cv file=/home/archives/user1.star user1_directory               (same as above, but with the start command) 
+#  tar tvf user1.tar                                                                                      (list contents of an archive) 
+#  star -tv file=user1.star                                                                           (list contents of archive file) 
+# gzip user1.tar                                                                                           (compress an archive) 
+# bzip2 user1.star                                                                                       (compress an archive) 
+# tar cvfz  /home/archives/user2.tar.gz   user2_directory                 (archive and compress a directory) 
+# star -cv -bz file=/home/archives/user2.tar.gz user2_directory      (archive and compress a directory with star and bz2
+# tar xvf user2.tar                                                                                      (untar a directory) 
+# tar xvfz user2.tar.gz                                                                               (untar and uncompress a directory) 
+# tar xvfj user2.star.bz2                                                                            (untar and uncompress a bzip2 directory) 
+
+Chp3 - Creating Simple Shell Scripts 
+
+Video 1:  Creating Simple Shell Scripts - Concepts
+=====================================================================================
+# while true; do clear; df -h; sleep 5; done                                              (run a command and clear the screen after  n amount of seconds)             
+#for user in manny thomass john; do echo Hello $user; done  18      (echo a bunch of users) 
+
+Video 2: Creating Simple Shell Scripts - An Example
+=====================================================================================
+#! /bin/bash
+
+ARG1=$1
+ARG2=$2
+
+YUM=/user/bin/yum
+if [ "$ARG" == "check-update" ]; then
+        $YUM check-update >> web_admin.log
+        YUM_RESULT=$?
+               case $YUM_RESULT in
+                        100)
+                                echo "Updates Available!"
+                                exit 111
+                                ;;
+                        0)
+                                echo "No updates available!"
+                                exit 112
+                                ;;
+                        1)
+                                echo "Error!"
+                                exit 113
+                                ;;
+                esac
+fi
+                                                                                          
+Chp4 - Operating Running Systems on RHEL 8
+
+Video 1: Managing the Boot Process on RHEL 8
+=====================================================================================
+# systemctl get-default                                                                           (get boot target) 
+# systemctl reboot                                                                                   (reboot the system) 
+# systemctl set-default multi-user                                                        (would use this command to set the default as "multi-user"
+#systemctl poweroff                                                                               (poweroff vm) 
+#systemctl --dry-run reboot --message="System going down"      (dry run a reboot with a system message) 
+
+Change Password
+-------------------------
+1)Restart system
+2)Add rd.break at the end of the linux line after interrupting the boot process 
+3)mount -o remount,rw /sysroot
+4)chroot /sysroot 
+5)passwd  (change root password) 
+6)touch /.autorelable 
+7)exit
+
+Change to multi-user target
+----------------------------------------
+1)Restart system
+2)Interrupt boot process 
+3)Add "systemd.unit=multi-user.target" at the end of the "linux" line
+
+Video 2: Understanding Logging and Using Persistent Journals on RHEL 8 
+=====================================================================================
+# cd /var/log                                                                            (cd to log directory)
+# /etc/systemd/journald.conf                                              (view journal configuration, ex storage settings) 
+# journalctl   -> G                                                                     (view the end of the file) 
+# ls -l /var/log/journal                                                            (if its not here its in the temporary location, and there is no persistent journals) 
+# ls -l /run/log/journal                                                           (temporary journal location) 
+# journalctl -u chronyd                                                          (view log on chronyd)                                               
+# journalctl -u httpd                                                               (view log on httpd) 
+# grep chronyd messages                                                     (grep chronyd in /var/log/messages) 
+# journalctl -g httpd                                                               (grep for a string)   
+# journalctl -S 4:25:00 -U 4:26:00                                        (set start time for journalctl) 
+# journalctl --since=-3m                                                         (only show log entries no older than  x days) 
+# journalctl --list-boots                                                          (view how many reboots) 
+# journalctl -b 0                                                                      (view boot entry 0) 
+# grep -i storage /etc/systemd/journald.conf                  ( view how storage setting is configured, you can set this to volatile(temporary in /run/log/journal), persistent(var/log/journal), none, or auto which is   persitent)
+# ls -al /run/log/journal                                                        (journal data that is not persitent) 
+# mkdir /var/log/journal   then  #journalctl --flush         (this makes journalctl log to a permanent location, not just /run/log/journal) 
+# systemctl restart chronyd                                                 (force the system to log) 
+
+Video 3: Managing individual Linux processes 
+=====================================================================================
+# stress -c 1 -&                                                                        (Stress system) 
+# top                                                                                         (view running processes) 
+# nice -n 19 stress  -c 1 &                                                      (give stress command a niceness of 19
+# renice -n 10 17350                                                              (renice a process 
+# chrt --max                                                                             (adjust processes) 
+# chrt -f -p 45 17350                                                              (change scheduling policy) 
+# chrt -p 17350                                                                       (view scheduling policy and priority) 
+# pgrep stress                                                                          (get running process) 
+# pkill stress                                                                             (kill a process) 
+# kill -9 <process>                                                                   (kill a process by pid) 
+# kill -l                                                                                       (list all kill options) 
+
+Video 3: Managing Tune Profiles on RHEL8 
+=====================================================================================
+# /etc/tuned/tuned-main.conf                                            (main tune configuration file) 
+# /etc/tuned                                                                            (location of custom profiles. Overrides /usr/lib/tuned configuarions with the same name)
+# /usr/lib/tuned                                                                      (distribution specific profiles 
+# tuned-adm  --help                                                               (view detials of command) 
+# tuned-adm active                                                                (view current  active profile) 
+# tuned-adm list                                                                     (list profiles) 
+# tuned-adm profile <profile>                                             (active a profile ) 
+# tuned-adm profile powersave                                         (set powersafe profile) 
+# tuned-adm verify                                                               (verify the current active tuned profile is on your system) 
+# tuned-adm profile powersave virtual-guest                 (change active profile to powersave and virtual guest) 
+# vimdiff /usr/lib/tuned/virtual-guest/tuned.conf /usr/lib/tuned/virtual-host/tuned.conf          (view differences between profiles) 
+# systemctl restart tuned                                                    (after modifying /etc/tuned/tuned-main.conf restart tune) 
+
+Chp5 - Configuring Local Storage on RHEL 8 
+
+Video 1: Manipulating Disk Partitions in Linux 
+=====================================================================================
+# fdisk -l                                                                                 (view disk on system) 
+# fdisk -f                                                                                 (view fs type and UUID) 
+# findmnt                                                                               (view fs) 
+# gdisk /dev/sdb                                                                   (create a new partition,   n for new and w to write )
+#  mkfs.ext4 /dev/sdb1                                                       (make a filesystem) 
+# parted /dev/sdb1 print                                                    (view fs on partition) 
+# mount /dev/sdb1 /we_project                                       (mount the filesystem on a directory) 
+# df -h                                                                                     (verify new filesystem) 
+# swapon                                                                               (view swap space) 
+
+Add swap to a system
+---------------------------------------
+#fdisk -l                                                                                   (view devices and attributes) 
+#fdisk /dev/<disk>                                                                (choose a disk to add an extra partion which will be used for swap space; p to list partition; n to create a new partition; choose 'p' to create a primary partition ) 
+> in fdisk, choose 't' for type to change the partition to a swap partition, then choose 'L'
+> specifiy 82 for swap space 
+> w to write 
+#mkswap  -L my_swap /dev/disk                                        (make a new partion on the parted disk) 
+#swapon /dev/disk                                                                (add swap to system)
+# swapon                                                                                 (verify new swap) 
+# swapoff /dev/<disk>                                                          (remove swap space) 
+# swapon -a                                                                            (mount swap that is in /etc/fstab) 
+
+Video 2: Managing Mounted Disks on RHEL 8
+=====================================================================================
+# vi /etc/fstab                                                                         (make mounts persistent) 
+# umount /<mount> ; mount -a                                          (check that a mount is configured correctly after modifying fstab) 
+# vgs                                                                                          (view volume groups) 
+
+Video 3:  Using Logical Volume Management (LVM) on RHEL 8 
+=====================================================================================
+# pvs                                                                                            (view info about physical volumes ) 
+# pvcreate /dev/sda                                                                 (create a physical volume)
+# partprobe                                                                                (inform kernal of partition table changes, makes kernal re-read parttion table) 
+# vgs                                                                                            (view vgs) 
+# vgcreate <name> /dev/sda1                                               (create a new VG) 
+# lvs                                                                                             (view lvs) 
+# lvcreate -l 100%FREE -n <lv_name>  <vg_name>            (create an lv on a vg ) 
+# mkfs.ext5 /dev/mapper/<lv_name>-<vg_name>            (make a fs to put on top of LV) 
+# mount /dev/mapper/<lv_name>-<vg_name>   <dir>     (mount a fs) 
+#vi /etc/fstab                                                                             (add new fs to /etc/fstab) 
+#pvcreate /dev/sdc                                                                  (create a new pv)
+#vgextend <vg> /dev/sdc                                                        (extend an existing vg) 
+# lvextend -L +1G <filesystem> -r                                           (extend fs)
+Or 
+# lvresize --resizefs --size 5.98GB /dev/VolGrp0/datavol  (resize a lv) 
+# lvreduce -rL 3GB /dev/mapper/VolGrp0-datavol            (reduce a lv) 
+
+Remove a FS, VG, and PV for cleaning. 
+----------------------------------------------------------------
+# umount <fs>                               (unmount a fs)
+# lvremove <fs>                             (remove a lv)
+# vgremove -f <vg>                       (remove a vg)
+# pvremove  <pv>                         (remove a pv)
+# wipefs -a <fs>                             (now disk are ready for reuse) 
+
+Chp 6: Creating and Configuring File Systems on RHEL 8
+
+Video 2: Managing File Systems on RHEL  8
+=====================================================================================
+# fdisk -l                                           (view disks  and partitions)
+# lsblk -f                                           (view fs type and UUID) 
+# swapon                                        (view swapspace) 
+# mkswap                                       (m	ake swap on a swap partion) 
+# mount -a                                      ( mount all fs mounts in /etc/fstab) 
+# swapon -a                                    ( mount all swap found in /etc/fstab) 
+# fsck.ext4 /dev/<drive>              (check a filesystem) 
+# mount /dev/<drive>  <dir>      (mount a filesystem) 
+
+Video 3: Using Network File Systems on RHEL 8
+=====================================================================================
+# systemctl status nfs-server                            (check status of nfs-server) 
+How to export a directory over  NFS
+-------------------------------------------------
+# mkdir -p /export/web_data{1,2}                   (mk a directory to export) 
+# vi /etc/exports                                                  (add your directories to this file) 
+Ex)
+/exports/web_data1    127.0.0.1(rw,sync,no_root_squash)
+/exports/web_data2    127.0.0.1(rw,sync,no_root_squash)
+<export> <host1>(<options>) <hostN>(<options>)…
+
+>in /etc/hosts add: 
+<server_IP>:/<export>/<dir>     <dir>     nfs   default 0 0 
+
+# showmount -e                                                     (view mounts export list)
+
+Video 4: Configuring autofs on RHEL 8 
+=====================================================================================
+# vi /etc/autofs.conf                                          (master configuration file for autofs) 
+# vi /etc/auto.master                                        (master map, default primary configuration  file for autofs) 
+# /etc/auto.home                                              (configuration files for individual on-demand mount points (ex: /etc/auto.home) ) 
+# systemctl enable --now autofs                     (start and enable autofs) 
+
+Video 5: Using  set-GID Directories for Collaboration
+=====================================================================================
+# groupadd <group_name>                                                                                              (add a group) 
+# for i in manny moe jack; do useradd -m -G  <group_name>  $i; done                  (add a bunch of users)              
+# mkdir /home/marketing_dir                                                                                         (make home directory for marketing group) 
+# chown -R :marketing /home/marketing_dir/                                                             (change group ownership) 
+# chmod -R  ug+rwx /home/marketing_dir                                                                    (change group ownership of dir) 
+# stat <directory>                                                                                                                (view stats on directory such as time stamps and permissions) 
+# chmod  g+s marketing2                                                                                                   (set group id "s" for the directory, all users in the group will be able to create files and collaborate) 
+
+Video 6: Managing Layered Local Storage with Stratis on RHEL 8 
+=====================================================================================
+# yum -y install stratisd stratis-cli                                                                                                                                 (install stratis ) 
+# systemctl enable --now stratisd                                                                                                                                 (enable stratisd)
+# wipefs -all /dev/sda2                                                                                                                                                   (erase any FS, partition table, or RAID signature that exist on block) 
+# stratis blockdev                                                                                                                                                             (view pool name, device node, physical size, tier) 
+# stratis pool create my-pool /dev/sda2                                                                                                                     (create a new pool on block)  
+# stratis pool list                                                                                                                                                               (list all stratis pools) 
+# stratis fs create <pool> <fs>                                                                                                                                        (create a fs) 
+# stratis fs list                                                                                                                                                                    (list fs) 
+# stratis fs list <pool>                                                                                                                                                       (list fs in pool) 
+# mount /dev/stratis/my-pool/my-fs stratis_dir/                                                                                                       (mount a stratis fs on mount point) 
+UUID=a1f0b64a-4ebb-4d4e-9543-b1d79f600283 /fs1 xfs defaults,x-systemd.requires=stratisd.service 0 0  (add this to /etc/fstab) 
+# systemctl daemon-reload                                                                                                                                            (regenerate mount units so that your sysem registers the new configuration) 
+# stratis pool add-data <pool> <device>                                                                                                                      (add a device to a pool) 
+# stratis pool destroy <pool> <fs>                                                                                                                                 (remove a fs)  
+# systemctl daemon-reload                                                                                                                                            (reload service) 
+
+Take a snapshot  of a fs
+-------------------------------
+# stratis fs snapshot <pool>  <fs>  <fs_snapshot_name>              (take a snapshot of a fs)
+# stratis fs rename <pool>  <fs> <fs-bak>                                         (rename old fs so you can overwrite it with snapshot)
+# stratis fs rename <poo> <fs_snapshot_name>  <fs>                   (rename the snapshot to the original fs name to recover) 
+#  umount <mount-point>; mount <mount_point>                        (remount mount point) 
+
+Video 7: Disk Compression Using Virtual Data Optimizer (VDO) on RHEL 8 to get rid of data duplication
+=====================================================================================
+/dev/<disk>   /mnt/point   xfs   defaults, _netdev, x-systemd.device-timeout=0,x-systemd.requires=vdo.service 0 0     (set a persistent vdo mount) 
+# yum -y install vdo                                                                                                                                                                               (install vdo)
+# systemctl enable --now vdo                                                                                                                                                              (start and enable vdo) 
+# lsblk                                                                                                                                                                                                       (view disks) 
+# vdo create --name=<name>  --device=/dev/<device> --vdoLogicalSize=10G                                                                          (create a vdo volume)
+# vdostats --human-readable                                                                                                                                                               (view storageon vdo volume) 
+# mkfs.xfs -K /dev/mapper/web_storage                                                                                                                                          (make a fs on a vdo volume)
+# udevadm settle                                             
+# vdostats --human-readable                                                                                                                                                                (view stats on device)
+# mkdir /mount/point                                                                                                                                                                           (make a dir to mount a vdo fs)
+# mount /dev/mapper/web_storage  /mount/point                                                                                                                       (mount a vdo )
+# make it persistent in /etc/fstab                                                                                                                                                       (make a vdo mount)
+
+Video 8: Working with LVM on VDO Using RHEL 8 
+=====================================================================================
+# lsblk 
+# vdo create --name=web_storage --device=/dev/svdb --vdoLogicalSize=10G                                                                          (create a new vdo device) 
+# vdostats --human-readable                                                                                                                                                               (view stats on vdo device) 
+# pvcreate /dev/mapper/web_storage                                                                                                                                              (create a pv on top of a vdo device) 
+# vgcreate web_vg  /dev/mapper/web_storage                                                                                                                              (create a vg on top of pv that’s on top of vdo) 
+# lvcreate -L +2G -n web_storage_qa  web_vg                                                                                                                                 (create an LV) 
+#mkfs.xfs /dev/mapper/web_vg-web_storage_qa                                                                                                                          (make a fs) 
+# mkdir /mount/point                                                                                                                                                                            (make a mount point) 
+# mount /dev/mapper/web_vg-web_storage_qa                                                                                                                            (mount fs)
+# vdostats --human-readable                                                                                                                                                                (view vdo stats)
+
+Chp7 - Deploying, Configuring, and Maintaining RHEL 8 Systems
+
+Video 1: Managing Scheduled task in Linux
+==============================================
+# systemctl status crond                                    (verify cron is running) 
+# vi /etc/crontab                                                  (add a job to crontab) 
+# crontab -l <user>                                              (view crontab of user) 
+# crontab -e <user>                                             (edit crontab) 
+# yum -y install cronie at                                    (install at command) 
+# systemctl status atd                                         (verify at is running) 
+# which at                                                             (view  if at command is installed) 
+# systemctl enable --now at.d                           (start and enable at) 
+# atq                                                                       (view at pending jobs)
+# atq -l                                                                   (view at pending jobs)  
+# atrm  <job_num>                                             (remove a job) 
+# at -r <job_num>                                               (delete a job #) 
+# at now                                                                (execute a job now) 
+# at now  +2 minutes                                          ( run job 2 mins from now) 
+# at now +7 days                                                 (enter a job for 7 day in advance,   ctrl + d to  exit) 
+# at Monday +20 minutes                                 (at Monday + 20 mins) 
+
+Video 2:  Using systemd to Manage Services
+===============================================
+# cd /usr/lib/systemd/system/                       (RPM packages place their systemd unit files here during installation) 
+# cd /run/systemd/system/                             (Unit files that are created at run tme. This directory overrides the directory above) 
+# /etc/systemd/system/                                   (unit files created by invoking systemctl enable.  Overrides /run/systemd/system ) 
+# systemctl start mariadb                                 (start mariadb)
+# systemctl enabl --now mariadb                    (enable mariadb)
+# systemctl restart mariadb                             (restart mariadb)
+# systemctl stop mariadb                                  (stop mariadb)
+# systemctl disable mariadb                             (disable mariadb)
+# systemctl disable --now mariadb                 (disable mariadb now)
+# systemctl get-default                                     (get default  target) 
+# systemctl set-default multi-user                  (set target to multi-user)
+# systemctl isolate multi-user                         (set multi-user target now instead of having to reboot) 
+
+Video 3:  Configuring Time Service Clients (ntp was replaced by chrony) 
+=============================================
+# vi /etc/chrony.conf                                        (chrony configuration file) 
+# vi /etc/chrony.keys                                        (key files ) 
+# /usr/share/doc/chrony                                 (documenation) 
+# yum -y install chrony  ntpstat                      (install chrony) 
+# chronyc sources                                             (view time sources) 
+# chronyc sources -v                                         (same as above but verbose) 
+# chronyc sourcestats                                       (same as above but with stats) 
+# chronyc serverstats                                        (view stats on server) 
+
+How to set a new time server:
+---------------------------------------------
+# vi /etc/chrony.conf                                         (edit the chrony.conf file) 
+server <server> iburst                                       (add this instead of server or pool configured) 
+# systemctl restart chronyd                             (restart chronyd service) 
+# chronyc sources                                              (verify chronyc configuration changes) 
+# chronyc tracking                                             (check status of time sync) 
+# timedatectl                                                      (view status of time sync) 
+#ntpstat                                                               (view time synchronization) 
+# chronyc makestep                                          (force sync) 
+
+Video 4:   Managing Packages in RHEL 8 
+=========================================
+How to build a repo from scratch 
+--------------------------------------------
+# vi /etc/yum.repos.d/<repo_name> ( repo file: ex) /etc/yum.repos.d/epel.repo
+[epel]
+name=Exra Packages for Enterprise Linux 
+baseurl=https://download.fedoraproject.org/pub/epe/… 
+enabled=1
+gpgcheck=0
+#yum clean all                                                                                (clean yum cache) 
+# yum repolist --all                                                                        (list all repos) 
+# yum list --available youtube-dl                                                (view if a package is available) 
+# yum info youtube-dl                                                                  (view info about package) 
+# yum -y install --downloadonly youtube-dl                             (download youtube-dl)
+# yum -y install youtube-dl-2020.09.14-1.el8.noarch.rpm     (installa  downlaoded RPM file) 
+# yum check-update                                                                      (check for updates) 
+# yum -y update                                                                             (update rhel system) 
+# rpm -qi wget                                                                                (view info on package) 
+
+Video 5: Using Application Streams in RHEL 8
+================================================
+# yum clean all                                                                               (clean yum cache) 
+# yum repolist --all                                                                        (view repo list)
+# yum module list                                                                          (view module list) 
+# yum module list php                                                                  (narrow focus to only php modules) 
+#  yum module install php:8.0/devel                                          (install php, v8, dev) 
+# yum module list php                                                                  (list php module) 
+# yum module list --installed php                                               (view php module installed) 
+# yum module reset php                                                              ( used to go back 1 version of php)
+
+Video 6:  Managing the System Bootloader 
+==============================================
+# vi /etc/default/grub                                                                  (default grub configuration file) 
+# cd /etc/grub.d                                                                            (this is for more advanced configuration) 
+# vi /boot/grub2/grub.cfg                                                           (generated by grub2-mkconfig. This file controls the behavior of the GRUB2 bootloader) memorize
+# grub2-mkconfig -o /boot/grub2/grub.cfg                             (make changes to the grub bootloader) 
+# rpm -qa | grep kernel-[0-9]                                                     (check the kernel packages currently installed on the sytem
+# grubby --info=0                                                                          (view kernel info) 
+
+Chp 8 - Managing Basic Networking on RHEL 8
+
+Video 1: Configuring IP Network on RHEL 8 
+=====================================================================================
+# nmtui                                                                                            (easy-to-use TUI for NetworkManager) 
+# nmcli                                                                                             (Powerful CLI for NetworkManager) 
+# ip addr                                                                                          (view network configuration) 
+# vi /etc/sysconfig/network-scripts                                            (network configuration files) 
+# systemctl restart NetworkManager                                         (restart network manager)
+# nmcli connection show                                                              (view network connections/interfaces) 
+# nmcli connection show eth0                                                     (view more detailed info about connection) 
+# view device status                                                                       (view network devices) 
+# nmcli connecction down <device>                                           (bring a network interface down) 
+# nmcli connection modify <device> ipv4.method "manual" ip4 "192.168.1.21/24" ipv4.dns "192.168.10.145,192.168.10.147,8.8.8.8" ipv4.dns-search  "dean33.com"  ipv4.gateway  "192.168.10.1"  ipv4.may-fail "no"  (configure a network connection) 
+# ip addr del 192.168.10.241/24 dev enp0s3                            (remove an ip from a device) 
+# systemctl restart NetworkManager                                         (restart network manager after configuration changes) 
+# nmcli con mod enp0s3 ipv4.method "manaul"  ip6 "2002:c0a8:0af1:0:0:0:0/64" ipv6.may-fail  "yes"  (configure IPv6 address)
+# nmcli con mod System\ eth1 +ipv4.address 192.168.1.29/24   (add new IP address) 
+# nmcli con reload                                                                           (reload network manager after a configuration change) 
+# ping <ip>                                                                                        (ping IP to verify configuration) 
+# vim -O  <file1>   <file2>                                                               (open 2 files in VIM, Ctrl + w to switch between them) 
+# ip address show eth1                                                                  (show eth1 interfaces status) 
+# ifup eth1                                                                                       (bring up interface) 
+# yum whatprovides dig                                                               (view where to download dig, "yum install bind-utils")
+# cat /etc/resolv.conf                                                                    (view dns servers) 
+# cat /etc/hosts                                                                               (local dns) 
+# grep ^hosts  /etc/nsswitch.com                                                (view name resolution lookup order, files, dns, myhost) 
+# journalctl -u NetworkManager.service                                    (view NetworkManager logs)
+# grep NetworkManager /var/log/messages                             (grep messages) 
+# nmcli connection modify <if_name> ipv6.method disabled
+# nmcli connection up <if_name>
 
 
+Chp 9 - Managing Users and Groups on RHEL 8
 
-1. Prepare for the Red Hat Hands-on Certifications 
-=====================================================
+Video 1:  Managing User Accounts, Groups, and Passwords on RHEL 8 
+=====================================================================================
+# nl /etc/group                                                                                                                   (group file) 
+# nl /etc/passwd                                                                                                                (user file) 
+# useradd <user>                                                                                                               (add user) 
+# userdel <user>                                                                                                                (delete user) 
+# usermod  <user>                                                                                                            (modify user account) 
+# groupadd <group>                                                                                                         (add a group)
+# groupdel  <group>                                                                                                         (delete a group) 
+# groupmod <group>                                                                                                       (modify a group) 
+# groups                                                                                                                              (view what groups the current user is in)
+# id                                                                                                                                       (view user stats)
+# passwd <user>                                                                                                                (change user password) 
+# for i in dba_admin dba_intern dba_staff dba_managers it_staff it_managers; do echo "Creating group: "$i""; groupadd $i; done  (create a bunch of groups at the same time) 
+# for i in manny moe jack marcia jan cindy; do echo "Creating user: "$i""; useradd -m $i; done  (create a bunch of users at once) 
+# for user in manny moe jack marcia jan cindy ; do echo "Setting password for "$user"..." ; usermod -p $(openssl passwd -1 dbapass) $user ; done  (setting password for many users) 
+# usermod -u 1010 -G dba_admin,dba_managers,dba_staff manny                       (change UID and group for user) 
+# groupmod -n <new_group_name>  <old_group_name>                                         (change the name of a group) 
+# useradd -m -G <group1>,<group2>  <user>                                                                (add user to both groups and create a home dir if it does not exist) 
+# usermod -G <group> <user>                                                                                          (change a users group) 
+# userdel -r <user>                                                                                                              (delete user and home dir files) 
+# chage -l <user>                                                                                                                 (view user expiration date info) 
+# chage <user>                                                                                                                    (change user expiration date) 
+# chage -m 15 -M 90 <user>                                                                                             (change expiration for user, could be used in for loop for many users) 
+# usermod -p $(openssl  passwd dbapass) <user>                                                        (change users password) 
+# usermod -g <primary grop> <user>                                                                              (change primary group, different than -G ) 
+# chgrp -R <user> /home/<user>                                                                                     (change a users group ownership) 
 
-2. Virtual Machines & Automated Installations 
-=====================================================
+Video 2:  Managing Superuser Access 
+=====================================================================================
+# visudo                                                                                                                               (edit /etc/sudoers file, as this file cant be edited manually)
+# usermod -aG wheel <user>                                                                                          (add user to wheel group) 
+# sudoedit /etc/hosts                                                                                                       (allow a sudo user to edit a file, has to be configured in visudo) 
 
-3. Fundamental Command-Line Skills 
-=====================================================
+Add the following in sudoers file:
+--------------------------------------------
+%wheel   ALL=(ALL)   ALL
+%dba_managers ALL=(ALL)
+%dba_admin  ALL=SOFTWARE, SERVICES, PROCESSES
+%dba_intern  ALL=MESSAGES  
 
-4. RHCSA-Level Security Options 
-=====================================================
+Chp10 - Managing Security on RHEL 8
 
-5. The Boot Process 
-=====================================================
-
-6. Linux Filesystem Administration 
-=====================================================
-#fdisk 
-#gdisk 
-#parted 
-#df -h 
-#fdisk -l 
-#cfdisk
-#mount 
-#findmnt 
-#partprobe /dev/vda 
-#mkfs
-#mkfs.ext3
-#mkfs.ext4
-#mkfs.xfs
-#xfs_admin
-#dumpe2fs
-#mkswap 
-#fsck
-#mount 
-#mount -a
-#unmount 
-#blkid 
-
-
-#pvcreate
-#pvchange
-#pvck
-#pvdisplay
-#pvmove
-#pvremove
-#pvresize
-#pvs
-#pvscan
-
-#vgcreate
-#vgcfgbackup
-#vgcfgrestore 
-#vgchange
-#vgck
-#vgconvert 
-#vgdisplay
-#vgexport
-#vgimport
-#vgextend 
-#vgmerge
-#vgmknodes 
-#vgreduce 
-#vgremove 
-#vgrename 
-#vgs
-#vgscan
-#vgsplit
-
-#lvchange
-#lvconvert
-#lvcreate
-#lvdisplay
-#lvextend 
-#lvreduce 
-#lvremove
-#lvrename
-#lvresize
-#lvs
-#lvscan
-
-#cat /etc/fstab
-#cat /etc/mtab 
+Video1: Managing the Firewall 
+=========================================
+#systemctl status mariadb                                                           (get mariadb status) 
+#systemctl enable --now mariadb                                              (enable mariadb)
+#telnet <IP> <Port>                                                                       (view if port is open on a host)
+#telnet <IP> 3306                                                                          (view if MariaDB is listening on a host)            
+#nmap -A <IP> | less                                                                     (view ports open on a host) 
+#firewall-cmd --help                                                                      (view help on firewall-cmd)
+#firewall-cmd --list-all                                                                   (List all, including services running) 
+#firewall-cmd --list-services                                                         (get services running) 
+#firewall-cmd --add-service=mysql --permanent                     (Add a service)
+#firewall-cmd --add-port=3306/tcp --permanent                    (add a port)
+#firewall-cmd --reload                                                                   (reload firewall after changes) 
+#/usr/lib/firewalld/services                                                          (firewall services)
+#/etc/firewalld/services                                                                 (firewall-cmd changes) 
+# firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=172.16.132.0/23 port port=5432 protocol=tcp accept' && firewall-cmd --reload
+# firewall-cmd --add-rich-rule='rule family="ipv4" source address="172.16.144.162/32" port port="8080-8443" protocol="tcp" accept'   (add rich rule)
 
 
+Video 2: Using File Access Control Lists (ACL)  
+================================================
+# getfacl <directory/file>                                                                             (get file acl)
+# setfacl <option> <action/specification> <directory/file>                                                                              (set file acl)
+#chmod o+t <directory/file>                                                                       (set sticky bit so no one else can delete others files) 
+#chmod g+s /home/dba_docs/                                                                   (setguid) 
+#setfacl -Rm d:g:dba_staff:rwx,g:dba_staff:rwx /home/dba_docs       (anything that gets crearunted will be rwx, and anything currently in the directory will be set to rwx) 
+#stat /home/dba_docs/                                                                                (get stats on a dir) 
+#getfacl /home/dba_docs/                                                                           (get acl on a dir)
+#setfacl -Rm d:u:jack:r--,u:jack:r--  /home/dba_docs/                             (set f acl on a dir)   
+#setfacl -Rm d:u:cindy:r--,u:cindy:r--  /home/dba_docs/                        (set f acl on a dir) 
+#groups                                                                                                             (view groups) 
+#setfacl -m m:rw <dir>                                                                                   (set max permissions to read/write)
+# setfacl -d -m accouting:rwx /accounting                                                 (give accounting group rwx to everything underneath accounting) 
+# setfacl -m g:accounting:- /kenny                                                         (don’t let anyone in accounting view kennys folder) 
 
-7. Package Management 
-=====================================================
+Video 3: Troubleshooting SELinux 
+=========================================
+# /etc/selinux/config                                                                                     (SELinux configuration file; Reboot after editing)
+# sestatus                                                                                                         (Check current status of SELinux)
+# getenforce                                                                                                    (return SELINUX Mode only)
+# setenforce  0                                                                                                (change running mode, but remember this is not persistent) 
+# ls -Z                                                                                                                (view context of files) 
+# ps -Z                                                                                                               (view context of running process, Zaux)
+# id -Z                                                                                                               (view user context
+#journalctl -u httpd                                                                                        (grep journalctl for httpd logs) 
+#grep httpd /var/log/audit/audit.log | less                                               (search auditlog for httpd logs)
+#grep sealert /var/log/messages                                                                (grep sealert) 
+#ausearch -c 'httpd' --raw | less                                                                  (httpd logs)
+#grep httpd /var/log/messages | less                                                         (grep var/log messages) 
+#ausearch -c 'httpd' --raw | audit2allow -M my-httpd                            (this command came from /var/log/messages) 
+#ls -laZ /web                                                                                                     (view selinux attributes on /web dir) 
+#semanage fcontext -a -t httpd_sys_content_t "/web(/.*)?"                 (change Selinux attributes)
+# restorecon -Rv /web                                                                                    (relable after running semanage 
+# semanage port -a -t http_port_t -p tcp 85                                              (allow port 85)
 
-8. User Administration 
-=====================================================
 
-9. RHCSA-Level System Administration Tasks
-=====================================================
+Chp 11 - Managing Containers on RHEL 8
+
+Video 1: Managing Containers on RHEL 8 Using podman - Overview
+=====================================================================================
+# podman                                                                                                  (used to directly manage containers and container images)
+# skopeo                                                                                                    (used to inspect, copy, delete, and sign container images) 
+# buildah                                                                                                    (create new container images) 
+# which podman skopeo                                                                         (see if podman and skopeo is installed) 
+# buildah                                                                                                    (used to create new container images) 
+# registry.redhat.io                                                                                   (Red Hat registry) 
+# registry.connect.redhat.com                                                               (Red hat registry)
+# nl /etc/containers/registries.conf                                                      (red hat container registry configuration)
+# yum -y module list --available container-tools                                 (download podman and container tools) 
+# yum -y module install container-tools                                               (install pod man and other tools) 
+# podman info                                                                                           (get podman environment configuration info)
+# podman login registry.access.redhat.com                                        (log into registry) 
+# podman  search registry.access.redhat/ubi8                                   (search in a registry)
+# podman pull registry.access.redhat.com/ubi8/ubi:latest              (get latest ubi8 image) 
+# podman inspect <image>                                                                     (inspect an image) 
+# podman images                                                                                      (view images) 
+# skopeo  inspect docker://registry.access.redhat.com/ubi8/ubi:latest        (inspect an image) 
+# podman run -it registry.access.redhat.com/ubi8/ubi:latest           (run interactive shell inside container) 
+# podman ps --all                                                                                        (view all containers even the ones that are not running) 
+# podman rm -a                                                                                          (remove all containers) 
+# podman rmi registry.access.redhat.com/ubi8/ubi:latest                (remove an image) 
+
+Video 2: Managing Containers on RHEL 8 Using podman - Basic Operations
+=====================================================================================
+# skopeo inspect docker://registry.access.redhat.com/rhscl/httpd-24-rhel7                  (inspect an image) 
+# podman run -d -p 8000:8080  registry.access.redhat.com/rhscl/httpd-24-rhel7         (run a container from a repo image and run it on a port (apache)) 
+# podman ps -a                                                                                                                             (view running containers) 
+# curl http://127.0.0.1:8000                                                                                                       (view running apache instance) 
+# podman stop -a                                                                                                                          (stop all containers) 
+# podman run -it registry.access.redhat.com/rhschl  /httpd-24-rhel7  /bin/bash            (run an interactive shell) 
+# podman -d --name test_container registry.access.redhat.com/rhscl/httpd-24-rhel7  (give a name to the container) 
+# podman exec -it test_container  cat /etc/*release                                                              (run a command inside a container from the outside)
+# podman stop test_container                                                                                                    (stop a container) 
+
+How to add persistant data to containaer
+--------------------------------------------------------
+# mkdir ~/web_data                                                                                                                      (make web_data dir for persistent container storage)
+# echo "Test Data"  > ~/web_data/test.txt                                                                                (make sampel html file)
+# podman run -d --name web_container -p 8000:8080  -v ~/web_data:/var/www/html:Z registry.access.redhat.com/rhscl/httpd-24-rhel7  (add persitent data to container, Z is for SELinux) 
+# curl http://127.0.0.1:8000/test.txt                                                                                          (test) 
+
+Video 3: Managing Containers on RHEL 8 Using podman - Advanced Operations 
+=====================================================================================
+# mkdir -p ~/.config/systemd/user                                               
+# mkdir ~/web_data
+# echo "Test Data" > ~/web_data/test.txt
+# cd ~/.config/systemd/user  
+# podman run -d --name web_server -p 8000:8080 -v ~/web_data:/var/www/html:Z registry.access.redhat.com/rhcl/httpd-24-rhel7 
+# podman generate systemd --name web_server --files --new               ( this creates a container-web_service.service file that you can start with systemd) 
+# podman ps -a                                                                                                 (view running container so we can stop and remove it)
+# podman stop web_server                                                                            (stop web_server container before removing) 
+# podman rm web_server                                                                               (remove container)
+# loginctl enable-linger                                                                                    (enable linger to start a container service with the current user)
+# loginctl show-user <user> | grep -I linger                                                 (view if linger is enabled) 
+# systemctl --user daemon-reload                                                                 (reload systemctl daemon)
+# systemctl --user enable --now container-web_server.service               (enable container to start at boot)
+# systemctl --user status container-web_server.service                            (view status of container) 
 

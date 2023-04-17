@@ -27,6 +27,11 @@ Environtment Variables
 >set                                                (view all environment variables)
 >set Path                                           (view one environment variable)
 
+Execution Policy
+=================================================================================================
+>Get-ExecutionPolicy                                (get powershell script execution policy) 
+>Set-ExecutionPolicy AllSigned                      (set execution policy: Restricted, Unrestricted, RemoteSigned, AllSigned)
+
 Files & Directory
 =================================================================================================
 >robocopy <path> <destination>                      (robust file copy for windows to transfer large files)

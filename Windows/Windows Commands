@@ -21,6 +21,9 @@ AD/DC
 >PS C:\> Get-ADGroupMember -Identity "SG_Office" -Recursive | Get-ADUser -Property DisplayName | Select-Object DisplayName | Sort-Object DisplayName | Export-Csv C:\temp\members.csv -Encoding UTF8 -NoTypeInformation  (get list of users and export them to csv file) 
 >$user = Get-ADUser -Identity [USERNAME] -Properties CanonicalName                  (get user properties includig OU and store it in a variable)
 >Get-ADComputer -Identity <Computer_name>
+>repadmin /replsummary                                                               (show replication across DCs)
+>repadmin /showrepl                                                                  (show replication across DCs)
+
 
 Environtment Variables 
 =================================================================================================

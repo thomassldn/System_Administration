@@ -9,6 +9,11 @@ $ gcloud auth list                                                              
 $ gcloud config list project                                                       (get project and project id)
 $ gcloud config set compute/region us-central1                                     (set the compute zone)
 
+Compute 
+===========================
+$ gcloud compute instances list                         (list compute instances)
+
+
 Google Kubernetes Engine 
 ===========================
 $ kubectl version                                       (get installed version of kubernetes)

@@ -1,17 +1,39 @@
 #GCP Commands
 # 8 Nov 2022
 
+General Comands
+==========================
+$ python3 -c 'import base64; import os; print(base64.encodebytes(os.urandom(32)))'     (create a AES-256 base-64 key e.g.  b'tmxElCaabWvJqR7uXEWQF39DhWTcDvChzuCmpHe6sb0=\n')
 
-General Commands
+Configuration
 ==========================
 $ export LOCATION=US                                                               (create an environment variable with your location, where location is US, EU, or ASIA)
 $ gcloud auth list                                                                 (list active account name)
-$ gcloud config list project                                                       (get project and project id)
+$ gcloud config list                                                               (view general config info)
 $ gcloud config set compute/region us-central1                                     (set the compute zone)
+$ gcloud compute regions list                                                      (list regions)
+$ MYREGION=[YOUR_REGION]                                                           (create a variable with your region)
+
+CLI 
+===========================
+$ gcloud -h                                            (get a list of available CLI commands)
+$ gcloud init                                          (after you install the CLI, run this command to perform the initial setup or change settings or create a new configuration)
+$ gcloud auth login                                    (an alternative to gcloud init, authorize with a user account without setting up a configuration)
+
 
 Compute 
 ===========================
+$ gcloud compute instances get-serial-port-output <INSTANCE> --zone=us-central1-b         (read output from a virtual machine instance's serial port)        
 $ gcloud compute instances list                         (list compute instances)
+$ gcloud compute instances create <VM_NAME> --zone=<ZONE> --machine-type=e2-micro --subnet=<SUBNET> --image-family=debian-11 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=<DISK_NAME>    (create a VM with specs)
+$ gcloud compute instances move                                                        (move instance to a different zone within a region)
+
+
+
+Firewall
+===========================
+$ gcloud compute firewall-rules create <NETWORK>-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=<NETWORK> --action=ALLOW --rules=icmp,tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
+$ gcloud compute firewall-rules list --sort-by=NETWORK (list all firewall rules sorted by VPC Network)
 
 
 Google Kubernetes Engine 
@@ -25,12 +47,42 @@ $ kubectl create deploy nginx --image=nginx:1.17.10     (create a nginx contaner
 $ kubectl expose deployment nginx --port 80 --type LoadBalancer  (expose teh nginx container to the internet)
 $ kubectl scale deployment nginx --replicas 3                  (scale your deployement running your service to 3 pods )
 
+IAM
+=========================
+$ glcoud iam service-accounts keys list --iam-account  <user>@<email>.com        (list all of the keys associated with a Service Account)
+
+
+Networking
+=========================
+$ gcloud compute networks list                                      (view available PVC networks)
+$ gcloud compute networks subnets list --sort-by=<Network>          (list the available VPC subnets (sorted by VPC networ))
+$ gcloud compute networks create privatenet --subnet-mode=custom    (create custom network)
+$ gcloud compute networks subnets create privatesubnet-eu --network=privatenet --region=europe-west1 --range=172.20.0.0/20 (create a subnet)
+
+Projects
+=========================
+$ gcloud projects list                                                              (list all projects)
+$ gcloud config list project                                                       (get project and project id)
+
+
 Cloud Storage
 =========================
+$ gsutil mb gs://<BUCKET_NAME>                                                      (create a bucket)
 $ gsutil mb -l $LOCATION gs://$DEVSHELL_PROJECT_ID                                  (create a bucket that has your project id name)
 $ gsutil cp gs://cloud-training/gcpfci/my-excellent-blog.png my-excellent-blog.png  (Retrieve/Copy a banner image from a publicly accessible Cloud Storage location)
-$ gsutil cp my-excellent-blog.png gs://$DEVSHELL_PROJECT_ID/my-excellent-blog.png   (Copy an image from your working dir to a cloud bucket)
+$ gsutil cp <file>.png gs://$DEVSHELL_PROJECT_ID/<file>.png                       (Copy an image from your working dir to a cloud bucket)
 $ gsutil acl ch -u allUsers:R gs://$DEVSHELL_PROJECT_ID/my-excellent-blog.png       (Modify the Access Control List of the object you just created so that it is readable by everyone)
+$ gsutil signurl -d 10m /path/to/privatekey.p12 gs://bucket/object                 (access a bucket w key)
+$ gsutil acl get gs://$BUCKET_NAME_1/<file>.txt  > acl.txt                         (cat acl.txt to list default access list thats been assigned to file)
+$ gsutil acl set private gs://$BUCKET_NAME_1/<file>.txt                             (set access list to private)
+$ gsutil acl ch -u AllUsers:R gs://$BUCKET_NAME_1/<file>.txt                        (update access list to make  the file publicly readable)
+$ gsutil lifecycle get gs://$BUCKET_NAME_1                                          (view the current lifecycle policy e.g. if you want to delte the object after X days )
+$ gsutil lifecycle set life.json gs://$BUCKET_NAME_1                                (set lifecycle policy via json file, which deletes files older than X days)
+$ gsutil versioning get gs://$BUCKET_NAME_1                                         (get versioning of bucket,  verify versioning)
+$ gsutil versioning set on gs://$BUCKET_NAME_1                                      (enable versioning on a bucket)
+$ gsutil -ls -a gs://$BUCKET_NAME_1/setup.html                                      (list all versions of the file)
+$ gsutil rsync -r ./firstlevel gs://$BUCKET_NAME_1/firstlevel                       (sync a bucket file in your VM)
+
 
 Cloud SQL
 ===========================

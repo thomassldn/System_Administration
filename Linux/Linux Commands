@@ -1,132 +1,132 @@
 General Linux Commands
 ================================================================================================
-#PS1="\@ :\w \$ "                                                                        (08:44 PM :~/Desktop/Projects $)
-#PS1="\e[0;31mPRODUCTION\e[m:\h \W]$ "                                                   (PRODUCTION:<hostname> ~$ ) - PRODUCTION is RED)
-#PS1="\e[0;32mTOWER # \e[m"                                                              (TOWER # ) - Shell prompt GREEN
-#<command> | sed 's/$/<br>/'                                                             (replace the output of a command end of file characters with <br> to create html report; <pre> bracket could also be used for html report)
-#virt-what                                                                               (view what hyper-visor vm is currently running on)
-#while true;do sleep  1; date +%s" "%d" "%b" "%Y" "%T; done                              (view monatomic time)
+# PS1="\@ :\w \$ "                                                                        (08:44 PM :~/Desktop/Projects $)
+# PS1="\e[0;31mPRODUCTION\e[m:\h \W]$ "                                                   (PRODUCTION:<hostname> ~$ ) - PRODUCTION is RED)
+# PS1="\e[0;32mTOWER #  \e[m"                                                              (TOWER #  ) - Shell prompt GREEN
+# <command> | sed 's/$/<br>/'                                                             (replace the output of a command end of file characters with <br> to create html report; <pre> bracket could also be used for html report)
+# virt-what                                                                               (view what hyper-visor vm is currently running on)
+# while true;do sleep  1; date +%s" "%d" "%b" "%Y" "%T; done                              (view monatomic time)
 
 
 Awk
 =================================================================================================
-#grep Automatic cconsole.log | nawk -v FS=. 'BEGIN {last=""} {if ($1 != last}
+# grep Automatic cconsole.log | nawk -v FS=. 'BEGIN {last=""} {if ($1 != last}
 
 Certificates (OpenSSl)
 =================================================================================================
-#openssl version -a                                                                     (get version of openssl)
-#openssl help                                                                           (openssl help, list availabe utilites, message digest commands, and cipher commands)
-#man openssl-ciphers                                                                    (get more info on a particular module)
-#openssl ciphers -v 'ALL:COMPLEMENTOFALL'                                               (View Cipher suites, key exchange/authentication/encryption/mac)
-#openssl x509 -in <cert_name>.pem -text -noout                                          (view certificate in txt format)
-#openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/<key>.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:<port>                                                                 Should see " Verify return code: 0 (ok)"
-#openssl s_client -connect server.com:62444
-#openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt>                                             (extract Cert)
-#openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>                                               (extract key)
-#openssl pkcs12 -in <yourfile.pfx> -cacerts -nokeys -out <chain-ca.crt>                                                (extract chain)
-#opessl rsa -in <keyfile-encrypted.key> -out <keyfile-unencrypted.key>                                                 (remove password from key)
-#openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                                                  (extract an unecrypted key -not safe)
-#openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>                                 (convert private key to pem format)
-#openssl x509 -inform der -in certificatename.der -out certificatename.pem                                              (convert der cert to pem)
-#grep -n BEGIN "/qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem"
-#for a in 1 29;do sed -n $a',$p' /qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem | openssl x509 -noout -text | grep Subject:;done
-#grep -n BEGIN
-#for a in 1 26 61;do sed -n $a',$p' newswmdirectcert_prod_chain.pem | openssl x509 -noout -text | grep CN=;echo;done
-#for i in *.*; do printf "\n\n\n%s\n%s\n\n" "$i" "========================" ; openssl x509 -in $i -text -noout | grep "Not After";done   (check the expiriation date of all the certificates in a directory)
+# openssl version -a                                                                     (get version of openssl)
+# openssl help                                                                           (openssl help, list availabe utilites, message digest commands, and cipher commands)
+# man openssl-ciphers                                                                    (get more info on a particular module)
+# openssl ciphers -v 'ALL:COMPLEMENTOFALL'                                               (View Cipher suites, key exchange/authentication/encryption/mac)
+# openssl x509 -in <cert_name>.pem -text -noout                                          (view certificate in txt format)
+# openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/<key>.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:<port>                                                                 Should see " Verify return code: 0 (ok)"
+# openssl s_client -connect server.com:62444
+# openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt>                                             (extract Cert)
+# openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>                                               (extract key)
+# openssl pkcs12 -in <yourfile.pfx> -cacerts -nokeys -out <chain-ca.crt>                                                (extract chain)
+# opessl rsa -in <keyfile-encrypted.key> -out <keyfile-unencrypted.key>                                                 (remove password from key)
+# openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>                                                  (extract an unecrypted key -not safe)
+# openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>                                 (convert private key to pem format)
+# openssl x509 -inform der -in certificatename.der -out certificatename.pem                                              (convert der cert to pem)
+# grep -n BEGIN "/qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem"
+# for a in 1 29;do sed -n $a',$p' /qmd/cpr/sw/<SITE>/qcprETC/certificates/cert.pem | openssl x509 -noout -text | grep Subject:;done
+# grep -n BEGIN
+# for a in 1 26 61;do sed -n $a',$p' newswmdirectcert_prod_chain.pem | openssl x509 -noout -text | grep CN=;echo;done
+# for i in *.*; do printf "\n\n\n%s\n%s\n\n" "$i" "========================" ; openssl x509 -in $i -text -noout | grep "Not After";done   (check the expiriation date of all the certificates in a directory)
 
 
 
 DevOPS
 ==================================================================================================
-#pgrep -a firefox                                     (similar to ps aux | grep firefox)
-#iostat                                               (CPU Utilization report, the Device Utilization report and the Network Filesystem report.)
-#free -g                                              (display memory, in GB)
-#vmstat
-#pstree                                               (output list of process in tree format)
-#ps -aux | less                                       (shows processes currently running on the system)
+# pgrep -a firefox                                     (similar to ps aux | grep firefox)
+# iostat                                               (CPU Utilization report, the Device Utilization report and the Network Filesystem report.)
+# free -g                                              (display memory, in GB)
+# vmstat
+# pstree                                               (output list of process in tree format)
+# ps -aux | less                                       (shows processes currently running on the system)
 
 DNS
 ==================================================================================================
-#for i in `egrep -v "^$|^;|^#" /etc/resolv.conf | sed -n '2,$'p | awk '{print $NF}'` ; do echo checking reachability of and resolution from $i nameserver;  ping -c2 $i ; dig redhat.com @$i +short sleep 1 ; echo ; done      (Check DNS /etc/resolve.conf alive)
+# for i in `egrep -v "^$|^;|^# " /etc/resolv.conf | sed -n '2,$'p | awk '{print $NF}'` ; do echo checking reachability of and resolution from $i nameserver;  ping -c2 $i ; dig redhat.com @$i +short sleep 1 ; echo ; done      (Check DNS /etc/resolve.conf alive)
 
 File Management
 ==================================================================================================
-#split –n 19  <file name>                                                                      (split a large file into smaller files)
-#find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;                     (list/rm files older than x-days)
-#find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec mv {} /path/to/new/folder/ \;     (move files to new folder)
-#find / -type f -name "*.zip" -size +1M
-#locate                                     (find files by name)
-#stat                 (display file or filesystem status)
-#for i in `ls *.exception` ; do mv $i ${i%.exception} ; done                                   (remove ".exception" from all files in a directory)
-#tree                                                                                          (view files and directories in a tree like structure)
+# split –n 19  <file name>                                                                      (split a large file into smaller files)
+# find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec ls -trl {} \;                     (list/rm files older than x-days)
+# find /path/to/files/ -type f -name '*.txt' -mtime +30 -exec mv {} /path/to/new/folder/ \;     (move files to new folder)
+# find / -type f -name "*.zip" -size +1M
+# locate                                     (find files by name)
+# stat                 (display file or filesystem status)
+# for i in `ls *.exception` ; do mv $i ${i%.exception} ; done                                   (remove ".exception" from all files in a directory)
+# tree                                                                                          (view files and directories in a tree like structure)
 
 
 
 Firewalld
 ==================================================================================================
-#firewall-cmd --help                                                                      (a TON of info)
-#firewall-cmd --stat                                                                      (check if firewalld is running)
-#firewall-cmd --zone=public --add-port=80/tcp --permanent                                 (open port using firewalld)
-# firewall-cmd --zone=public --remove-port=80/tcp --permanent                             (close port using firewalld)
-#firewall-cmd --reload                                                                    (reload firewall configuration)
-#iptables-save | grep 80                                                                  (check if port was added to iptables rules)
-#firewall-cmd --list-all                                                                  (view settings in default zone)
-#firewall-cmd --list-services                                                             (view current firewalld settings)
-#firewall-cmd --add-service=ssh --timeout 15m                                             (open ssh for 15 min)
-#/usr/lib/firewalld/zones/                                                                (this is where predefined zones are store)
-#/etc/firewalld/zones                                                                     (the above files are copied here after they are modified)
-#/usr/lib/firewalld/services/ (/etc/firewalld/services/)                                  (example services)
-#
+# firewall-cmd --help                                                                      (a TON of info)
+# firewall-cmd --stat                                                                      (check if firewalld is running)
+# firewall-cmd --zone=public --add-port=80/tcp --permanent                                 (open port using firewalld)
+#  firewall-cmd --zone=public --remove-port=80/tcp --permanent                             (close port using firewalld)
+# firewall-cmd --reload                                                                    (reload firewall configuration)
+# iptables-save | grep 80                                                                  (check if port was added to iptables rules)
+# firewall-cmd --list-all                                                                  (view settings in default zone)
+# firewall-cmd --list-services                                                             (view current firewalld settings)
+# firewall-cmd --add-service=ssh --timeout 15m                                             (open ssh for 15 min)
+# /usr/lib/firewalld/zones/                                                                (this is where predefined zones are store)
+# /etc/firewalld/zones                                                                     (the above files are copied here after they are modified)
+# /usr/lib/firewalld/services/ (/etc/firewalld/services/)                                  (example services)
+# 
 
 Filesystem Management
 =================================================================================================
-#vgdisplay                                            (display vgs)
-#df -ah                                               (check disk space)
-#lvs
-#lvs -o +devices <device>                             (displays, LV,VG,Attr, LSize,..,.., Devices)
-#df -Th                                               (check fileystem type)
-#fdisk, gdisk, parted                                 (MBR, GPT, GPT)
-#fdisk -l                                             (list system disks and identify new drives)
-#lsblk                                                (display block devices)
-#vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page)
-#lvmdiskscan                                          (scan disks)
-#mount                                                (list format and mount options for each filesystem)
-#mount -t nfs 10.1.6.60:/customer /customer -o nfsvers=3 -o nolock (mount AIX to Linux)
-#findmnt                                              (way better than mount command !!!!!)
-#mkfs.ext3                                             (make ext3 filesystem)
-#mkfs.ext4                                             (make ext4 filesystem)
-#mkfs.xfs                                              (make xfs filesystem)
-#cat /proc/swap                                       (view swap space currently configured)
-#pvcreate /dev/sda3                                   (prepare for use w/LVM
-#vgcreate <vg_name> /dev/sda3                         (create a VG on the new PV)
-#lvcreate -l 100%FREE -n <lv_name> <vg_name>          (create a logical volume)
+# vgdisplay                                            (display vgs)
+# df -ah                                               (check disk space)
+# lvs
+# lvs -o +devices <device>                             (displays, LV,VG,Attr, LSize,..,.., Devices)
+# df -Th                                               (check fileystem type)
+# fdisk, gdisk, parted                                 (MBR, GPT, GPT)
+# fdisk -l                                             (list system disks and identify new drives)
+# lsblk                                                (display block devices)
+# vgconvert                                            (convert a volume group from LVM1 to LVM2 - see man page)
+# lvmdiskscan                                          (scan disks)
+# mount                                                (list format and mount options for each filesystem)
+# mount -t nfs 10.1.6.60:/customer /customer -o nfsvers=3 -o nolock (mount AIX to Linux)
+# findmnt                                              (way better than mount command !!!!!)
+# mkfs.ext3                                             (make ext3 filesystem)
+# mkfs.ext4                                             (make ext4 filesystem)
+# mkfs.xfs                                              (make xfs filesystem)
+# cat /proc/swap                                       (view swap space currently configured)
+# pvcreate /dev/sda3                                   (prepare for use w/LVM
+# vgcreate <vg_name> /dev/sda3                         (create a VG on the new PV)
+# lvcreate -l 100%FREE -n <lv_name> <vg_name>          (create a logical volume)
 Or
-#lvcreate -L 512M -n <lv_name> <vg_name>
-#mkfs -t ext4 /dev/sda3/<vg_name>-<vol_name>          (create a filesystem)
-#mkdir <mount_point>                                  (create a mount point)
-#vi /etc/fstab                                        (set mount opts, mntpoint in this file-copy another already created filesystem)
-#mount /dev/sda2 /<mount_point>
-#vi /etc/fstab                                        (filesystems you want to mount at boot)
+# lvcreate -L 512M -n <lv_name> <vg_name>
+# mkfs -t ext4 /dev/sda3/<vg_name>-<vol_name>          (create a filesystem)
+# mkdir <mount_point>                                  (create a mount point)
+# vi /etc/fstab                                        (set mount opts, mntpoint in this file-copy another already created filesystem)
+# mount /dev/sda2 /<mount_point>
+# vi /etc/fstab                                        (filesystems you want to mount at boot)
 
-#vgdisplay
-#vgdisplay -v <volume_group> | grep "LV Path"         (check what LVs belong to a VG)
+# vgdisplay
+# vgdisplay -v <volume_group> | grep "LV Path"         (check what LVs belong to a VG)
 After you add disk space (of whatever size), run the following commands to extend VG's and LV's:
-# lsblk                                    (run an LSBLK command to identify the new disk ID (usually at very bottom of listing))
-# vgextend vlm_vg /dev/sdab                (extend the volume group “qcprbackupvg” and specify the new disk ID “/dev/sdab”)
-# lvextend –L +2G vlm_vg/bklv –r          (extend the logical volume to the maxium size, 408G in this case, anything higher you’ll get an error. Again, specify the VG/LV and make to use the “-r” switch to automatically resize the underlying file system (saves extra work too)
-#lvreduce -L -512M -r /dev/sdab
-# df –h                                    (to verify the new disk space has been added)
+#  lsblk                                    (run an LSBLK command to identify the new disk ID (usually at very bottom of listing))
+#  vgextend vlm_vg /dev/sdab                (extend the volume group “qcprbackupvg” and specify the new disk ID “/dev/sdab”)
+#  lvextend –L +2G vlm_vg/bklv –r          (extend the logical volume to the maxium size, 408G in this case, anything higher you’ll get an error. Again, specify the VG/LV and make to use the “-r” switch to automatically resize the underlying file system (saves extra work too)
+# lvreduce -L -512M -r /dev/sdab
+#  df –h                                    (to verify the new disk space has been added)
 When you run the “LSBLK” command it will list every single disk with a “tree” structure on the left hand side. It will also show you what volume group belongs to which disk… The logical volume that is associated to that volume group will also be displayed.
 
 
 
 Sometimes nfs mounts go stale due to network problems, use the following commands to unmount/mount
 
-# mount -t nfs -o remount /mnt/nfs
-# umount /mnt/nfs
-# umount -f /mnt/nfs
-# umount -l /mnt/nfs
-# umount -lf /mnt/nfs
+#  mount -t nfs -o remount /mnt/nfs
+#  umount /mnt/nfs
+#  umount -f /mnt/nfs
+#  umount -l /mnt/nfs
+#  umount -lf /mnt/nfs
 
 Git
 =================================================================================================
@@ -152,159 +152,159 @@ $ git checkout <branch_name>  && git merge master                        (merge 
 
 Networking
 ==================================================================================================
-#for i in $(seq 1 254);do ping -c1 -t 1 10.0.75.$1;done (ping all host in a network)
-#ifconfig                                               (show network interface configuration)
-#ip addr show
-#nmap -sT -O localhost                                  (Check what ports are listening on a network node)
-#netstat -tulpn | grep LISTEN                           (Check what ports are listening on a network node)
-#netstat -ie                                            (view interfaces, Up)
-#mtr                                                    (Route packages)
-#traceroute                                             (Route packages)
-#dig
-#traceroute -w 3 -q 1 -m 16 securelink.quadramed.com
+# for i in $(seq 1 254);do ping -c1 -t 1 10.0.75.$1;done (ping all host in a network)
+# ifconfig                                               (show network interface configuration)
+# ip addr show
+# nmap -sT -O localhost                                  (Check what ports are listening on a network node)
+# netstat -tulpn | grep LISTEN                           (Check what ports are listening on a network node)
+# netstat -ie                                            (view interfaces, Up)
+# mtr                                                    (Route packages)
+# traceroute                                             (Route packages)
+# dig
+# traceroute -w 3 -q 1 -m 16 securelink.quadramed.com
 
 
 
 NTP / Chrony
 ===================================================================================================
-#yum search chrony
-#firewall-cmd --permanent --add-service=ntp
-#chrony tracking                                       (check if chrony is synchronized)
-#timedatectl status
-#timedatectl set-timezone Eurpoe/Rome                  (set system time zone)
+# yum search chrony
+# firewall-cmd --permanent --add-service=ntp
+# chrony tracking                                       (check if chrony is synchronized)
+# timedatectl status
+# timedatectl set-timezone Eurpoe/Rome                  (set system time zone)
 
 Package Manager
 =================================================================================================
-#rpm -q vsftpd                                         (verify a package is installed, in this case vsftpd)
-#yum -y install
-#yum help
-#yum list installed                                    (list installed packages)
-#yum info vsftpd                                       (list info on a package)
-#yum search samba                                      (search package names)
-#yum grouplist
-#yum update
-#yum repolist                                          (see repolist)
-#yum info                                              (view info on a program, e.g, version, etc)
+# rpm -q vsftpd                                         (verify a package is installed, in this case vsftpd)
+# yum -y install
+# yum help
+# yum list installed                                    (list installed packages)
+# yum info vsftpd                                       (list info on a package)
+# yum search samba                                      (search package names)
+# yum grouplist
+# yum update
+# yum repolist                                          (see repolist)
+# yum info                                              (view info on a program, e.g, version, etc)
 
 Performance
 ===================================================================================================
-#uptime
-#dmesg | tail
-#vmstat 1
-#mpstat -P ALL 1
-#pidstat 1
-#iostat -xz 1
-#free -m
-#sar -n DEV 1
-#sar -n TCP,ETCP 1
-#htop
-#top
+# uptime
+# dmesg | tail
+# vmstat 1
+# mpstat -P ALL 1
+# pidstat 1
+# iostat -xz 1
+# free -m
+# sar -n DEV 1
+# sar -n TCP,ETCP 1
+# htop
+# top
 
 Process Management
 ===================================================================================================
-# for i in $(pgrep lsof); do ps -p  $i -o lstart=; done                 (view when a process was started)
-# for i in $(pgrep lsof); do kill -9 $i; done                           (force kill a bunch of proccess that are not in an uninterruptible state "D")
-# stress -c 1 -&                                                        (Stress system)
-# top                                                                   (view running processes)
-# nice -n 19 stress  -c 1 &                                             (give stress command a niceness of 19
-# renice -n 10 17350                                                    (renice a process
-# chrt --max                                                            (adjust processes)
-# chrt -f -p 45 17350                                                   (change scheduling policy)
-# chrt -p 17350                                                         (view scheduling policy and priority)
-# pgrep stress                                                          (get running process)
-# pkill stress                                                          (kill a process)
-# kill -9 <process>                                                     (kill a process by pid)
-# kill -l                                                               (list all kill options)
+#  for i in $(pgrep lsof); do ps -p  $i -o lstart=; done                 (view when a process was started)
+#  for i in $(pgrep lsof); do kill -9 $i; done                           (force kill a bunch of proccess that are not in an uninterruptible state "D")
+#  stress -c 1 -&                                                        (Stress system)
+#  top                                                                   (view running processes)
+#  nice -n 19 stress  -c 1 &                                             (give stress command a niceness of 19
+#  renice -n 10 17350                                                    (renice a process
+#  chrt --max                                                            (adjust processes)
+#  chrt -f -p 45 17350                                                   (change scheduling policy)
+#  chrt -p 17350                                                         (view scheduling policy and priority)
+#  pgrep stress                                                          (get running process)
+#  pkill stress                                                          (kill a process)
+#  kill -9 <process>                                                     (kill a process by pid)
+#  kill -l                                                               (list all kill options)
 
 OS
 ===================================================================================================
-#uname -a                                              (check kernel version)
-#ps aux | grep process_name                            (check PID of a process)
+# uname -a                                              (check kernel version)
+# ps aux | grep process_name                            (check PID of a process)
 
 Scripts
 ===================================================================================================
-#nohup bash recompileRoutines.bash &                   (run commands in background and after exiting shell)
+# nohup bash recompileRoutines.bash &                   (run commands in background and after exiting shell)
 
 
 SELinux
 ===================================================================================================
-#rpm -qa | grep selinux                                 (View what selinux packages are installed)
-#yum -y install setroubleshoot setroubleshoot-server; service auditd restart (selinux trouble shooting tools)
-#getsebool -a                                           (see selinux booleans)
-#journalctl -b -o | grep sealert                        (looks in /var/log/messages for any selinux related errors, for troubleshooting)
-#yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
-#getenforce                                             (verify current SELinux status, whether Enforcing, Permissive, Disabled)
-#sestatus                                               (verify current SELinux status, whether Enforcing, Permissive, Disabled)
-#semodule -l | less                                     (list current SELinux policy modules currently loaded into memory)
-#semodule                                               (can be used to install, remove, reloading, upgrading, enabling, and disabling SELinux policy modules)
-#ps -eZ | grep auditd                                   (
-#sesearch --allow --source auditd_t --target auditd_log_t --class file --perm write (check if rule is enabled in the system)
-#getfattr -m security.selinux -d /var/log/audit/audit.log (view file attribute)
-#ls -lZ /var/log/audit/audit.log                        (view file attribute)
-#date -d @1565897401.603                                (view date in easy to read format, i.e. Thu Aug 15 12:30:01 PDT 2019)
-#find /sys -xdev -inum 30                               (find a file in a filesystem by inode #)
-#ausearch -m LOGIN --start recent                       (parse audit file and search for entries;The recent start gives the denials from the last 10 minutes. You can also use today for, well, today's denials. )
-#chcon -t public_content_t '/var/www/html/file1'.       (change security context of file; gets erased after reboot)
-#matchpathcon /srv/logs/audit                           (outputs this:/srv/logs/audit	system_u:object_r:var_t:s0)
-#semanage fcontext -a -t var_log_t "/srv/logs(/.*)?" ; restorecon -Rv /srv/logs (mark /srv/logs ast var_log_t; restorecon updates the context of the files)
+# rpm -qa | grep selinux                                 (View what selinux packages are installed)
+# yum -y install setroubleshoot setroubleshoot-server; service auditd restart (selinux trouble shooting tools)
+# getsebool -a                                           (see selinux booleans)
+# journalctl -b -o | grep sealert                        (looks in /var/log/messages for any selinux related errors, for troubleshooting)
+# yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
+# getenforce                                             (verify current SELinux status, whether Enforcing, Permissive, Disabled)
+# sestatus                                               (verify current SELinux status, whether Enforcing, Permissive, Disabled)
+# semodule -l | less                                     (list current SELinux policy modules currently loaded into memory)
+# semodule                                               (can be used to install, remove, reloading, upgrading, enabling, and disabling SELinux policy modules)
+# ps -eZ | grep auditd                                   (
+# sesearch --allow --source auditd_t --target auditd_log_t --class file --perm write (check if rule is enabled in the system)
+# getfattr -m security.selinux -d /var/log/audit/audit.log (view file attribute)
+# ls -lZ /var/log/audit/audit.log                        (view file attribute)
+# date -d @1565897401.603                                (view date in easy to read format, i.e. Thu Aug 15 12:30:01 PDT 2019)
+# find /sys -xdev -inum 30                               (find a file in a filesystem by inode # )
+# ausearch -m LOGIN --start recent                       (parse audit file and search for entries;The recent start gives the denials from the last 10 minutes. You can also use today for, well, today's denials. )
+# chcon -t public_content_t '/var/www/html/file1'.       (change security context of file; gets erased after reboot)
+# matchpathcon /srv/logs/audit                           (outputs this:/srv/logs/audit	system_u:object_r:var_t:s0)
+# semanage fcontext -a -t var_log_t "/srv/logs(/.*)?" ; restorecon -Rv /srv/logs (mark /srv/logs ast var_log_t; restorecon updates the context of the files)
 
 
-#/var/log/audit/audit.log                               (selinux log file)
-#/var/log/avc.log                                       (selinux log file)
-#/var/log/audit.log                                     (selinux log file)
-# cat /etc/selinux/targeted/active/booleans.local       (view what booleans have been set)
+# /var/log/audit/audit.log                               (selinux log file)
+# /var/log/avc.log                                       (selinux log file)
+# /var/log/audit.log                                     (selinux log file)
+#  cat /etc/selinux/targeted/active/booleans.local       (view what booleans have been set)
 
 
 Service Management
 ===================================================================================================
-#systemctl list-unit-files --type service --all        (list all services on a system)
-#netstat -tlpn                                         (view what port is being used by what service)
-#systemctl status httpd                                (check service status)
-#service httpd status                                  (check service status - old versions)
+# systemctl list-unit-files --type service --all        (list all services on a system)
+# netstat -tlpn                                         (view what port is being used by what service)
+# systemctl status httpd                                (check service status)
+# service httpd status                                  (check service status - old versions)
 
 Security
 =================================================================================================
-#yum --security --sec-severity=Critical check-update   (check for Critical security updates)
-#yum update -cve="CVE-2018-YDYZ"                       (apply patch for specific vulnerability
-#yum update -advisory="RHSA-2018-XYZW"                 (apply  an avisory)
-#grep "authentication failure" /var/log/secure | awk '{ print $13 }' | cut -b7-  | sort | uniq -c (view all failed sshd login attempts)
+# yum --security --sec-severity=Critical check-update   (check for Critical security updates)
+# yum update -cve="CVE-2018-YDYZ"                       (apply patch for specific vulnerability
+# yum update -advisory="RHSA-2018-XYZW"                 (apply  an avisory)
+# grep "authentication failure" /var/log/secure | awk '{ print $13 }' | cut -b7-  | sort | uniq -c (view all failed sshd login attempts)
 
 Strace
 =================================================================================================
-#strace ls -l                                          (view system calls made by running the executable ls -l)
-#strace -o output.log                                  (save strace output to log file)
-#stracce -c ls -l                                      (summary)
+# strace ls -l                                          (view system calls made by running the executable ls -l)
+# strace -o output.log                                  (save strace output to log file)
+# stracce -c ls -l                                      (summary)
 
 Subscription Manager
 ====================================================================================================
-#subscription-manager status                           (check status of subscription)
-#subscription-manager attach --auto                    (auto attach available subscription)
-#subscriptin-manager --release set=7.8                 (set a release version)
+# subscription-manager status                           (check status of subscription)
+# subscription-manager attach --auto                    (auto attach available subscription)
+# subscriptin-manager --release set=7.8                 (set a release version)
 
 User Management
 ====================================================================================================
-#lastlog                                              (view when users last logged in)
-#useradd                                              (add local user)
-#userdel                                              (delete user)
-#passwd <user_name>                                   (change the password of a user - RHEL)
-#chage -l <user_name>                                 (check password attributes, check when password was last changed)
-#id  <user_name>
-#groups <user_name>
-#finger <user_name>
-#getent passwd <user_name>                                             (fetches entries from Name Server Swithc)
-#users                                                (shows the usernames of all users currently logged on the system)
-#who
-#w
-#lslogins <user_name>                                 (display information about a user)
+# lastlog                                              (view when users last logged in)
+# useradd                                              (add local user)
+# userdel                                              (delete user)
+# passwd <user_name>                                   (change the password of a user - RHEL)
+# chage -l <user_name>                                 (check password attributes, check when password was last changed)
+# id  <user_name>
+# groups <user_name>
+# finger <user_name>
+# getent passwd <user_name>                                             (fetches entries from Name Server Swithc)
+# users                                                (shows the usernames of all users currently logged on the system)
+# who
+# w
+# lslogins <user_name>                                 (display information about a user)
 
 
 View System Specs
 ================================================================================================
-#lscpu                                                (CPU)
-#cat /proc/cpuinfo                                    (CPU)
-#free                                                 (Memory)
-#cat /proc/meminfo                                    (Memory)
-#df -h                                                (HDD)
-#fdisk -l                                             (HDD)
-#uname --m                                            (Hardware Architecture, i386, x86_64)
-#lshw                                                 (Hardware Configuration)
+# lscpu                                                (CPU)
+# cat /proc/cpuinfo                                    (CPU)
+# free                                                 (Memory)
+# cat /proc/meminfo                                    (Memory)
+# df -h                                                (HDD)
+# fdisk -l                                             (HDD)
+# uname --m                                            (Hardware Architecture, i386, x86_64)
+# lshw                                                 (Hardware Configuration)

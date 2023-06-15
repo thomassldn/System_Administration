@@ -25,7 +25,9 @@ AD/DC
 >repadmin /replsummary                                                               (show replication across DCs)
 >repadmin /showrepl                                                                  (show replication across DCs)
 
-
+DNS
+=================================================================================================
+>Clear-DnsClientCache                                (clear DNS cache)
 Environtment Variables 
 =================================================================================================
 >set                                                (view all environment variables)

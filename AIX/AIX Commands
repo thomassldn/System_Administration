@@ -2,135 +2,135 @@
 
 AIX Systems Administration - General Commands
 =================================================================================================
-#oslevel
-#oslevel -sl 7100-05-06-2028                                    
-#ps -ef | grep <service>                                        (view service running)
-#for i in *.JPG;do echo $i;mv -- "$i" "${i%.JPG}.jpg";done      (rename file extension from JPG to jpg) 
-#find / -name file.txt                                          (find a file)
-#lsconf | head                                                  (list machine type model and serial number of server AIX is running on)
-#dsh -n172.24.176.21,172.23.178.25,172.23.172.28,172.23.164.27 "echo 'ats:<password>'|chpasswd -c" (change password on multiple servers at once)
-##PS1="\@ :\w \$ "                                              (08:44 PM :~/Desktop/iOS Projects $)
-#mkitab "slinksc:23456789:once:/home/rss/slink/slinksc start > /dev/console 2>&1" (start a service after reboot)
-#./apachectl -version
-#ccontrol list
-#lslpp -l | grep "bos.adt.debug"                                 (DBX debuger)
-#gs -v                                                           (GPL Ghostscript) 
-#java -version                                                   (java version)
-#lslpp -l | grep XL                                              (IBM XL C/C++ Runtime for AIX)
-#lslpp -l | grep "lsof"                                          (LSOF - Open file utility from IBM)
-#lssrc -ls xntpd                                                 (View NTP version)
-#cd;qpdf -version                                                (QPDF)
-#lslpp -l | grep "samba"                                         (view samba version) 
-#svmon -G -O unit=GB                                             (view available memory)
-#vmstat -v                                                       (view available memory)
-#prtconf | head                                                  (view machine type and machine serial number)
-#priv su -                                                       (escalate privaleges) 
+# oslevel
+# oslevel -sl 7100-05-06-2028                                    
+# ps -ef | grep <service>                                        (view service running)
+# for i in *.JPG;do echo $i;mv -- "$i" "${i%.JPG}.jpg";done      (rename file extension from JPG to jpg) 
+# find / -name file.txt                                          (find a file)
+# lsconf | head                                                  (list machine type model and serial number of server AIX is running on)
+# dsh -n172.24.176.21,172.23.178.25,172.23.172.28,172.23.164.27 "echo 'ats:<password>'|chpasswd -c" (change password on multiple servers at once)
+# PS1="\@ :\w \$ "                                              (08:44 PM :~/Desktop/iOS Projects $)
+# mkitab "slinksc:23456789:once:/home/rss/slink/slinksc start > /dev/console 2>&1" (start a service after reboot)
+# ./apachectl -version
+# ccontrol list
+# lslpp -l | grep "bos.adt.debug"                                 (DBX debuger)
+# gs -v                                                           (GPL Ghostscript) 
+# java -version                                                   (java version)
+# lslpp -l | grep XL                                              (IBM XL C/C++ Runtime for AIX)
+# lslpp -l | grep "lsof"                                          (LSOF - Open file utility from IBM)
+# lssrc -ls xntpd                                                 (View NTP version)
+# cd;qpdf -version                                                (QPDF)
+# lslpp -l | grep "samba"                                         (view samba version) 
+# svmon -G -O unit=GB                                             (view available memory)
+# vmstat -v                                                       (view available memory)
+# prtconf | head                                                  (view machine type and machine serial number)
+# priv su -                                                       (escalate privaleges) 
 
 
 Certificates
 =================================================================================================
-#openssl x509 -in <cert_name>.pem -text -noout                  (view certificate in txt format) 
-#openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/<key>.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:443
+# openssl x509 -in <cert_name>.pem -text -noout                  (view certificate in txt format) 
+# openssl s_client -showcerts -cert /path/to/certificates/<cert>.pem -key /path/to/private/<key>.key -CAfile /path/to/certificates/<cert>.pem -connect domain_endpoint:443
                                                                 Should see " Verify return code: 0 (ok)"
-#openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>   (extract key)
-#openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt> (extract Cert)
-#openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>      (extract an unecrypted key -not safe)
-#openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
+# openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>   (extract key)
+# openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt> (extract Cert)
+# openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>      (extract an unecrypted key -not safe)
+# openssl rsa -in <keyfile-encrypted.key> -outform PEM -out <keyfile-encrypted-pem.key>  (convert private key to pem format)
 
 DevOps
 =================================================================================================
-#ipcs -mb                                                        (view memory segments)
-#topas
-#uptime
-#w
-#dmesg | tail 
-#vmstat 1 
-#mpstat -P ALL 1
-#pidstat 1
-#iostat -xz 1
-#ulimit -a
-#/usr/sbin/lsattr -E -l sys0 | grep maxuproc                    (Used to determine the current number of processes per user) 
-#/usr/sbin/chdev -l sys0 -a maxuproc=1000                       (set the total number of userprocess to 1000-should be done on large systems)
+# ipcs -mb                                                        (view memory segments)
+# topas
+# uptime
+# w
+# dmesg | tail 
+# vmstat 1 
+# mpstat -P ALL 1
+# pidstat 1
+# iostat -xz 1
+# ulimit -a
+# /usr/sbin/lsattr -E -l sys0 | grep maxuproc                    (Used to determine the current number of processes per user) 
+# /usr/sbin/chdev -l sys0 -a maxuproc=1000                       (set the total number of userprocess to 1000-should be done on large systems)
 
 Files and Directories 
 =================================================================================================
-#find ./ -type f -mtime -3 -exec mv {} <dest_directory> \;                   (move files created in the last 3 days to destination directory)
-#find ./ -type f -mtime -3 -ls                  
-#ls -trl | grep "Nov 18"                                                     (list files created on Nov 18)
-#lslpp -l | grep samba                                                       (verify if samba is installed)
-#lslpp -f samba.base | grep .conf                                            (find conf file) 
+# find ./ -type f -mtime -3 -exec mv {} <dest_directory> \;                   (move files created in the last 3 days to destination directory)
+# find ./ -type f -mtime -3 -ls                  
+# ls -trl | grep "Nov 18"                                                     (list files created on Nov 18)
+# lslpp -l | grep samba                                                       (verify if samba is installed)
+# lslpp -f samba.base | grep .conf                                            (find conf file) 
 
 File System Management 
 =================================================================================================
-#mklv -y logical_volume_lv -t jfs2 volume_group 1                                            (create a logical volume) 
-#crfs -v jfs2 -d  logical_volume_lv -m /file/system_name -a options=rw -A yes                (create filesystem)
-#mount /file/system_name; chmod 755 /file/system_name; chown user:group /file/system_name    (mount and chmod filesystem) 
-#lsvg | lsvg -li                                                      (display what the filesystems in each volume group)
-#backup                                                               (backsup a filesytem - full or incrementally)  
-#chfs -a size=2G                                                      (modify the size of a filesystem) 
-#df -g                                                                (display filesystem space in GB)
-#snapshot                                                             (use to create a snap shot of JFS2 file system)
-#fsck                                                                 (repair and check filesystems) 
-#mkfs                                                                 (creates a filesytem of a specific size on a LV) 
-#mount                                                                (mount a filesystem) 
-#restore                                                              (used to restore files from a backup) 
-#unmount                                                              (unmount a filesystem) 
-#lsvg                                                                 (display volume groups)
-#lsvg -l <volume_group>                                               (view volume group)
-#lspv                                                                 (list physical volumes)
-#lsvg -p <volume_grou>                                                (view disks in a volume group)
-#lslv -l <lv>                                                         (list all physical Volumes in a LV)
-#powermt display dev=all | more
-#chvg –g <VG>                                                         (add new space in LUN and see it in UNIX)
-#cfgmgr                                                               (after removing mapped host from san, run cfgmgr to verify disk was removed)
+# mklv -y logical_volume_lv -t jfs2 volume_group 1                                            (create a logical volume) 
+# crfs -v jfs2 -d  logical_volume_lv -m /file/system_name -a options=rw -A yes                (create filesystem)
+# mount /file/system_name; chmod 755 /file/system_name; chown user:group /file/system_name    (mount and chmod filesystem) 
+# lsvg | lsvg -li                                                      (display what the filesystems in each volume group)
+# backup                                                               (backsup a filesytem - full or incrementally)  
+# chfs -a size=2G                                                      (modify the size of a filesystem) 
+# df -g                                                                (display filesystem space in GB)
+# snapshot                                                             (use to create a snap shot of JFS2 file system)
+# fsck                                                                 (repair and check filesystems) 
+# mkfs                                                                 (creates a filesytem of a specific size on a LV) 
+# mount                                                                (mount a filesystem) 
+# restore                                                              (used to restore files from a backup) 
+# unmount                                                              (unmount a filesystem) 
+# lsvg                                                                 (display volume groups)
+# lsvg -l <volume_group>                                               (view volume group)
+# lspv                                                                 (list physical volumes)
+# lsvg -p <volume_grou>                                                (view disks in a volume group)
+# lslv -l <lv>                                                         (list all physical Volumes in a LV)
+# powermt display dev=all | more
+# chvg –g <VG>                                                         (add new space in LUN and see it in UNIX)
+# cfgmgr                                                               (after removing mapped host from san, run cfgmgr to verify disk was removed)
 
 Journaling 
 ============================================================================================================================
-#for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done                 (list all journals between this date)
-#for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; yes | rm $i; done    (remove all journals between this date)
+# for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; done                 (list all journals between this date)
+# for i in `ls | egrep -v 'lck|0908|0909'` ; do echo $i; yes | rm $i; done    (remove all journals between this date)
 
 LPAR
 ============================================================================================================================
-#lparstat -i                                                                 (view lpar statistics, CPU, MEM, etc)
+# lparstat -i                                                                 (view lpar statistics, CPU, MEM, etc)
 Networking
 ============================================================================================================================
-#ifconfig -a                                                                 (show network interface configuration)
-#prtconf                                                                     (partition Info)
-#cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
-#netstat -na | grep <port>                                                   (check if a port is being used)
-#lsdev -CH | grep en                                                          (view interfaces)
-#no –p –o tcp_nodelayack=1
-#no –p –o tcp_keepcnt=8
-#no –p –o tcp_keepidle=120
-#no –p –o tcp_keepinit=60
-#no –p –o tcp_keepintvl=60
-#no –p –o tcp_recvspace=65536
-#no –p –o tcp_sendspace=65536
+# ifconfig -a                                                                 (show network interface configuration)
+# prtconf                                                                     (partition Info)
+# cat sysconfig437.tar.gz |gzip -d|tar -xvf-                                  (untar file )
+# netstat -na | grep <port>                                                   (check if a port is being used)
+# lsdev -CH | grep en                                                          (view interfaces)
+# no –p –o tcp_nodelayack=1
+# no –p –o tcp_keepcnt=8
+# no –p –o tcp_keepidle=120
+# no –p –o tcp_keepinit=60
+# no –p –o tcp_keepintvl=60
+# no –p –o tcp_recvspace=65536
+# no –p –o tcp_sendspace=65536
 
 SAN Related Commands
 ============================================================================================================================
-#for i in {47..66};do powermt display dev=hdiskpower$i;done                  (Display hdiskpower info) 
-#lsattr -El hdisk128                                                         (Displays attribute characteristics and possible values of attributes for devices in the system.)
-#lsvg -p qcprdatavg                                                          (view disks associated with a VG)
-#getconf DISK_SIZE /dev/hdisk4                                               (View Disk size in AIX) 
-#varyoffvg qcprbackupvg                                                      (Varryoff a VG)
+# for i in {47..66};do powermt display dev=hdiskpower$i;done                  (Display hdiskpower info) 
+# lsattr -El hdisk128                                                         (Displays attribute characteristics and possible values of attributes for devices in the system.)
+# lsvg -p qcprdatavg                                                          (view disks associated with a VG)
+# getconf DISK_SIZE /dev/hdisk4                                               (View Disk size in AIX) 
+# varyoffvg qcprbackupvg                                                      (Varryoff a VG)
 varyonvg qcprbackupvg                                                        (Varyon a VG) 
 
 Troubleshooting
 ============================================================================================================================
-#errpt -a                                                                    (generates a report of log files)
+# errpt -a                                                                    (generates a report of log files)
 
 Veritas Cluster Manager 
 ============================================================================================================================
-#/var/VRTSvcs:# which hastatus
+# /var/VRTSvcs:
+#  which hastatus
  /opt/VRTSvcs/bin/hastatus
-# hagrp -freeze qcpr_LIVE -persistent
-# /etc/VRTSvcs/conf/config/main.cf                                          (Veritas Configuration File)
-# /var/VRTSvcs/log/engine_A.log                                             (Veritas Logs Files; A is most current)
-# /opt/VRTSvcs/bin/                                                         (Veritas Binaries)
-# /qmd                                                                      (Veritas helper scripts)
+#  hagrp -freeze qcpr_LIVE -persistent
+#  /etc/VRTSvcs/conf/config/main.cf                                          (Veritas Configuration File)
+#  /var/VRTSvcs/log/engine_A.log                                             (Veritas Logs Files; A is most current)
+#  /opt/VRTSvcs/bin/                                                         (Veritas Binaries)
+#  /qmd                                                                      (Veritas helper scripts)
 
-View System Specs
-================================================================================================
+
 
 

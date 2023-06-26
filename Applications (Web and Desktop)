@@ -504,6 +504,7 @@ System/Device Management
 =========================
 Microsoft Endpoint Configuration Management (SSCM) (remote control, patch management, software distribution, operating system deployment, network access protection and hardware and software inventory)
 IBM Big Fix
+Smart Deploy (Windows managment better than SSCM)
 
 Training
 ========================
@@ -567,7 +568,7 @@ Zenmap (finds live hosts on a network, performs port scanning ping, sweeps, os d
 Voiphopper (test security infastructure of a VLAN)
 Spike 
 UNIX-PRIVESC-CHECK (find misconfiguration sthat could allow local unprivileged users to escalte privileges to other users or to access local apps)
-IIS Crypto      (Used to harden Windows Web Servers)
+IIS Crypto      (Used to harden Windows Web Servers, by Nartac)
 
 
 Software Development Methodologies 

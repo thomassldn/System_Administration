@@ -162,6 +162,7 @@ Networking
 # traceroute                                             (Route packages)
 # dig
 # traceroute -w 3 -q 1 -m 16 securelink.quadramed.com
+# tcpdump -i eth0 port 80 -w capture.pcap                (capture port 80 traffic on eth0)
 
 
 

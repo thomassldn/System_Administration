@@ -27,7 +27,9 @@ $ gcloud compute instances get-serial-port-output <INSTANCE> --zone=us-central1-
 $ gcloud compute instances list                         (list compute instances)
 $ gcloud compute instances create <VM_NAME> --zone=<ZONE> --machine-type=e2-micro --subnet=<SUBNET> --image-family=debian-11 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=<DISK_NAME>    (create a VM with specs)
 $ gcloud compute instances move                                                        (move instance to a different zone within a region)
-
+$ gcloud compute instances create <VM_NAME --zone us-central1-b --subnet <VPC_Subnet>   (create a VM instance in a subnet)
+$ gcloud compute instances import <VM_NAME> --source-uri=gs://<BUCKET>/<BUCKET_NAME> --network <NETWORK> --subnet <SUBNET>
+gcloud compute instances import net-lax3-1k-agent --source-uri=gs://thousandeyes-va-0230_ova_file/thousandeyes-va-0.230.ova --network ucr-its-vpc-01 --subnet shared-services
 
 
 Firewall
@@ -56,8 +58,12 @@ Networking
 =========================
 $ gcloud compute networks list                                      (view available PVC networks)
 $ gcloud compute networks subnets list --sort-by=<Network>          (list the available VPC subnets (sorted by VPC networ))
-$ gcloud compute networks create privatenet --subnet-mode=custom    (create custom network)
-$ gcloud compute networks subnets create privatesubnet-eu --network=privatenet --region=europe-west1 --range=172.20.0.0/20 (create a subnet)
+$ gcloud compute networks create <VPC_NETWORK> --subnet-mode custom    (create custom VPC network)
+$ gcloud compute networks subnets create <VPC_SUBNET1> --network <VPC_NETWORK> --range 10.1.1.0/24 --region us-central1    (createa subnet in the VPC)
+$ gcloud compute networks subnets create <VPC_SUBNET1> --network <VPC_NETWORK> --range 10.2.1.0/24 --region us-east1      ((createa a second subnet in the same VPC))
+$ gcloud compute firewall-rules create vpc-demo-allow-custom --network <VPC_NETWORK> --allow tcp:0-65535,udp:0-65535,icmp --source-ranges 10.0.0.0/8  (make firewall rule to allow all traffic between networks)
+$ gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp --network <VPC_NETWORK> --allow tcp:22,icmp                (Create a firewall rule to allow SSH, ICMP traffic from anywhere)
+
 
 Projects
 =========================
@@ -93,6 +99,14 @@ $ gcloud services enable run.googleapis.com                                     
 $ gcloud builds submit --tag gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld                   (build a nodejs app container from a Dockerfile in a working directory)         
 $ gcloud container images list                                                        (list container images)
 $ docker run -d -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld                   (test and run container image locally on cloud shell, using curl localhost:8080)
+
+VPN
+============================
+$ gcloud compute vpn-gateways create <VPC_VPN_NAME> --network <VPC> --region us-central1 (create an HA VPN in the <VPC> network)
+$ gcloud compute vpn-gateways describe <VPC_VPN_NAME> --region us-central1   (View details of the <VPC_VPN_Name> vpn-gateway to verify its settings)
+$ gcloud compute routers create <ROUTER_NAME> --region us-central1 --network <VPC> --asn 65001
+
+
 
 Terraform
 ===========================

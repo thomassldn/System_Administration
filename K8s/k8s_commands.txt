@@ -1,0 +1,110 @@
+#Kubernetes Commands 
+
+Docker:
+===================================
+# docker run hello-world
+# docker -v
+# docker container ls             (view containers)
+# docker images                      (view images)
+# docker ps                              (view existing containers)
+# docker ps -a                          (view containers that have finished running)
+# docker exec -it <container name> /bin/bash  (log in to docker container)
+# docker exec -it <container name> <command>  (execute a command in a docker container)
+# docker build -t py-server     (build an image)   (Note: you can upload your image to a container registry service, to share it, such as Google Container Registry)
+# docker run -d py-server       (run the image container)
+# docker run -p 4000:80 --name my-app node-app:0.1  (run a container based on your image)
+# docker stop my-app && docker rm my-app   (stop and rm container)
+# docker run -p 4000:80 --name my-app -d node-app:0.1  (run a container in background)
+# docker logs <CONTAINER_ID>             (you don’t have to type all the container id )
+# docker inspect <CONTAINER_ID>         (inspect a containers metadata)
+# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [container_id]   (view metadata in specific format)
+
+MiniKube:
+===================================
+# minikube start
+# minikube start --driver=docker (start minikube using the docker driver)
+# minikube delete                          (delete exisiting minikube cluster)
+# minikube stop
+# minikube status
+# minikube start --container-runtime cri-o  (use cri-o runtime instead of Docker)
+# minikube ssh
+# minikube dashboard                                      (opens minikube http dashboard)
+# minikube addons list                                      (view add on list and their status)
+# minikube addons enable metric-server      (enable metric-server)
+# minikube addons enable dashboard           (enable dashboard)
+# minikube service --url <service-name>       (fetch the minikube IP and a services NodePort)
+# minikube ip                                                       <get minikube IP,  to expose service)
+# minikube service <web-service>                      (open service in web browser)
+Anthos + kubernetes + GCP
+
+
+Kubectl
+===================================
+# kubectl version --client
+# ~/.kube/config                                               (kubectl configuration file)
+# kubectl exec <POD> -- <COMMAND>        (execute a command in a pod)
+# kubectl exec -it  <POD>  -- /bin/bash         (log into a shell)
+# kubectl logs  <POD>                                       (view logs of a pod)
+# kubectl cluster-info                                       (check kubectl configuration)
+# kubectl config view                                        (views ~/.kube/config )
+# kubectl cluster-info                                       (Once kubectl is installed, we can display info about the Minikube kubernetes cluster)
+# kubectl proxy                                                  ( kubectl authenticates with the API server on the master node and makes the Dashboard available on a slightly different URL than one earlier, this time through the default proxy port 8001)
+# kubectl proxy -> curl http://127.0.0.1:8001  (view all API endpoints from proxy server)
+# kubectl get namespaces                                 (view namespaces)
+# kubectl get deployments                                (get deployments)
+# kubectl get pods -l k8s-app=web-dash        (delete a deployment, it also deletes ReplicaSet and Pods)
+# kubectl get replicasets                                    (get replica sets)
+# kubectl get pods                                              (get pods)
+# kubectl get pods -L k8s-app,labels12           (get pods with extra labels in output)
+# kubectl get services                                         (get services, get service public IP)
+# kubectl create -f <webserver.yml>               (deploy a webserver)
+# kubectl create -f <webserver-svc.yaml>      (create a web service)
+# kubectl create-f prove_liveness.yaml          (create a liveness check )
+# kubectl expose deployment webserver --name=web-service --type=NodePort   (^same as above, it exposes a deployment, but through  a command)
+# kubectl expose pod share-pod --type=NodePort --port=80       (expose a pod on port 80)
+# kubectl describe service <web-service>           (describe a service )
+# kubectl describe pod  <POD>                              (descrive a pod)
+# kubectl get services,endpoints                       (get services and endpoints)
+# kubectl delete pod <pod-name>                  (delete a shared pod )
+# kubectl scale nginx --replicas=3                    (scale a deployment, 3 pods get created in your deployment and theyre placed behind the service and share one fixed IP
+# kubectl autoscale nginx --min=10 --max=15 --cpu=80   (autoscalre a deployment to between 10 and 15 pods when CPU utilization reaches 80 percent)
+# kubectl expose deployments nginx --port=80 --type=LoadBalancer  (expose a deployment to the internet, make pods in your deployment available)
+# kubectl delete pod --all --all-namespaces        (delete everything and restart)
+
+
+
+
+# kubectl describe pod <pod_name>             (get details on a pod)
+# kubectl get pods -l k8s-app=web-dash       (get pod with a given label)
+# kubectl create deployment mynginx --image=nginx:1.15-alpine   (Create  deployment)
+# kubectl get  deploy, rs, po -l app=mynginx     (get deployment, replica set, and pod for mynginx app)
+# kubectl scale deploy mynginx --replicas=3   (scale deployment mynginx to 3 replicas)
+# kubectl describe deploy mynginx                (describe deployment)
+# kubectl rollout history deploy mynginx      (view rollout revision of an app)
+# kubectl rollout history deploy mynginx --revision=1       (display details of revision, by providing revision number)
+# kubectl set image deployment mynginx nginx=nginx:1.16-alpine    (Upgrade an Image)
+# kubectl rollout undo deployment mynginx --to-revision=1                (roll back to revision 1)
+# kubectl create namespace lfs158                            (create namespace lfs158)
+# openssl genrsa -out student.key 2048            (create key for STUDENT user)
+# openssl req -new -key student.key -out student.csr -subj "/CN=student /O=learner"           (create CSR for student key)
+# vim signing-request.yaml                                         (create a YAML manifest  for a certificate signing request object
+# cat student.csr | base 64 | tr -d '\n', '%'               (get certificate in base 64 to place in the signing-request.yaml file)
+# kubectl create -f signing-request.yaml                  (create the certificate signing request object)
+# kubectl get csr                                                            (get csr)
+# kubectl certificate approve student-csr                 (approve the certificate signing request object)
+# kubectl get csr student-csr -o jsonpath='{.status.certificate}' | base 64 --decode > student.crt     (extract the approved certificate from the certificate signing request, decode it with base64 and save it as a certificate file)
+# openssl x509 -in student.crt -text -noout             (view newly created cert)
+# kubectl config set-credentials student --client-certificate=student.crt --client-key=student.key            (configure the kubectl clients configuration manifest with the STUDENTt user's credentials by assigning the key and certificate)
+# kubectl config set-context student-context --cluster=minikube --namespace=lfs158 --user=student    (create a new CONTEXT entry in the kubectl client's configuration manifest for the STUDENT user, associated with the lfs158 namespace in the minikube cluster
+# kubectl config view                                        (view the contents of the kubectl clients configuration manifest again, observing the new context entry student-context, and the new user entry STUDENT)
+# kubectl -n lfs158 create deployment nginx --image=nginx:alpine       (create a new nginx deployement in the lfs158 namespace of the minikube context)
+# kubectl --context=student-context get pods          (get pods, using the student context, will fail since permissions have not been set)
+# kubectl create -f role.yaml                           (Creates a YAML configuration manifest for a pod-reader ROLE object, which allows only get, watch, list actions in the lfs158 namespace against pod objects )
+# kubectl -n lfs158 get roles                            (list the role  object from the default minikube context, but from the lfs 158)
+# vim rolebinding.yaml                                      (create a YAML configuration manifest for a rolebinding object, which assigns the permissions of the pod-reader ROLE to the STUDENT user.
+# kubectl create -f rolebinding.yaml                (create rolebinding object)
+# kubectl -n lfs158 get rolebinding                  (list rolebinding from namespace lfs158)
+# kubectl --context=student-context get pods  (now you should be able to see the pods, since STUDENT object was given access above)
+
+# kubectl get service <service-name> --output='jsonpath="{.spec.ports[0].nodePort}"'                      (determines the NodePort for your service)
+

@@ -28,7 +28,7 @@ $ gcloud compute instances list                         (list compute instances)
 $ gcloud compute instances create <VM_NAME> --zone=<ZONE> --machine-type=e2-micro --subnet=<SUBNET> --image-family=debian-11 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=<DISK_NAME>    (create a VM with specs)
 $ gcloud compute instances move                                                        (move instance to a different zone within a region)
 $ gcloud compute instances create <VM_NAME --zone us-central1-b --subnet <VPC_Subnet>   (create a VM instance in a subnet)
-$ gcloud compute instances import <VM_NAME> --source-uri=gs://<BUCKET>/<BUCKET_NAME> --network <NETWORK> --subnet <SUBNET>
+$ gcloud compute instances import <VM_NAME> --source-uri=gs://<BUCKET>/<BUCKET_NAME> --network <NETWORK> --subnet <SUBNET>    (create a VM from an OVA VM template)
 
 
 Firewall

@@ -29,7 +29,7 @@ $ gcloud compute instances create <VM_NAME> --zone=<ZONE> --machine-type=e2-micr
 $ gcloud compute instances move                                                        (move instance to a different zone within a region)
 $ gcloud compute instances create <VM_NAME --zone us-central1-b --subnet <VPC_Subnet>   (create a VM instance in a subnet)
 $ gcloud compute instances import <VM_NAME> --source-uri=gs://<BUCKET>/<BUCKET_NAME> --network <NETWORK> --subnet <SUBNET>
-gcloud compute instances import net-lax3-1k-agent --source-uri=gs://thousandeyes-va-0230_ova_file/thousandeyes-va-0.230.ova --network ucr-its-vpc-01 --subnet shared-services
+$ gcloud compute instances import net-lax3-1k-agent --source-uri=gs://thousandeyes-va-0230_ova_file/thousandeyes-va-0.230.ova --network ucr-its-vpc-01 --subnet shared-services
 
 
 Firewall

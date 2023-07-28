@@ -56,7 +56,7 @@ if [ `ping -c 1 $m_id.reg05.rtss.qc.ca | wc | awk '{print $1}'` == $P_FAIL ]
 then
    echo "Ping failed on " $m_id
 else
-#       ssh -q root@$m_id.reg05.rtss.qc.ca
+#      
         echo Checking if password is used on $m_id
         shadow=$( ssh -q root@$m_id.reg05.rtss.qc.ca getent shadow $var_username )
         shadow=$( echo $shadow | awk -F: '{ print $2 }' )

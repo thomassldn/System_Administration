@@ -2,25 +2,25 @@
 # Jimmy Chen / QuadraMed ATS
 
 #Enter the Domain to be restored, can be found using ccontrol list; in this case
-#we will be restoring UHNTRNA1
-targetDomain=UHNTRNA1
+#we will be restoring <DOMAIN>
+targetDomain=<DOMAIN>
 
 #Enter Server credentials for the domain user
-domainLogin=chIoIdTr
-domainPassword=uhniotr
+domainLogin=
+domainPassword=
 
 #path to the MASTER back up file
-maintScript=/qmd/cpr/sw/customer/cache_maint_script/master_UHNTRNA1.txt
+maintScript=/qmd/cpr/sw/customer/cache_maint_script/master_<DOMAIN>.txt
 tempScript=/tmp/run_xres.tmp
 
 #the following are the QCPR tables that we need to xin back in to QCPR after the script is ran, since they get over written by the script
-zfpPath=/qmd/cpr/ucd/UHNTRNA1/mgr/%zfp.gof.uhntrna1
-zliosPath=/qmd/cpr/ucd/UHNTRNA1/mgr/%zlios.gof.uhntrna1
-zPath=/qmd/cpr/ucd/UHNTRNA1/mgr/%z.gof.uhntrna1
+zfpPath=/qmd/cpr/ucd/<DOMAIN>/mgr/%zfp.gof.<DOMAIN>
+zliosPath=/qmd/cpr/ucd/<DOMAIN>/mgr/%zlios.gof.<DOMAIN>
+zPath=/qmd/cpr/ucd/<DOMAIN>/mgr/%z.gof.<DOMAIN>
 backupFile=""
 
 #IF the user does not pass in a Backup file to this bash script, the default Backup File will be found inside the
-#/qmd/cpr/sw/customer/cache_maint_script/master_UHNTRNA1.txt file
+#/qmd/cpr/sw/customer/cache_maint_script/master_<DOMAIN>.txt file
 #ElSE if the user passes a Backup File to this bash script, that will be the Backup File this script will use to perform the restore with
 if [ "$1" = "" ]
         then

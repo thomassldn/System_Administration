@@ -1,6 +1,6 @@
 #!/bin/sh
 # Distribution list
-email_addr=z@quadramed.com
+email_addr=
 
 sitename=Arnot
 

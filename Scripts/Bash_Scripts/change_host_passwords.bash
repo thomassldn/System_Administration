@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "WARNING THIS SCRIPT WILL CHANGE YOUR PASSWORD ON ALL QCPR, ENSEMBLE AND MEDIA MANAGER RHEL SERVERS !!"
+echo "WARNING THIS SCRIPT WILL CHANGE YOUR PASSWORD  !!"
 
 echo -n "Are you sure you wish to continue (y/n)? "
 

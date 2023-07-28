@@ -14,15 +14,15 @@ printf "%s\n\n" "============================="  >> servers
 printf "%s%s\n\n" "HOST: " "$i"    >> servers
 
 printf "%s\n"   "Cache Version: "  >> servers
-ssh ats@$i ccontrol list           >> servers
+ssh <user>@$i ccontrol list           >> servers
 
 
 printf "\n%s\n\n" "OSLevel:"       >> servers
-ssh ats@$i oslevel                 >> servers
+ssh <user>@$i oslevel                 >> servers
 
 
 printf "\n%s\n\n" "UpTime:"        >> servers
-ssh ats@$i  uptime                 >> servers
+ssh <user>@$i  uptime                 >> servers
 
 printf "\n\n%s\n"   "=============================" >> servers
 

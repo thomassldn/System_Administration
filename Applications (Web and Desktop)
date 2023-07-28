@@ -389,6 +389,7 @@ MobaXterm (Windows)
 Terminator 
 Windows Terminal
 mRemoteNG
+IAP Desktop (GCP)
 
 Remote Desktop Sharing
 =======================
@@ -505,6 +506,11 @@ System/Device Management
 Microsoft Endpoint Configuration Management (SSCM) (remote control, patch management, software distribution, operating system deployment, network access protection and hardware and software inventory)
 IBM Big Fix
 Smart Deploy (Windows managment better than SSCM)
+
+Synching software
+========================
+rsync
+Resilio
 
 Training
 ========================

@@ -150,6 +150,21 @@ $ git commit -m                                                          (add a 
 $ git push origin <branch_name>                                          (send your changes to master branch with the below command)
 $ git checkout <branch_name>  && git merge master                        (merge the different branch with the  master branch)
 
+GnuPG
+==================================================================================================
+$ gpg --gen-key                                (generate a new RSA key)
+$ gpg --list-keys                              (list gpg keys)
+$ gpg --import clearing_house.pub              (import a third-party vendors key)
+$ gpg -r help@ftp.nslc.org -e test.txt         (encrypt a text file with a key, where help@ftp.nslc.org is a pub key)
+$ gpg --edit-key help@ftp.nslc.org             (edit a key)
+  gpg> fpr                                     (get key fingerprint)
+  gpg> sign                                    (sign key fingerprint)
+  gpg> save                                    (save key after signing fingerprint)
+$ gpg -r _test@feeds.ucr.edu -d test1.txt.gpg  (decrypt key)
+
+
+
+
 Networking
 ==================================================================================================
 # for i in $(seq 1 254);do ping -c1 -t 1 10.0.75.$1;done (ping all host in a network)

@@ -1,18 +1,18 @@
 #!/usr/bin/bash
 # Cross Domain Restore Script v1.0
-# Jimmy Chen / QuadraMed ATS
+
 
 #Note: This script needs to be ran as the chIoIdPd user.
 
-targetDomain=PRODMERGE1    
-domainLogin=chIoIdPd       
-domainPassword=uhniopd    
-maintScript=/qmd/cpr/sw/customer/cache_maint_script/master_PRODMERGE1.txt  
+targetDomain=<DOMAIN>    
+domainLogin=       
+domainPassword=   
+maintScript=/qmd/cpr/sw/customer/cache_maint_script/master_<DOMAIN>.txt  
 tempScript=/tmp/run_xres.tmp                                              
-zfpPath=/qmd/cpr/ucd/PRODMERGE1/mgr/%zfp.exp.uhnprodmerge                       #exported the global to this path
-zliosPath=/qmd/cpr/ucd/PRODMERGE1/mgr/%zlios.exp.uhnprodmerge                   #exported the global to this path
-zPath=/qmd/cpr/ucd/PRODMERGE1/mgr/%z.exp.uhnprodmerge                           #xported the global to this path
-affPath=/qmd/cpr/ucd/PRODMERGE1/mgr/%aff.exp.uhnprodmerge                       #exported the global to this path
+zfpPath=/qmd/cpr/ucd/<DOMAIN>/mgr/%zfp.exp.uhnprodmerge                       #exported the global to this path
+zliosPath=/qmd/cpr/ucd/<DOMAIN>/mgr/%zlios.exp.uhnprodmerge                   #exported the global to this path
+zPath=/qmd/cpr/ucd/<DOMAIN>/mgr/%z.exp.uhnprodmerge                           #xported the global to this path
+affPath=/qmd/cpr/ucd/<DOMAIN>/mgr/%aff.exp.uhnprodmerge                       #exported the global to this path
 backupFile=""
 
 

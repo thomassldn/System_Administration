@@ -312,6 +312,11 @@ Keepass   (Windows)
 Dashlane
 1password.com
 Lastpass
+Patch Management
+=======================
+Windows SCCM 16 (Used to deploy packages) 
+Smart Deploy
+PDQ Deploy
 
 Performance Monitoring
 =======================
@@ -476,7 +481,6 @@ Ansible
 CIS Benchmarks
 SANS Benchmarks
 Admin LTE and Laravel 
-Windows SCCM 16 (Used to deploy packages) 
 LAMP
 Windows AD 
 Salt Stack 
@@ -485,8 +489,7 @@ Metasploit
 Splunk
 Bacula
 Puppet
-Chocalate 
-Smart Deploy 
+Chocalate  
 Fog
 Clonezilla
 Spiceworks    (Open source IT management system) 

@@ -10,7 +10,8 @@ Configuration
 $ export LOCATION=US                                                               (create an environment variable with your location, where location is US, EU, or ASIA)
 $ gcloud auth list                                                                 (list active account name)
 $ gcloud config list                                                               (view general config info)
-$ gcloud config set compute/region us-central1                                     (set the compute zone)
+$ gcloud config set compute/region us-central1                                     (set the compute region)
+$ gcloud config set compute/zone $MY_ZONE                                          (set compute zone)
 $ gcloud compute regions list                                                      (list regions)
 $ MYREGION=[YOUR_REGION]                                                           (create a variable with your region)
 
@@ -24,7 +25,7 @@ $ gcloud auth login                                    (an alternative to gcloud
 Compute 
 ===========================
 $ gcloud compute instances get-serial-port-output <INSTANCE> --zone=us-central1-b         (read output from a virtual machine instance's serial port)        
-$ gcloud compute instances list                         (list compute instances)
+$ gcloud compute instances list                                                           (list compute instances)
 $ gcloud compute instances create <VM_NAME> --zone=<ZONE> --machine-type=e2-micro --subnet=<SUBNET> --image-family=debian-11 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=<DISK_NAME>    (create a VM with specs)
 $ gcloud compute instances move                                                        (move instance to a different zone within a region)
 $ gcloud compute instances create <VM_NAME --zone us-central1-b --subnet <VPC_Subnet>   (create a VM instance in a subnet)
@@ -75,10 +76,11 @@ Cloud Storage
 $ gsutil mb gs://<BUCKET_NAME>                                                      (create a bucket)
 $ gsutil mb -l $LOCATION gs://$DEVSHELL_PROJECT_ID                                  (create a bucket that has your project id name)
 $ gsutil cp gs://cloud-training/gcpfci/my-excellent-blog.png my-excellent-blog.png  (Retrieve/Copy a banner image from a publicly accessible Cloud Storage location)
-$ gsutil cp <file>.png gs://$DEVSHELL_PROJECT_ID/<file>.png                       (Copy an image from your working dir to a cloud bucket)
+$ gsutil cp <file>.png gs://$DEVSHELL_PROJECT_ID/<file>.png                         (Copy an image from your working dir to a cloud bucket)
+$ gsutil cp gs://$MY_BUCKET_NAME_1/cat.jpg gs://$MY_BUCKET_NAME_2/cat.jpg           (copy from one bucket to another)
 $ gsutil acl ch -u allUsers:R gs://$DEVSHELL_PROJECT_ID/my-excellent-blog.png       (Modify the Access Control List of the object you just created so that it is readable by everyone)
-$ gsutil signurl -d 10m /path/to/privatekey.p12 gs://bucket/object                 (access a bucket w key)
-$ gsutil acl get gs://$BUCKET_NAME_1/<file>.txt  > acl.txt                         (cat acl.txt to list default access list thats been assigned to file)
+$ gsutil signurl -d 10m /path/to/privatekey.p12 gs://bucket/object                  (access a bucket w key)
+$ gsutil acl get gs://$BUCKET_NAME_1/<file>.txt  > acl.txt                          (cat acl.txt to list default access list thats been assigned to file)
 $ gsutil acl set private gs://$BUCKET_NAME_1/<file>.txt                             (set access list to private)
 $ gsutil acl ch -u AllUsers:R gs://$BUCKET_NAME_1/<file>.txt                        (update access list to make  the file publicly readable)
 $ gsutil lifecycle get gs://$BUCKET_NAME_1                                          (view the current lifecycle policy e.g. if you want to delte the object after X days )
@@ -91,6 +93,16 @@ $ gsutil rsync -r ./firstlevel gs://$BUCKET_NAME_1/firstlevel                   
 
 Cloud SQL
 ===========================
+
+Service Accounts
+===========================
+$ gcloud iam service-accounts create test-service-account2 --display-name "test-service-account2"  (create a new service account)
+$ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member serviceAccount:test-service-account2@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role roles/viewer (grant service account viewer role)
+
+Cloud Repository
+===========================
+gcloud artifacts repositories create quickstart-docker-repo --repository-format=docker --location=us-central1 --description="Docker repository" (create a new Docker repository)
+
 
 Cloud Run 
 ===========================

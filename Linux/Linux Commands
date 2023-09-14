@@ -213,8 +213,12 @@ Performance
 # free -m
 # sar -n DEV 1
 # sar -n TCP,ETCP 1
+# ps aux --sort -%cpu                                          (sort by cpu usage)
 # htop
 # top
+# top -o %MEM                                                 (show the top memory consuming process)
+# ps -eo pid,ppid,cmd,comm,%mem,%cpu --sort=-%mem | head -10  (show command name of top consuming processes)
+# ps aux --sort -%mem | head -10                              (show top 10 mem consuming processes)
 
 Process Management
 ===================================================================================================

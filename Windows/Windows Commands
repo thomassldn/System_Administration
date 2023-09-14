@@ -78,7 +78,7 @@ Networking
 >netstat -naob                                                   (list processes)
 >netstat -naob | find 9999                                       (look for specific service)
 >Test-NetConnection -ComputerName server.domain.com -Port 4437   (Test TCP connection)
-
+>tnc  <IP> <Port>                                                (test connection)
 
 PowerShell
 ==================================================================================================

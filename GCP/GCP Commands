@@ -110,6 +110,10 @@ $ gcloud services enable run.googleapis.com                                     
 $ gcloud builds submit --tag gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld                   (build a nodejs app container from a Dockerfile in a working directory)         
 $ gcloud container images list                                                        (list container images)
 $ docker run -d -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/helloworld                   (test and run container image locally on cloud shell, using curl localhost:8080)
+SSH
+=============================
+$ gcloud compute ssh --zone "us-west1-b" "webserver-lnx-1" --project "t-saldana-sandbox"   (ssh into  a vm)
+
 
 VPN
 ============================
@@ -126,3 +130,11 @@ $ mkdir terrfrm_dir && touch main.tf
 $ terraform init                                                                       (initialize terraform backend
 $ terraform plan                                                                       (plan the deployment before running terraform apply)
 $ terraform apply                                                                      (deploy your infastructure with terraform)
+
+
+
+Terraform State
+============================
+$ terraform state list                                                                 (List the contents of the state file)
+$ terraform state rm                                                                   (Remove an item from the state file)
+$ terraform state show                                                                 (show a resource in the state file)

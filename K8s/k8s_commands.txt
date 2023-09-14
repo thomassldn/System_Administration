@@ -55,6 +55,7 @@ Kubectl
 # kubectl get pods -l k8s-app=web-dash        (delete a deployment, it also deletes ReplicaSet and Pods)
 # kubectl get replicasets                                    (get replica sets)
 # kubectl get pods                                              (get pods)
+# kubectl get pods --selector=app=nginx                      (get pods with a specific  label)
 # kubectl get pods -L k8s-app,labels12           (get pods with extra labels in output)
 # kubectl get services                                         (get services, get service public IP)
 # kubectl create -f <webserver.yml>               (deploy a webserver)
@@ -108,3 +109,6 @@ Kubectl
 
 # kubectl get service <service-name> --output='jsonpath="{.spec.ports[0].nodePort}"'                      (determines the NodePort for your service)
 
+Namespaces
+============================
+# kubectl -n demo apply -f mypod.yml  (create a namespace deployement)

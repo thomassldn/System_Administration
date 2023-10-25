@@ -99,6 +99,7 @@ Service Accounts
 $ gcloud iam service-accounts create test-service-account2 --display-name "test-service-account2"  (create a new service account)
 $ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member serviceAccount:test-service-account2@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com --role roles/viewer (grant service account viewer role)
 
+
 Cloud Repository
 ===========================
 gcloud artifacts repositories create quickstart-docker-repo --repository-format=docker --location=us-central1 --description="Docker repository" (create a new Docker repository)

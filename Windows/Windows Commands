@@ -55,6 +55,7 @@ Group Policies
 =================================================================================================
 >gpupdate /force                                     (update group policies)
 >gpresult /r                                         (verify if or what GPOs are being applied to a computer) 
+>gpresult /h
 
 Hyper V 
 =================================================================================================
@@ -78,7 +79,7 @@ Networking
 >netstat -naob                                                   (list processes)
 >netstat -naob | find 9999                                       (look for specific service)
 >Test-NetConnection -ComputerName server.domain.com -Port 4437   (Test TCP connection)
->tnc  <IP> <Port>                                                (test connection)
+>tnc  <IP> -p <Port>                                                (test connection)
 
 PowerShell
 ==================================================================================================
@@ -116,6 +117,9 @@ Updates:
 >wmic qfe list                                                                               (check update history)
 >wusa /uninstall /kb:KB5009555                                                               (uninstall update)
 
+User Management
+========================================================================================================
+>quser                                                                                (view users that are logged in)
 Wi-Fi
 ========================================================================================================
 netsh wlan show profile  "WIFI-NAME" key=clear                                               (get wifi info including current wifi password)

@@ -219,7 +219,7 @@ Performance
 # top -o %MEM                                                 (show the top memory consuming process)
 # ps -eo pid,ppid,cmd,comm,%mem,%cpu --sort=-%mem | head -10  (show command name of top consuming processes)
 # ps aux --sort -%mem | head -10                              (show top 10 mem consuming processes)
-
+# iperf3 -c <IP> -p 5201                                      (active measurement tool of the maximum achievable bandwith on IP Networks))
 Process Management
 ===================================================================================================
 #  for i in $(pgrep lsof); do ps -p  $i -o lstart=; done                 (view when a process was started)

@@ -137,5 +137,3 @@ netsh wlan show profile  "WIFI-NAME" key=clear                                  
 
 
 
-
-

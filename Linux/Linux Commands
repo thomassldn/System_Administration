@@ -178,8 +178,8 @@ Networking
 # dig
 # traceroute -w 3 -q 1 -m 16 securelink.quadramed.com
 # tcpdump -i eth0 port 80 -w capture.pcap                (capture port 80 traffic on eth0)
-
-
+# tcpdump -i ens192 host <remotehostpingingthisserver>   (display real-time traffic of remote server that is pinging)
+ 
 
 NTP / Chrony
 ===================================================================================================

@@ -115,6 +115,7 @@ icacls C:\Users\DHITSSH\.ssh /grant "NT Service\sshd:R" /T                      
 Updates: 
 ========================================================================================================
 >wmic qfe list                                                                               (check update history)
+>Get-HotFix | Where-Object {$_.Description -like 'Update*'} | Select-Object InstalledOn, Description | Sort-Object InstalledOn -Descending
 >wusa /uninstall /kb:KB5009555                                                               (uninstall update)
 
 User Management

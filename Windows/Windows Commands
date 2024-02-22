@@ -109,6 +109,7 @@ Services
 >Get-EventLog -LogName System | Where-Object {$_.EventID -eq 7036 -and $_.Message -like "*<service_name>*"} | Select-Object TimeGenerated, Message (view when a service was stopped/started)
 >Get-Service "s*" | Sort-Object status             (view service by status)
 >Get-Service -Name "win*" -Exclude "WinRM"          (get service by name)
+
 Specs
 ========================================================================================================
 > WMIC CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors

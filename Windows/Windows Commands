@@ -93,6 +93,8 @@ PowerShell
 >systeminfo | find "System Boot Time"                                                       (get uptime) 
 >Restart-Computer -ComputerName "sbqep1", "sbqep2", "sbqmc1", "sbqmc2" -Force
 >$PSVersionTable.PSVersion                                                                  (check powershell version)
+>Mount-DiskImage -ImagePath "E:\ISO-Files\My US Visit Fall 2010 Pictures.iso"               (Mount an ISO)
+
 
 Roles and Features (PowerShell)
 ==================================================================================================
@@ -102,6 +104,11 @@ Roles and Features (PowerShell)
 >Install-WindowsFeature -Name NET-Framework-Features,NET-Framework-Core,NET-HTTP-Activation,NET-Framework-45-Features,NET-Framework-45-Core,NET-Framework-45-ASPNET,Web-Server,Web-WebServer,Web-Common-Http,Web-Default-Doc,Web-Dir-Browsing,Web-Http-Errors,Web-Static-Content,Web-Http-Redirect,Web-Http-Logging,Web-Custom-Logging,Web-Stat-Compression,Web-Filtering,Web-Mgmt-Console -IncludeManagementTools -Restart
 >Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP' -Recurse | Get-ItemProperty -Name version -EA 0 | Where { $_.PSChildName -Match '^(?!S)\p{L}'} | Select PSChildName, version  (get .net framework version)
 
+Services
+========================================================================================================
+>Get-EventLog -LogName System | Where-Object {$_.EventID -eq 7036 -and $_.Message -like "*<service_name>*"} | Select-Object TimeGenerated, Message (view when a service was stopped/started)
+>Get-Service "s*" | Sort-Object status             (view service by status)
+>Get-Service -Name "win*" -Exclude "WinRM"          (get service by name)
 Specs
 ========================================================================================================
 > WMIC CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors

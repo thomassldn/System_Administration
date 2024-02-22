@@ -24,6 +24,7 @@ $ gcloud auth login                                    (an alternative to gcloud
 
 Compute 
 ===========================
+$ gcloud beta compute ssh --zone "us-west1-b" "<LNX-SERVER>" --project "<PROJECT>"   (SSH into a VM in your project)
 $ gcloud compute instances get-serial-port-output <INSTANCE> --zone=us-central1-b         (read output from a virtual machine instance's serial port)        
 $ gcloud compute instances list                                                           (list compute instances)
 $ gcloud compute instances create <VM_NAME> --zone=<ZONE> --machine-type=e2-micro --subnet=<SUBNET> --image-family=debian-11 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=<DISK_NAME>    (create a VM with specs)

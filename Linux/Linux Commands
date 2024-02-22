@@ -7,6 +7,11 @@ General Linux Commands
 # virt-what                                                                               (view what hyper-visor vm is currently running on)
 # while true;do sleep  1; date +%s" "%d" "%b" "%Y" "%T; done                              (view monatomic time)
 
+Authentication
+================================================================================================= 
+# realm join ad.example.com                                                               (join a linux system to an AD domain ussing sssd)
+# realm permit <USER> realm permit <USER>; echo "<USER> ALL=(ALL:ALL) ALL" > /etc/sudoers.d/<user>    (allow a user to log in to linux system)
+# systemctl restart sssd.service                                                           (restart sssd.service after  editing /etc/sssd/sssd.conf)
 
 Awk
 =================================================================================================
@@ -318,6 +323,25 @@ User Management
 # w
 # lslogins <user_name>                                 (display information about a user)
 
+Vault (Hashicorp)
+================================================================================================
+# vault -help                                                     (view vault commands)
+# vault server -dev                                               (start vault server, useful for local development, testing, and exploration, not secure )
+# vault status                                                    (see status of vault server)
+# vault kv put -help                                              (view put examples)
+# vault kv put -mount=secret hello foo=world                      (write a secret foo=world in the secret/hello path)
+# vault kv put -mount=secret hello foo=world excited=yes          (write 2 secrets in the secret/hello path, for real secrets, use files) 
+# vault kv get -mount=secret hello                                (get secrets in the hello path)
+# vault kv get -mount=secret -field=excited hello                 (get secrets in the hello path)
+# vault kv get -mount=secret -format=json hello | jq -r .data.data.<KEY> (get value of a secret)
+# vault kv delete -mount=secret hello                             (delete a secret)
+# vault kv undelete -mount=secret -versions=2 hello               (Restore the deleted version of secrets)
+# vault kv list                                                   (List data or secrets)
+# vault kv metadata                                               (Interact with Vault's Key-Value storage)
+# vault kv patch                                                  (Update secrets without overwriting existing secrets)
+# vault kv rollback                                               (Rolls back to a previous version of secrets)
+# vault kv destroy                                                (Permanently remove one or more versions of secrets)
+# vault kv enable versioning                                      (Turns on versioning for an existing K/V v1 store)
 
 View System Specs
 ================================================================================================

@@ -64,7 +64,7 @@ File Management
 # stat                 (display file or filesystem status)
 # for i in `ls *.exception` ; do mv $i ${i%.exception} ; done                                   (remove ".exception" from all files in a directory)
 # tree                                                                                          (view files and directories in a tree like structure)
-
+# inotifywait -m -e delete /path/to/file.txt	                                                (view when a file gets deleted in real-time)
 
 
 Firewalld
@@ -132,6 +132,11 @@ Sometimes nfs mounts go stale due to network problems, use the following command
 #  umount -f /mnt/nfs
 #  umount -l /mnt/nfs
 #  umount -lf /mnt/nfs
+
+
+Sftp
+==============================================================
+# sftp -P 2022 -i C:\Scripts\Keys\id_ed25513 user@server
 
 Git
 =================================================================================================
@@ -283,6 +288,7 @@ SELinux
 
 Service Management
 ===================================================================================================
+# systemctl list-units --type=service                   (list all services running on a system)
 # systemctl list-unit-files --type service --all        (list all services on a system)
 # netstat -tlpn                                         (view what port is being used by what service)
 # systemctl status httpd                                (check service status)
@@ -307,6 +313,10 @@ Subscription Manager
 # subscription-manager attach --auto                    (auto attach available subscription)
 # subscriptin-manager --release set=7.8                 (set a release version)
 
+SSH
+====================================================================================================
+# ssh -i "C:\path\to\key\gcp_key" -o ServerAliveInterval=240 <user>@<public_ip>  (ssh into a GCP public ssh  session keeping the session  alive)
+
 User Management
 ====================================================================================================
 # lastlog                                              (view when users last logged in)
@@ -329,6 +339,9 @@ Vault (Hashicorp)
 # vault server -dev                                               (start vault server, useful for local development, testing, and exploration, not secure )
 # vault status                                                    (see status of vault server)
 # vault kv put -help                                              (view put examples)
+# vault kv -help                                                  (view kv -help_)
+# vault secrets enable -path=kv kv                                (enable a new secrets engine on a different path called kv)
+# vault secrets list                                              (List all enabled secret engines on a vault server)
 # vault kv put -mount=secret hello foo=world                      (write a secret foo=world in the secret/hello path)
 # vault kv put -mount=secret hello foo=world excited=yes          (write 2 secrets in the secret/hello path, for real secrets, use files) 
 # vault kv get -mount=secret hello                                (get secrets in the hello path)
@@ -336,19 +349,23 @@ Vault (Hashicorp)
 # vault kv get -mount=secret -format=json hello | jq -r .data.data.<KEY> (get value of a secret)
 # vault kv delete -mount=secret hello                             (delete a secret)
 # vault kv undelete -mount=secret -versions=2 hello               (Restore the deleted version of secrets)
-# vault kv list                                                   (List data or secrets)
+# vault kv list  <path>/                                          (List data or secrets)
 # vault kv metadata                                               (Interact with Vault's Key-Value storage)
 # vault kv patch                                                  (Update secrets without overwriting existing secrets)
 # vault kv rollback                                               (Rolls back to a previous version of secrets)
 # vault kv destroy                                                (Permanently remove one or more versions of secrets)
 # vault kv enable versioning                                      (Turns on versioning for an existing K/V v1 store)
+# vault secrets disable <path_engine>/                            (disable a secret engine)
+# vault secrets enable -path=aws aws                              (enable the AWS secrets engine, the AWS secrets engine generates dynamic, on-demand AWS access credentials.)
 
 View System Specs
 ================================================================================================
+# nproc                                                (view number of processors)
 # lscpu                                                (CPU)
 # cat /proc/cpuinfo                                    (CPU)
 # free                                                 (Memory)
 # cat /proc/meminfo                                    (Memory)
+# dmidecode -t 17                                      (view details of RAM installed on your VM)
 # df -h                                                (HDD)
 # fdisk -l                                             (HDD)
 # uname --m                                            (Hardware Architecture, i386, x86_64)

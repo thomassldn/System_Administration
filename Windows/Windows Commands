@@ -40,6 +40,7 @@ Execution Policy
 
 Files & Directory
 =================================================================================================
+>Get-Content -Path "file.txt" -Wait                 (similar to fail -f file.txt)
 >robocopy <path> <destination>                      (robust file copy for windows to transfer large files)
 >dir                                                (list files in a directory
 >copy file.txt copy.txt                             (copy files)
@@ -49,6 +50,10 @@ Files & Directory
 >echo "some content" > file.txt                     (add content to a file)
 >echo "some more content" >> file.txt               (append content to a file)
 >dir c:\ /b/s | find "password"                     (find a file name in a directory)
+
+Firewall
+==================================================================================================
+>New-NetFirewallRule -DisplayName "Allow UDP from <SOURCE> to <DESTINATION>" -Direction Inbound -Protocol UDP -LocalPort <PORT1>,<PORT2>,<PORT3> -RemoteAddress <SOURCE> -Action Allow
 
 
 Group Policies

@@ -24,6 +24,8 @@ AD/DC
 >Get-ADComputer -Identity <Computer_name>
 >repadmin /replsummary                                                               (show replication across DCs)
 >repadmin /showrepl                                                                  (show replication across DCs)
+>Get-ADGroupMember -Identity <GROUP>                                                 (Get members of an AD group)
+>Get-ADGroupMember -Identity <GROUP> | Select-Object -ExpandProperty Name            (Get members of an AD group. show only names)
 
 DNS
 =================================================================================================
@@ -117,6 +119,7 @@ Services
 
 Specs
 ========================================================================================================
+> ver                                                                                (ver is a cmd command to view windows version)
 > WMIC CPU Get DeviceID,NumberOfCores,NumberOfLogicalProcessors
 
 

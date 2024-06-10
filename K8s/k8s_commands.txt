@@ -19,6 +19,12 @@ Docker:
 # docker inspect <CONTAINER_ID>         (inspect a containers metadata)
 # docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [container_id]   (view metadata in specific format)
 
+GKE 
+===================================
+$ glcoud container clusters get-credentials [CLUSTER_NAME] --region [REGION_NAME]            (get the credentials of a cluster, so that you can connect to it later)
+$
+
+
 MiniKube:
 ===================================
 # minikube start

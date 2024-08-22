@@ -16,6 +16,11 @@ Authentication
 Awk
 =================================================================================================
 # grep Automatic cconsole.log | nawk -v FS=. 'BEGIN {last=""} {if ($1 != last}
+# awk '{ print $1, $3 }' file.txt                                                        (print 1st and 3rd columns of a file)
+# awk '$2 > 100' file.txt                                                                (this filters and prints only the rows where the second column ($2) has a value greater than 100)
+# awk '/error/' file.txt                                                                 (print lines matching pattern)
+# awk 'END { print NR }' file.txt                                                        (count the number of lines in a file)
+# 
 
 Certificates (OpenSSl)
 =================================================================================================
@@ -38,7 +43,12 @@ Certificates (OpenSSl)
 # grep -n BEGIN
 # for a in 1 26 61;do sed -n $a',$p' newswmdirectcert_prod_chain.pem | openssl x509 -noout -text | grep CN=;echo;done
 # for i in *.*; do printf "\n\n\n%s\n%s\n\n" "$i" "========================" ; openssl x509 -in $i -text -noout | grep "Not After";done   (check the expiriation date of all the certificates in a directory)
-
+# openssl s_client -connect 169.235.148.3:443 -tls1                                      (verify if server allows tlsv1 communication)
+# openssl s_client -connect example.com:443                                              (Check SSL/TLS connection to a website)
+# openssl s_client -connect example.com:443 -tls1_2                                      (Test a TLS 1.2 connection to a website)
+# openssl s_client -connect example.com:443 -showcerts                                   (Get the full certificate chain from a server)
+# openssl s_client -connect smtp.example.com:25 -starttls smtp                           (Test STARTTLS for SMTP)
+# openssl s_client -connect example.com:443 -CAfile /path/to/ca-bundle.crt               (Specify a custom CA certificate bundle)
 
 
 DevOPS
@@ -49,6 +59,7 @@ DevOPS
 # vmstat
 # pstree                                               (output list of process in tree format)
 # ps -aux | less                                       (shows processes currently running on the system)
+
 
 DNS
 ==================================================================================================
@@ -230,6 +241,8 @@ Performance
 # ps -eo pid,ppid,cmd,comm,%mem,%cpu --sort=-%mem | head -10  (show command name of top consuming processes)
 # ps aux --sort -%mem | head -10                              (show top 10 mem consuming processes)
 # iperf3 -c <IP> -p 5201                                      (active measurement tool of the maximum achievable bandwith on IP Networks))
+# ab -s 120 -n 100000 -c 100 $URL/                     (stress test a server, does 100 requests at a time, 100000 times)
+# timeout 120 bash -c -- 'while true; do curl localhost; sleep $((RANDOM % 4)) ; done'   (This command generates traffic by making a request to the Apache Web Server every four seconds.)
 
 Process Management
 ===================================================================================================

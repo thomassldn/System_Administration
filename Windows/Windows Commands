@@ -35,6 +35,16 @@ Environtment Variables
 >set                                                (view all environment variables)
 >set Path                                           (view one environment variable)
 
+Chocolatey
+=================================================================================================
+> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))  (install chocolatey)
+> choco install openssl.light -y                    (install openssl using chocolatey, openssl version to verify)
+
+
+Exchange Online
+=================================================================================================
+> foreach($user in $users) { Add-MailboxFolderPermission -Identity "resource-room@domain.com:\Calendar" -User $user -AccessRights Editor -SharingPermissionFlags Delegate}      (a many users to a resource room, where $user is one user in an array)
+
 Execution Policy
 =================================================================================================
 >Get-ExecutionPolicy                                (get powershell script execution policy) 

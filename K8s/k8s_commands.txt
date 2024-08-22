@@ -21,7 +21,8 @@ Docker:
 
 GKE 
 ===================================
-$ glcoud container clusters get-credentials [CLUSTER_NAME] --region [REGION_NAME]            (get the credentials of a cluster, so that you can connect to it later)
+$ gcloud container clusters create-auto $my_cluster --region $my_region                      (Create an auto GKE cluster)
+$ glcoud container clusters get-credentials [CLUSTER_NAME] --region [REGION_NAME]            (get the credentials of a cluster, so that you can connect to it later, nano ~/.kube/config)
 $
 
 
@@ -48,12 +49,15 @@ Kubectl
 ===================================
 # kubectl version --client
 # ~/.kube/config                                               (kubectl configuration file)
+# kubectl cluster-info                                       (check kubectl configuration)
+# kubectl config view                                        (views ~/.kube/config cluster details)
+# kubectl cluster-info                                       (Once kubectl is installed, we can display info about the control plane, etc)
+# kubectl config current-context                              (get current context)
+# kubectl config get-contexts                                 (get all contexts)
+$ kubectl config use-context gke_${DEVSHELL_PROJECT_ID}_us-east4_autopilot-cluster-1       (In Cloud Shell, execute the following command to change the active context)
 # kubectl exec <POD> -- <COMMAND>        (execute a command in a pod)
 # kubectl exec -it  <POD>  -- /bin/bash         (log into a shell)
 # kubectl logs  <POD>                                       (view logs of a pod)
-# kubectl cluster-info                                       (check kubectl configuration)
-# kubectl config view                                        (views ~/.kube/config )
-# kubectl cluster-info                                       (Once kubectl is installed, we can display info about the Minikube kubernetes cluster)
 # kubectl proxy                                                  ( kubectl authenticates with the API server on the master node and makes the Dashboard available on a slightly different URL than one earlier, this time through the default proxy port 8001)
 # kubectl proxy -> curl http://127.0.0.1:8001  (view all API endpoints from proxy server)
 # kubectl get namespaces                                 (view namespaces)
@@ -68,7 +72,8 @@ Kubectl
 # kubectl create -f <webserver-svc.yaml>      (create a web service)
 # kubectl create-f prove_liveness.yaml          (create a liveness check )
 # kubectl expose deployment webserver --name=web-service --type=NodePort   (^same as above, it exposes a deployment, but through  a command)
-# kubectl expose pod share-pod --type=NodePort --port=80       (expose a pod on port 80)
+# kubectl expose pod <POD> --type=NodePort --port=80       (expose a pod on port 80)
+# kubectl expose pod $my_nginx_pod --port 80 --type LoadBalancer (expose a lb service)
 # kubectl describe service <web-service>           (describe a service )
 # kubectl describe pod  <POD>                              (descrive a pod)
 # kubectl get services,endpoints                       (get services and endpoints)
@@ -77,8 +82,10 @@ Kubectl
 # kubectl autoscale nginx --min=10 --max=15 --cpu=80   (autoscalre a deployment to between 10 and 15 pods when CPU utilization reaches 80 percent)
 # kubectl expose deployments nginx --port=80 --type=LoadBalancer  (expose a deployment to the internet, make pods in your deployment available)
 # kubectl delete pod --all --all-namespaces        (delete everything and restart)
-
-
+# kubectl top nodes                                (view the resource usage across the nodes of the cluster)
+# kubectl cp test.html $my_nginx_pod:/usr/share/nginx/html/test.html  (cp a file into a container)
+# kubectl apply -f ./new-nginx-pod.yaml             (deploy an nginx pod from a manifest file, git clone https://github.com/GoogleCloudPlatform/training-data-analyst)
+# kubectl logs new-nginx -f --timestamps            (get the logs of an nginx pod)
 
 
 # kubectl describe pod <pod_name>             (get details on a pod)
